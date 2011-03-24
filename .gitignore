@@ -4,3 +4,4 @@ tmp/**/*
 config/database.yml
 db/*.sql
 db/*.sqlite3
+*.swp

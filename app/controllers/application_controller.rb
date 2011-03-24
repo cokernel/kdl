@@ -8,4 +8,12 @@ class ApplicationController < ActionController::Base
 
   # Scrub sensitive parameters from your log
   # filter_parameter_logging :password
+  before_filter :add_remove_js_css
+
+  private
+  def add_remove_js_css
+    javascript_includes.map{|js_links| js_links.delete("accordion") if js_links.include?({:plugin=>:blacklight})}
+    stylesheet_links << ["application.css",{:media=>"all"}]
+    javascript_includes << ["local.js", "my_accordion.js"]
+  end
 end
