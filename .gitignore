@@ -6,3 +6,4 @@ db/*.sql
 db/*.sqlite3
 *.swp
 coverage.data
+coverage/*
