@@ -10,4 +10,14 @@ describe CatalogController do
          :method => 'get'}
     end
   end
+
+  describe "parameters generated from routes:" do
+    it "should map /catalog/:id/viewer to {:controller => 'catalog', :id => :id, :action => 'viewer'}" do
+      params_from(:get,
+                  '/catalog/sample_aip_1/viewer').should ==
+        {:controller => 'catalog',
+         :id => 'sample_aip_1',
+         :action => 'viewer'}
+    end
+  end
 end
