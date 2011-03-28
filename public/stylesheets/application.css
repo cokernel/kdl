@@ -29,3 +29,7 @@ span.thumblock { display:block; float:left; text-align: center }
   position:relative; /* so the absolutely positioned startOverLink does right */
   text-align: center;
 }
+
+.reference_image {
+  width: 100%;
+}
