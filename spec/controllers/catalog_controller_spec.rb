@@ -45,14 +45,4 @@ describe CatalogController do
       end
     end
   end
-
-  describe "viewer action" do
-    doc_id = 'sample_aip_1'
-
-    it "gets document and response" do
-      get :viewer, :id => doc_id
-      assigns[:document].should_not be_nil
-      assigns[:response].should_not be_nil
-    end
-  end
 end
