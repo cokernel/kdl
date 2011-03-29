@@ -6,6 +6,11 @@ class CatalogController < ApplicationController
     generate_pagination
   end
 
+  def text 
+    @response, @document = get_solr_response_for_doc_id
+    generate_pagination
+  end
+
   def details
     id = params[:id].sub(/_\d+$/, '_1')
     @response, @document = get_solr_response_for_doc_id id
