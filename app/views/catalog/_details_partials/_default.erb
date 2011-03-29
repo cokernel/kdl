@@ -6,4 +6,8 @@
 	    <dd class="blacklight-<%= solr_fname.parameterize %>"><%= render_document_show_field_value :document => document, :field => solr_fname %></dd>
     <% end -%>
   <% end -%>
+  <% if document.has? 'mets_url_display' %>
+    <dt>Metadata record:</dt>
+    <dd><a href="<%= document['mets_url_display'] %>"><%= document['mets_url_display'] %></a></dd>
+  <% end %>
 </dl>

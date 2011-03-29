@@ -20,6 +20,11 @@ Feature: details
     And I should see "Title:"
     And I should see "Type:"
 
+  Scenario: Metadata record
+    Given I am on the details page for id sample_aip_1
+    Then I should see a "dt" element containing "Metadata record:"
+    And I should see "sample_aip/data/mets.xml"
+
   Scenario: Preserve view menu
     Given I am on the details page for id sample_aip_1
     Then I should see "viewer"
