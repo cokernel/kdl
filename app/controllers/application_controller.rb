@@ -14,6 +14,6 @@ class ApplicationController < ActionController::Base
   def add_remove_js_css
     javascript_includes.map{|js_links| js_links.delete("accordion") if js_links.include?({:plugin=>:blacklight})}
     stylesheet_links << ["application.css",{:media=>"all"}]
-    javascript_includes << ["local.js", "my_accordion.js"]
+    javascript_includes << ["local.js", "my_accordion.js", "jquery-1.4.2.min.js" ]
   end
 end
