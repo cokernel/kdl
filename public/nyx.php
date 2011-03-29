@@ -2,10 +2,10 @@
 
 function sanitize($us_href) {
   $s_href = '';
-  if (preg_match("#^http://nyx.uky.edu/dips/([^/?]+)/data/(\d+)/(\d+).txt$#", $us_href)) {
+  if (preg_match("#^http://nyx.uky.edu/dips/([-\w]+)/data/([-\w]+)/([-\w]+).txt$#", $us_href)) {
     $s_href = $us_href;
   }
-  if (preg_match("#^http://nyx.uky.edu/tiles/tile.php\?Path=http://nyx.uky.edu/dips/([^/?]+)/data/(\d+)/.AND.Image=(\d+).AND.Start=(\d+).AND.Length=(\d+).AND.Format=jpg$#", $us_href)) {
+  if (preg_match("#^http://nyx.uky.edu/tiles/tile.php\?Path=http://nyx.uky.edu/dips/([-\w]+)/data/([-\w]+)/.AND.Image=([-\w]+).AND.Start=(\d+).AND.Length=(\d+).AND.Format=jpg$#", $us_href)) {
     $s_href = str_replace(".AND.", "&", $us_href);
     $s_href = str_replace("Path=http://nyx.uky.edu/dips/", "Path=tiles/", $s_href);
   }
@@ -30,8 +30,13 @@ if (array_key_exists('href', $_REQUEST)) {
   print $output;
 }
 else {
-  $us_href = "http://nyx.uky.edu/tiles/tile.php?Path=http://nyx.uky.edu/dips/sample_aip/data/0001/.AND.Image=0001.AND.Start=53030.AND.Length=23104.AND.Format=jpg";
-  print sanitize($us_href) . "\n";
+  $array = array(
+    "http://nyx.uky.edu/tiles/tile.php?Path=http://nyx.uky.edu/dips/sample_aip/data/0001/.AND.Image=0001.AND.Start=53030.AND.Length=23104.AND.Format=jpg",
+    "http://nyx.uky.edu/dips/KUK_ada_1916/data/ada_1916_001/ada_1916_001.txt",
+  );
+  foreach ($array as $us_href) {
+    print sanitize($us_href) . "\n";
+  }
 }
 
 ?>
