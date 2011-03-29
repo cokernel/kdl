@@ -45,4 +45,20 @@ describe CatalogController do
       end
     end
   end
+
+  describe "details action" do
+    ids = [
+      'sample_aip_1',
+      'sample_aip_2',
+      'sample_aip_3',
+    ]
+
+    it "pulls the document for the first page" do
+      ary = ids.collect { |id|
+        get :details, :id => id
+        assigns[:document]
+      }
+      ary[0][:id].should == ary[1][:id]
+    end
+  end
 end

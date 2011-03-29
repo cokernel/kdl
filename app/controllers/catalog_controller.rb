@@ -7,7 +7,8 @@ class CatalogController < ApplicationController
   end
 
   def details
-    @response, @document = get_solr_response_for_doc_id
+    id = params[:id].sub(/_\d+$/, '_1')
+    @response, @document = get_solr_response_for_doc_id id
   end
 
   def show
