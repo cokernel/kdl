@@ -6,6 +6,10 @@ class CatalogController < ApplicationController
     generate_pagination
   end
 
+  def details
+    @response, @document = get_solr_response_for_doc_id
+  end
+
   def show
     @response, @document = get_solr_response_for_doc_id
     generate_pagination

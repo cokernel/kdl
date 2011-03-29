@@ -18,12 +18,12 @@ Feature: viewer
     And I should see "pdf"
 
   Scenario: Pagination, existence
-    Given I am on the document page for id sample_aip_1
+    Given I am on the viewer page for id sample_aip_1
     Then I should see "2"
     And I should see "3"
     And I should see "4"
 
   Scenario: Pagination, function
-    Given I am on the document page for id sample_aip_1
+    Given I am on the viewer page for id sample_aip_1
     When I follow "3"
-    Then I should be on the document page for id sample_aip_3
+    Then I should be on the viewer page for id sample_aip_3

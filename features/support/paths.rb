@@ -14,6 +14,12 @@ module NavigationHelpers
     when /the document page for id (.+)/ 
       catalog_path($1)
 
+    when /the viewer page for id (.+)/ 
+      viewer_catalog_path($1)
+
+    when /the details page for id (.+)/ 
+      details_catalog_path($1)
+
     # Add more mappings here.
     # Here is an example that pulls values out of the Regexp:
     #
