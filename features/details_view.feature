@@ -32,3 +32,10 @@ Feature: details
     And I should see "guide"
     And I should see "text"
     And I should see "pdf"
+
+  Scenario: Preserve page number
+    Given I am on the document page for id sample_aip_1
+    And I follow "3"
+    And I follow "details"
+    When I follow "viewer"
+    Then I should be on the viewer page for id sample_aip_3

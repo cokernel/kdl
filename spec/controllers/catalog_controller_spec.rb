@@ -56,10 +56,15 @@ describe CatalogController do
       'sample_aip_3',
     ]
 
+    it "assigns document_summary" do
+      get :details, :id => ids[0]
+      assigns[:document_summary].should_not be_nil
+    end
+
     it "pulls the document for the first page" do
       ary = ids.collect { |id|
         get :details, :id => id
-        assigns[:document]
+        assigns[:document_summary]
       }
       ary[0][:id].should == ary[1][:id]
     end
