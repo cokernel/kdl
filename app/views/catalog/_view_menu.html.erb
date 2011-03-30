@@ -3,5 +3,5 @@
 <%= link_to "details", details_catalog_path(@document[:id]) %>| 
 guide | 
 <%= link_to "text", text_catalog_path(@document[:id]) %>| 
-pdf
+<a href="<%= @document[:pdf_url_display] %>">pdf</a>
 </div>
