@@ -48,6 +48,18 @@ describe CatalogController do
       end
     end
   end
+  
+  describe "text action" do
+    has_text_id = 'sample_aip_1'
+    no_text_id = 'sample_aip_2'
+
+    it "provides a short message if no text is found" do
+      get :text, :id => has_text_id
+      assigns[:document]['text_s'].should_not == 'Text not available.'
+      get :text, :id => no_text_id
+      assigns[:document]['text_s'].should == 'Text not available.'
+    end
+  end
 
   describe "details action" do
     ids = [
