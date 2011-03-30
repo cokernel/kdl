@@ -8,7 +8,12 @@ class CatalogController < ApplicationController
 
   def text 
     @response, @document = get_solr_response_for_doc_id
-    unless @document['text_s'].first =~ /\S/
+    begin
+      text_to_check = @document['text_s'].first
+    rescue
+      text_to_check = @document['text_s']
+    end
+    unless text_to_check =~ /\S/
       @document['text_s'] = 'Text not available.'
     end
     generate_pagination
