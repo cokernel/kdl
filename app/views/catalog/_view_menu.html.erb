@@ -1,7 +1,7 @@
 <div class="views_menu">
 <%= link_to "viewer", viewer_catalog_path(@document[:id]) %>| 
 <%= link_to "details", details_catalog_path(@document[:id]) %>| 
-guide | 
+<%= link_to "guide", guide_catalog_path(@document[:id]) %> | 
 <%= link_to "text", text_catalog_path(@document[:id]) %>| 
 <a href="<%= @document[:pdf_url_display] %>">pdf</a>
 </div>

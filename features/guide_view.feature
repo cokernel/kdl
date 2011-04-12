@@ -4,12 +4,12 @@ Feature: guide
   I want to see a guide to a collection
 
   Scenario: Show the guide view
-    Given I am on the document page for id sample_collections_folder_1_1_1_1
+    Given I am on the document page for id sample_collections_folder_level_1_1_1_1
     When I follow "guide"
-    Then I should see "Guide to the"
+    Then I should be on the guide page for id sample_collections_folder_level_1_1_1_1
 
   Scenario: Preserve view menu
-    Given I am on the guide page for id sample_collections_folder_1_1_1_1
+    Given I am on the guide page for id sample_collections_folder_level_1_1_1_1
     Then I should see "viewer"
     And I should see "details"
     And I should see "guide"

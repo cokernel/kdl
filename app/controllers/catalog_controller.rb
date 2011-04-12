@@ -27,6 +27,10 @@ class CatalogController < ApplicationController
     @response, @document = get_solr_response_for_doc_id id
   end
 
+  def guide
+    @response, @document = get_solr_response_for_doc_id
+  end
+
   def show
     @response, @document = get_solr_response_for_doc_id
     generate_pagination

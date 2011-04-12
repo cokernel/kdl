@@ -6,12 +6,14 @@ describe CatalogController do
       :viewer,
       :details,
       :text,
+      :guide,
     ].each do |action|
       it "maps {:controller => 'catalog', :action => '#{action}'} to /catalog/#{action}" do
+        id = 'sample_collections_folder_level_1_1_1_1'
         route_for(:controller => 'catalog', 
-                  :id => 'sample_aip_1',
+                  :id => id,
                   :action => action.to_s).should == 
-          {:path => "/catalog/sample_aip_1/#{action}",
+          {:path => "/catalog/#{id}/#{action}",
            :method => 'get'}
       end
     end
@@ -22,12 +24,14 @@ describe CatalogController do
       :viewer,
       :details,
       :text,
+      :guide,
     ].each do |action|
       it "maps /catalog/:id/#{action} to {:controller => 'catalog', :id => :id, :action => '#{action}'}" do
+        id = 'sample_collections_folder_level_1_1_1_1'
         params_from(:get,
-                    "/catalog/sample_aip_1/#{action}").should ==
+                    "/catalog/#{id}/#{action}").should ==
           {:controller => 'catalog',
-           :id => 'sample_aip_1',
+           :id => id,
            :action => action.to_s}
       end
     end
@@ -37,12 +41,13 @@ describe CatalogController do
     :viewer,
     :details,
     :text,
+    :guide,
   ].each do |action|
     describe "#{action} action" do
-      doc_id = 'sample_aip_1'
+      id = 'sample_collections_folder_level_1_1_1_1'
 
       it "gets document and response" do
-        get action, :id => doc_id
+        get action, :id => id
         assigns[:document].should_not be_nil
         assigns[:response].should_not be_nil
       end
@@ -65,7 +70,6 @@ describe CatalogController do
     ids = [
       'sample_aip_1',
       'sample_aip_2',
-      'sample_aip_3',
     ]
 
     it "assigns document_summary" do

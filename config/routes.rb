@@ -1,7 +1,12 @@
 ActionController::Routing::Routes.draw do |map|
   Blacklight::Routes.build map
 
-  map.resources :catalog, :member => { :viewer => :get, :details => :get, :text => :get }
+  map.resources :catalog, :member => { 
+    :details => :get, 
+    :guide => :get,
+    :text => :get, 
+    :viewer => :get, 
+  }
 
   # The priority is based upon order of creation: first created -> highest priority.
 
