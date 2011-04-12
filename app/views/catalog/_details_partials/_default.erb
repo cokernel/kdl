@@ -6,6 +6,10 @@
 	    <dd class="blacklight-<%= solr_fname.parameterize %>"><%= render_document_show_field_value :document => @document_summary, :field => solr_fname %></dd>
     <% end -%>
   <% end -%>
+  <% if @document_summary.has? 'finding_aid_url_s' %>
+    <dt>Finding aid:</dt>
+    <dd><a href="<%= document['finding_aid_url_s'] %>"><%= document['finding_aid_url_s'] %></a></dd>
+  <% end %>
   <% if @document_summary.has? 'mets_url_display' %>
     <dt>Metadata record:</dt>
     <dd><a href="<%= document['mets_url_display'] %>"><%= document['mets_url_display'] %></a></dd>

@@ -14,14 +14,17 @@ Feature: details
     And I should see "Identifier:"
     And I should see "Language:"
     And I should see "Publisher:"
+    And I should see "Finding aid:" at most 1 time
     And I should see "Relation:" at most 1 time
     And I should see "Repository:"
     And I should see "Subject:" at least 0 times
     And I should see "Title:"
     And I should see "Type:"
 
-  #Scenario: Finding aid available
-  #  Given I am on the document page for id 
+  Scenario: Finding aid available
+    Given I am on the document page for id sample_collections_folder_level_1_1_1_1
+    When I follow "details"
+    Then I should see "Finding aid:"
 
   Scenario: Metadata record
     Given I am on the details page for id xt74qr4nkd58_1
