@@ -7,6 +7,7 @@ Feature: guide
     Given I am on the document page for id sample_collections_folder_level_1_1_1_1
     When I follow "guide"
     Then I should be on the guide page for id sample_collections_folder_level_1_1_1_1
+    And I should see "Cooper-Phillips family papers, 1839-1911, bulk 1857-1866"
 
   Scenario: Preserve view menu
     Given I am on the guide page for id sample_collections_folder_level_1_1_1_1

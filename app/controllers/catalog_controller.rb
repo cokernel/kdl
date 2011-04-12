@@ -29,6 +29,11 @@ class CatalogController < ApplicationController
 
   def guide
     @response, @document = get_solr_response_for_doc_id
+    if @document.has_key?('finding_aid_url_s')
+      ead_url = @document['finding_aid_url_s'].first
+      ead_xml = Typhoeus::Request.get(ead_url).body
+      @ead = Eadsax::Ead.parse(ead_xml)
+    end
   end
 
   def show

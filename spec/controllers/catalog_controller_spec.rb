@@ -53,6 +53,15 @@ describe CatalogController do
       end
     end
   end
+
+  describe "guide action" do
+    id = 'sample_collections_folder_level_1_1_1_1'
+
+    it "gets ead" do
+      get :guide, :id => id
+      assigns[:ead].should_not be_nil
+    end
+  end
   
   describe "text action" do
     has_text_id = 'sample_aip_1'
