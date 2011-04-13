@@ -11,7 +11,6 @@ Rails::Initializer.run do |config|
   config.gem 'nokogiri'
   config.plugin_paths += ["#{RAILS_ROOT}/vendor/plugins/blacklight/vendor/plugins"]
   config.gem 'typhoeus', :version => ">= 0.2.4"
-  config.gem 'eadsax'
   config.gem 'authlogic', :version => '2.1.2'
   # Settings in config/environments/* take precedence over those specified here.
   # Application configuration should go into files in config/initializers

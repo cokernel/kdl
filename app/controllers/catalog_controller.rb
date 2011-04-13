@@ -32,7 +32,7 @@ class CatalogController < ApplicationController
     if @document.has_key?('finding_aid_url_s')
       ead_url = @document['finding_aid_url_s'].first
       ead_xml = Typhoeus::Request.get(ead_url).body
-      @ead = Eadsax::Ead.parse(ead_xml)
+      @ead = ead_xml
     end
   end
 
