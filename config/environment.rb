@@ -8,6 +8,7 @@ require File.join(File.dirname(__FILE__), 'boot')
 require File.join(File.dirname(__FILE__), '../vendor/plugins/blacklight/vendor/plugins/engines/boot')
 
 Rails::Initializer.run do |config|
+  config.gem 'eadsax'
   config.gem 'nokogiri'
   config.plugin_paths += ["#{RAILS_ROOT}/vendor/plugins/blacklight/vendor/plugins"]
   config.gem 'typhoeus', :version => ">= 0.2.4"

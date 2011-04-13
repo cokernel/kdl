@@ -7,3 +7,4 @@ db/*.sqlite3
 *.swp
 coverage.data
 coverage/*
+public/plugin_assets/*

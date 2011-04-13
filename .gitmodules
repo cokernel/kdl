@@ -1,0 +1,3 @@
+[submodule "vendor/plugins/blacklight_ext_ead_simple"]
+	path = vendor/plugins/blacklight_ext_ead_simple
+	url = git://github.com/jronallo/blacklight_ext_ead_simple.git
