@@ -4,6 +4,32 @@
 <h2>Title</h2>
 <p><%= unittitle(ead.archdesc.did) %></p>
 
+<h2>Date</h2>
+<p><%= unitdate(ead.archdesc.did) %></p>
+
+<h2>Repository</h2>
+<p><%= ead.archdesc.did.repository %></p>
+
+<h2>Arrangement</h2>
+<% ead.archdesc.arrangement.ps.each do |paragraph| -%>
+  <p><%= paragraph %></p>
+<% end -%>
+
+<h2>Conditions Governing Access note</h2>
+<p><%= ead.archdesc.accessrestrict %></p>
+
+<h2>Conditions Governing Use note</h2>
+<p><%= ead.archdesc.userestrict %></p>
+
+<h2>Preferred Citation Note</h2>
+<p><%= ead.archdesc.prefercite %></p>
+
+<h2>Extent</h2>
+<!-- ead.archdesc.did.physdesc.extents -->
+
+<h2>Creator</h2>
+<p><%= ead.archdesc.did.origination %></p>
+
 <h2>Abstract</h2>
 <% ead.archdesc.did.abstracts.each do |abstract| -%>
   <p><%= abstract %></p>
@@ -14,11 +40,6 @@
 
 <h2>Scope and Content</h2>
 <% ead.archdesc.scopecontent.ps.each do |paragraph| -%>
-  <p><%= paragraph %></p>
-<% end -%>
-
-<h2>Arrangement</h2>
-<% ead.archdesc.arrangement.ps.each do |paragraph| -%>
   <p><%= paragraph %></p>
 <% end -%>
 
