@@ -55,11 +55,22 @@ describe CatalogController do
   end
 
   describe "guide action" do
-    id = 'sample_collections_folder_level_1_1_1_1'
+    context "item with guide available" do
+      id = 'sample_collections_folder_level_1_1_1_1'
+  
+      it "gets ead" do
+        get :guide, :id => id
+        assigns[:ead].should_not be_nil
+      end
+    end
 
-    it "gets ead" do
-      get :guide, :id => id
-      assigns[:ead].should_not be_nil
+    context "item without guide available" do
+      id = 'sample_aip_1'
+
+      it "sets format accordingly" do
+        get :guide, :id => id
+        assigns[:document]['format'].should == 'guide_not_available'
+      end
     end
   end
   

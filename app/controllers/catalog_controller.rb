@@ -33,6 +33,8 @@ class CatalogController < ApplicationController
       ead_url = @document['finding_aid_url_s'].first
       ead_xml = Typhoeus::Request.get(ead_url).body
       @ead = ead_xml
+    else
+      @document['format'] = 'guide_not_available'
     end
   end
 

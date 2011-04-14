@@ -16,3 +16,9 @@ Feature: guide
     And I should see "guide"
     And I should see "text"
     And I should see "pdf"
+
+  Scenario: Handle lack of guide
+    Given I am on the document page for id sample_aip_1
+    When I follow "guide"
+    Then I should be on the guide page for id sample_aip_1
+    And I should see "Guide not available."
