@@ -33,6 +33,7 @@ class CatalogController < ApplicationController
       ead_url = @document['finding_aid_url_s'].first
       ead_xml = Typhoeus::Request.get(ead_url).body
       @ead = ead_xml
+      @document[Blacklight.config[:guide][:heading]] = KDL::Parser.new(@ead).title
     else
       @document['format'] = 'guide_not_available'
     end

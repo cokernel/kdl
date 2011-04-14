@@ -62,6 +62,11 @@ describe CatalogController do
         get :guide, :id => id
         assigns[:ead].should_not be_nil
       end
+
+      it "sets guide heading" do
+        get :guide, :id => id
+        assigns[:document][Blacklight.config[:guide][:heading]].should_not be_nil
+      end
     end
 
     context "item without guide available" do

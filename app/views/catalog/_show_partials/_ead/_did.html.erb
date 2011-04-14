@@ -1,0 +1,24 @@
+<h5>
+  <% if element.did -%>
+    <span class="unittitle"><%= element.did.unittitle %><%= ', ' if element.did.unitdate and element.did.unittitle %></span>
+    <% if element.did.unitdate -%>
+      <span class="unitdate"><%= element.did.unitdate %></span>
+    <% end -%>
+    <% if element.did.unitid -%>
+      <span class="unitid">(<%= element.did.unitid %>)</span>
+    <% end -%>
+  <% end -%>
+</h5>
+
+<span class="physdesc"><%= element.did.physdesc %></span>
+
+<% if !element.did.containers.blank? -%>
+  <% containers = [] -%>
+  <span class="container">
+    <% element.did.containers.each_with_index do |container, index| -%>
+      <% containers << [element.did.container_types[index], container].join(': ') %>
+    <% end -%>
+    [<%= containers.join(', ') %>]
+  </span>
+<% end -%>
+

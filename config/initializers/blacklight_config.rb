@@ -47,7 +47,9 @@ Blacklight.configure(:shared) do |config|
   }
   
   
-  
+  config[:guide] = {
+    :heading => "title_guide_display",
+  }
 
   # solr field values given special treatment in the show (single result) view
   config[:show] = {
