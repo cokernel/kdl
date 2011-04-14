@@ -8,5 +8,37 @@ module CatalogHelper
       Eadsax::Ead.parse(ead_xml)
     end
   end
-end
 
+  def unitid(did)
+    if did.unitid
+      content_tag(:span, did.unitid, :class => :unitid)
+    else
+      ''
+    end
+  end
+
+  def unittitle(did)
+    if did.unittitle
+      text = trim_end_punctuation(did.unittitle)
+      if did.unitdate
+        text += ','
+      end
+      content_tag(:span, text, :class => :unittitle)
+    else
+      ''
+    end
+  end
+
+  def unitdate(did)
+    if did.unitdate
+      text = trim_end_punctuation(did.unitdate)
+      content_tag(:span, text, :class => :unitdate)
+    else
+      ''
+    end
+  end
+
+  def trim_end_punctuation(text)
+    text.sub(/[,.;:!?]*$/, '')
+  end
+end
