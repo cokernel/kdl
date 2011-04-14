@@ -1,0 +1,26 @@
+<h2>Abstract</h2>
+<% ead.archdesc.did.abstracts.each do |abstract| -%>
+  <p><%= abstract %></p>
+<% end -%>
+
+<%= render :partial => 'catalog/_show_partials/_ead/bioghist',
+      :locals => {:bioghist => ead.archdesc.bioghist} %>
+
+
+<h2>Scope and Content</h2>
+<% ead.archdesc.scopecontent.ps.each do |paragraph| -%>
+  <p><%= paragraph %></p>
+<% end -%>
+
+<h2>Arrangement</h2>
+<% ead.archdesc.arrangement.ps.each do |paragraph| -%>
+  <p><%= paragraph %></p>
+<% end -%>
+
+<%= render :partial => '/catalog/_show_partials/_ead/controlaccess',
+      :locals => {:controlaccess => ead.archdesc.controlaccess} if ead.archdesc.controlaccess %>
+
+<h2>Collection Inventory</h2>
+<%= render :partial => 'catalog/_show_partials/_ead/dsc',
+        :locals => {:element => ead.archdesc.dsc, :start => 'c01'} %>
+
