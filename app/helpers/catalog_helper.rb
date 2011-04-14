@@ -9,36 +9,46 @@ module CatalogHelper
     end
   end
 
+  def fulltitle(did)
+    [
+      unitid(did),
+      unittitle(did, :comma => :unitdate),
+      unitdate(did),
+    ].select { |item| !item.nil? }.join(' ')
+  end
+
   def unitid(did)
     if did.unitid
-      content_tag(:span, did.unitid, :class => :unitid)
-    else
-      ''
+      text = did.unitid.strip + ' '
+      tagify(:unitid, text)
     end
   end
 
-  def unittitle(did)
+  def unittitle(did, options={})
     if did.unittitle
       text = trim_end_punctuation(did.unittitle)
-      if did.unitdate
-        text += ','
+      if options.has_key?(:comma)
+        if did.send(options[:comma])
+          text += ','
+        end
       end
-      content_tag(:span, text, :class => :unittitle)
-    else
-      ''
+      text += ' '
+      tagify(:unittitle, text)
     end
   end
 
   def unitdate(did)
     if did.unitdate
-      text = trim_end_punctuation(did.unitdate)
-      content_tag(:span, text, :class => :unitdate)
-    else
-      ''
+      text = trim_end_punctuation(did.unitdate) + ' '
+      tagify(:unitdate, text)
     end
   end
 
+  def tagify(field, representation)
+    content_tag :span, representation, :class => field
+  end
+
   def trim_end_punctuation(text)
-    text.sub(/[,.;:!?]*$/, '')
+    text.strip.sub(/[,.;:!?]*$/, '')
   end
 end

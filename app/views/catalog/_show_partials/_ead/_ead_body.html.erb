@@ -1,3 +1,9 @@
+<h2>Author</h2>
+<p><%= ead.eadheader.filedesc.titlestmt.author %></p>
+
+<h2>Title</h2>
+<p><%= unittitle(ead.archdesc.did) %></p>
+
 <h2>Abstract</h2>
 <% ead.archdesc.did.abstracts.each do |abstract| -%>
   <p><%= abstract %></p>
@@ -5,7 +11,6 @@
 
 <%= render :partial => 'catalog/_show_partials/_ead/bioghist',
       :locals => {:bioghist => ead.archdesc.bioghist} %>
-
 
 <h2>Scope and Content</h2>
 <% ead.archdesc.scopecontent.ps.each do |paragraph| -%>
