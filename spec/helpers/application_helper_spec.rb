@@ -10,6 +10,12 @@ describe ApplicationHelper do
       document_guide_heading.should == "A Fake Document"
     end
 
+    it "falls back on the show heading field when the guide heading field is not available" do
+      @document = SolrDocument.new(Blacklight.config[:show][:heading] => "A Fake Document")
+      
+      document_guide_heading.should == "A Fake Document"
+    end
+
     it "falls back on the document id if no title is available" do
       @document = SolrDocument.new(:id => '123456')
       
