@@ -3,6 +3,12 @@ require 'spec/spec_helper'
 describe ApplicationHelper do
   include ApplicationHelper
 
+  describe "#application_name" do
+    it "is localized" do
+      application_name.should == 'Kentucky Digital Library'
+    end
+  end
+
   describe "#document_guide_heading" do
     it "is the guide heading field when available" do
       @document = SolrDocument.new(Blacklight.config[:guide][:heading] => "A Fake Document")

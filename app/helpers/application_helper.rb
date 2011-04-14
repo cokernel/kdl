@@ -1,6 +1,9 @@
-require 'vendor/plugins/blacklight/app/helpers/application_helper.rb'
-# Methods added to this helper will be available to all templates in the application.
+require_dependency('vendor/plugins/blacklight/app/helpers/application_helper.rb')
 module ApplicationHelper
+  def application_name
+    'Kentucky Digital Library'
+  end
+
   def document_guide_heading
     @document[Blacklight.config[:guide][:heading]] || @document[Blacklight.config[:show][:heading]] || @document[:id]
   end
