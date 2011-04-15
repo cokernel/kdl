@@ -1,5 +1,9 @@
-<h2>Author</h2>
-<p><%= ead.eadheader.filedesc.titlestmt.author %></p>
+<% begin -%>
+<%= render :partial => 'catalog/_show_partials/_ead/ead_paragraph',
+           :locals => { :title => 'Author',
+                        :element => ead.eadheader.filedesc.titlestmt.author } %>
+<% rescue -%>
+<% end -%>
 
 <h2>Title</h2>
 <p><%= unittitle(ead.archdesc.did) %></p>
@@ -7,28 +11,48 @@
 <h2>Date</h2>
 <p><%= unitdate(ead.archdesc.did) %></p>
 
-<h2>Repository</h2>
-<p><%= ead.archdesc.did.repository %></p>
+<% begin -%>
+<%= render :partial => 'catalog/_show_partials/_ead/ead_paragraph',
+           :locals => { :title => 'Repository',
+                        :element => ead.archdesc.did.repository } %>
+<% rescue -%>
+<% end -%>
 
 <h2>Arrangement</h2>
 <% ead.archdesc.arrangement.ps.each do |paragraph| -%>
   <p><%= paragraph %></p>
 <% end -%>
 
-<h2>Conditions Governing Access note</h2>
-<p><%= ead.archdesc.accessrestrict %></p>
+<% begin -%>
+<%= render :partial => 'catalog/_show_partials/_ead/ead_paragraph',
+           :locals => { :title => 'Conditions Governing Access note',
+                        :element => ead.archdesc.accessrestrict } %>
+<% rescue -%>
+<% end -%>
 
-<h2>Conditions Governing Use note</h2>
-<p><%= ead.archdesc.userestrict %></p>
+<% begin -%>
+<%= render :partial => 'catalog/_show_partials/_ead/ead_paragraph',
+           :locals => { :title => 'Conditions Governing Use note',
+                        :element => ead.archdesc.userestrict } %>
+<% rescue -%>
+<% end -%>
 
-<h2>Preferred Citation Note</h2>
-<p><%= ead.archdesc.prefercite %></p>
+<% begin -%>
+<%= render :partial => 'catalog/_show_partials/_ead/ead_paragraph',
+           :locals => { :title => 'Preferred Citation Note',
+                        :element => ead.archdesc.prefercite } %>
+<% rescue -%>
+<% end -%>
 
 <h2>Extent</h2>
 <!-- ead.archdesc.did.physdesc.extents -->
 
-<h2>Creator</h2>
-<p><%= ead.archdesc.did.origination %></p>
+<% begin -%>
+<%= render :partial => 'catalog/_show_partials/_ead/ead_paragraph',
+           :locals => { :title => 'Creator',
+                        :element => ead.archdesc.did.origination } %>
+<% rescue -%>
+<% end -%>
 
 <h2>Abstract</h2>
 <% ead.archdesc.did.abstracts.each do |abstract| -%>
@@ -45,6 +69,27 @@
 
 <%= render :partial => '/catalog/_show_partials/_ead/controlaccess',
       :locals => {:controlaccess => ead.archdesc.controlaccess} if ead.archdesc.controlaccess %>
+
+<% begin -%>
+<%= render :partial => 'catalog/_show_partials/_ead/ead_paragraph',
+           :locals => { :title => 'User Restrictions',
+                        :element => ead.archdesc.descgrp.userestrict } %>
+<% rescue -%>
+<% end -%>
+
+<% begin -%>
+<%= render :partial => 'catalog/_show_partials/_ead/ead_paragraph',
+           :locals => { :title => 'Access Restrictions',
+                        :element => ead.archdesc.descgrp.accessrestrict } %>
+<% rescue -%>
+<% end -%>
+
+<% begin -%>
+<%= render :partial => 'catalog/_show_partials/_ead/ead_paragraph',
+           :locals => { :title => 'Related Material',
+                        :element => ead.archdesc.descgrp.relatedmaterial } %>
+<% rescue -%>
+<% end -%>
 
 <h2>Collection Inventory</h2>
 <%= render :partial => 'catalog/_show_partials/_ead/dsc',
