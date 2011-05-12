@@ -23,7 +23,10 @@
   <div id="viewer">test</div>
 </div>
 <% else %>
+<% extra_head_content << capture do %>
+<link href="/stylesheets/oh.css" media="all" rel="stylesheet" type="text/css" />
+<% end %>
   <% if @document.has_key?('synchronization_url_s') %>
-    <%= fetch(URI.encode(@document['synchronization_url_s'].first)) %>
+    <%= fetch(oh_url(@document)) %>
   <% end %>
 <% end %>
