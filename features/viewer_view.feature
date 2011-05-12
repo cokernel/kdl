@@ -27,3 +27,8 @@ Feature: viewer
     Given I am on the viewer page for id xt74qr4nkd58_1
     When I follow "3"
     Then I should be on the viewer page for id xt74qr4nkd58_3
+
+  Scenario: Show an oral history
+    Given I am on the document page for id sample_oral_history
+    When I follow "viewer"
+    Then I should see "Start now, start now"

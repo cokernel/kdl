@@ -51,4 +51,16 @@ module CatalogHelper
   def trim_end_punctuation(text)
     text.strip.sub(/[,.;:!?]*$/, '')
   end
+
+  def fetch(urls)
+    unless urls.respond_to?(:each)
+      urls = [ urls ]
+    end
+    body = []
+    urls.each do |url|
+      response = Typhoeus::Request.get(url)
+      body << response.body
+    end
+    body.join('')
+  end
 end

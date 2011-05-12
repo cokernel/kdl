@@ -53,6 +53,20 @@ describe CatalogHelper do
       fulltitle(did).should have_tag("span.unitdate", :text => "1997", :count => 1)
     end
   end
+
+  describe "#fetch" do
+    it "fetches an external document" do
+      url = 'http://projectblacklight.org'
+      fetch(url).should =~ /What is Blacklight/m
+    end
+    
+    it "gracefully handles arrays" do
+      url = ['http://projectblacklight.org','http://rubyonrails.org']
+      r = fetch(url)
+      r.should =~ /What is Blacklight/m
+      r.should =~ /Rails is released under the/m
+    end
+  end
 end
 
 def did_fragment(hash)
