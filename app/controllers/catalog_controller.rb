@@ -56,15 +56,17 @@ class CatalogController < ApplicationController
   end
 
   def generate_pagination
-    key = @document['parent_id_s']
-    seq = @document['id'].sub(/^.*_(\d+)$/, "\\1").to_i #params[:seq]
-    if @document['page_count_s'].nil?
-        extra = {:per_page => 300}
-    else
-        extra = {:per_page => @document['page_count_s']}
+    unless @document.has_key?('unpaged_display')
+      key = @document['parent_id_s']
+      seq = @document['id'].sub(/^.*_(\d+)$/, "\\1").to_i #params[:seq]
+      if @document['page_count_s'].nil?
+          extra = {:per_page => 300}
+      else
+          extra = {:per_page => @document['page_count_s']}
+      end
+      @issue_response, @issue_documents = get_solr_response_for_field_values("parent_id_s",key, extra)
+      @pages = @issue_response.docs.paginate :per_page => 1, :page => seq
+      @current_page = @pages[seq - 1]
     end
-    @issue_response, @issue_documents = get_solr_response_for_field_values("parent_id_s",key, extra)
-    @pages = @issue_response.docs.paginate :per_page => 1, :page => seq
-    @current_page = @pages[seq - 1]
   end
 end
