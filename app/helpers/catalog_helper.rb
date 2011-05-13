@@ -83,7 +83,7 @@ module CatalogHelper
           args.join('&')
         ].join('')
       else
-        url = base
+        url = base.first
       end
       URI.encode(url)
     end
