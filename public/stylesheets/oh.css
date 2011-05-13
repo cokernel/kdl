@@ -15,19 +15,8 @@ p { padding-left: 2em; }
   background-color: #ffc;
 }
 
-.timestamp {
-  position: absolute;
-  left: 0em;
-  float: left;
-}
-
 #oh_transcript {
-  position: relative;
   height: 20em;
   overflow: auto;
 }
 
-#oh_transcript p {
-  position: relative;
-  left: 3em;
-}
