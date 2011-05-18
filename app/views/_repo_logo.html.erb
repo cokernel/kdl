@@ -1,0 +1,17 @@
+<% unless @document.nil? %>
+  <% if @document.has_key?('repository_display') %>
+
+<div class="repo_container">
+<p class="repo_label">
+Provided by <%= @document['repository_display'] %></p>
+</p>
+
+<img class="repo_logo" 
+     src="<%= repo_logo_url(@document) %>"
+     alt="This is a test"
+     title="This is a test"/>
+</p>
+</div>
+
+  <% end %>
+<% end %>

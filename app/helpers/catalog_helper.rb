@@ -64,6 +64,10 @@ module CatalogHelper
     body.join('')
   end
 
+  def repo_logo_url(document)
+    Blacklight.config[:repo_logo_url][document['repository_display'].first]
+  end
+
   def oh_url(document)
     if document.has_key?('synchronization_url_s')
       base = document['synchronization_url_s']

@@ -33,3 +33,10 @@ span.thumblock { display:block; float:left; text-align: center }
 .reference_image {
   width: 100%;
 }
+
+/* Repository logo */
+
+.repo_container {
+  margin: 10px;
+}
+
