@@ -97,4 +97,8 @@ module CatalogHelper
       URI.encode(url)
     end
   end
+
+  def has_search_parameters?
+    !params[:q].blank? or !params[:f].blank? or (!params[:search_field].blank? and params[:search_field] != 'all_fields')
+  end
 end
