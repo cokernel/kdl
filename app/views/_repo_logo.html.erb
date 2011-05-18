@@ -6,12 +6,13 @@
 Provided by <%= @document['repository_display'] %></p>
 </p>
 
+<% unless repo_logo_url(@document).nil? %>
 <img class="repo_logo" 
      src="<%= repo_logo_url(@document) %>"
      alt="This is a test"
      title="This is a test"/>
-</p>
-</div>
+<% end %>
 
+</div>
   <% end %>
 <% end %>

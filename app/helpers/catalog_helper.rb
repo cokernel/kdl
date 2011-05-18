@@ -65,7 +65,11 @@ module CatalogHelper
   end
 
   def repo_logo_url(document)
-    Blacklight.config[:repo_logo_url][document['repository_display'].first]
+    key = document['repository_display'].first
+    if Blacklight.config[:repo_logo_url].has_key?(key)
+      Blacklight.config[:repo_logo_url][key]
+      
+    end
   end
 
   def oh_url(document)
