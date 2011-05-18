@@ -68,7 +68,8 @@ module CatalogHelper
     key = document['repository_display'].first
     if Blacklight.config[:repo_logo_url].has_key?(key)
       Blacklight.config[:repo_logo_url][key]
-      
+    else
+      Blacklight.config[:repo_logo_url]['generic']
     end
   end
 
