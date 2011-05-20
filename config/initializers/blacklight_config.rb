@@ -293,6 +293,7 @@ Blacklight.configure(:shared) do |config|
     'generic' => '/images/repos/logo_placeholder.png',
     'Appalshop Inc.' => '/images/repos/kap_logo.png',
     'Lexington Public Library' => '/images/repos/kyl_logo.png',
+    'Morehead State University' => '/images/repos/kmm_logo.png',
     'University of Kentucky' => '/images/repos/kuk_logo.png',
   }
 end
