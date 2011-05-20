@@ -290,10 +290,10 @@ Blacklight.configure(:shared) do |config|
 
   # Repository logos
   config[:repo_logo_url] = {
-    #'University of Kentucky' => '/images/repos/kuk/logo.png',
     'generic' => '/images/repos/logo_placeholder.png',
-    'Lexington Public Library' => '/images/repos/kyl_logo.png',
     'Appalshop Inc.' => '/images/repos/kap_logo.png',
+    'Lexington Public Library' => '/images/repos/kyl_logo.png',
+    'University of Kentucky' => '/images/repos/kuk_logo.png',
   }
 end
 
