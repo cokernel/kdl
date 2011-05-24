@@ -16,11 +16,22 @@
       <li>
         <%= link_to 'Collection Inventory:', '#coll_inventory' %>
       </li>
-      <ol>
+      <ol class="dsc_series">
         <% ead.archdesc.dsc.c01s.each do |c01| %>
+          <% if c01.level == 'series' -%>
           <li>
-            <%= link_to c01.did.unittitle, '#' + c01.identifier %>
+            <%= link_to unittitle(c01.did), '#' + c01.identifier %>
+            <ol class="dsc_subseries">
+              <% c01.c02s.each do |c02| %>
+                <% if c02.level == 'subseries' %>
+                <li>
+                  <%= link_to unittitle(c02.did), '#' + c02.identifier %>
+                </li>
+                <% end %>
+              <% end %>
+            </ol>
           </li>
+          <% end -%>
         <% end %>
       </ol>
     </ol>
