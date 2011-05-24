@@ -1,3 +1,4 @@
-<h2><%= title %></h2>
-<p><%= element %></p>
-
+<h2 id="<%= ead_id(id_element) %>"><%= title %></h2>
+<% element.each do |paragraph| %>
+<p><%= paragraph %></p>
+<% end %>

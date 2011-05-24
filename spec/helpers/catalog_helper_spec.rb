@@ -54,6 +54,41 @@ describe CatalogHelper do
     end
   end
 
+  describe "#ead_id" do
+    it "constructs a unique id for an EAD element" do
+      element = double('Eadsax::Ead').as_null_object
+      string = 'This is the text'
+      expected = Digest::MD5.hexdigest(string)
+      element.should_receive(:text).and_return(string)
+      ead_id(element).should == expected
+    end
+
+    it "bases the unique id on up to the first 20 characters of the element text" do
+      element = double('Eadsax::Ead').as_null_object
+      string = 'This is a sample of what could be an incredibly long element'
+      truncated = string[0..19]
+      expected = Digest::MD5.hexdigest(truncated)
+      element.should_receive(:text).and_return(string)
+      ead_id(element).should == expected
+    end
+
+    it "can base the unique id on a submitted string" do
+      string = 'This is a sample of what could be an incredibly long element'
+      truncated = string[0..19]
+      expected = Digest::MD5.hexdigest(truncated)
+      ead_id(string).should == expected
+    end
+
+    it "can base the unique id on an array" do
+      array = [
+        'This is the first paragraph',
+        'This is the second paragraph'
+      ]
+      expected = Digest::MD5.hexdigest(array[0][0..19])
+      ead_id(array).should == expected
+    end
+  end
+
   describe "#fetch" do
     it "fetches an external document" do
       url = 'http://projectblacklight.org'

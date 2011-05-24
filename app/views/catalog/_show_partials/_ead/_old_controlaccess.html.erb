@@ -1,4 +1,4 @@
-<h2 id="<%= ead_id(id_element) %>"><%= title %></h2>
+<h2>Subjects</h2>
 <ul>
   <% ['corpnames',
   'famnames',
@@ -8,7 +8,7 @@
   'occupations',
   'persnames',
   'subjects'].each do |term_type| -%>
-    <% element.send(term_type).each do |term| -%>
+    <% controlaccess.send(term_type).each do |term| -%>
       <li><%= term %></li>
     <% end -%>
   <% end -%>

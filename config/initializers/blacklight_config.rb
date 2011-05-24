@@ -296,5 +296,25 @@ Blacklight.configure(:shared) do |config|
     'Morehead State University' => '/images/repos/kmm_logo.png',
     'University of Kentucky' => '/images/repos/kuk_logo.png',
   }
+  
+  config[:ead_fields] = [
+    :author,
+    :title,
+    :date,
+    :repository,
+    :arrangement,
+    :conditions_access,
+    :conditions_use,
+    :preferred_citation,
+    :extent,
+    :creator,
+    :abstract,
+    :bioghist,
+    :scopecontent,
+    :subjects,
+    :userestrict,
+    :accessrestrict,
+    :relatedmaterial,
+  ]
 end
 

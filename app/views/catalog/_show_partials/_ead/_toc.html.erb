@@ -1,0 +1,29 @@
+<% cache(:action_suffix => 'toc') do %>
+  <div id="ead_toc">
+    <h3>Table of Contents</h3>
+    <ol>
+<% Blacklight.config[:ead_fields].each do |field| -%>
+<% begin -%>
+  <% details[field][:handler] = 'catalog/_show_partials/_ead/toc_item' -%>
+  <% unless details[field].has_key?(:id_element) -%>
+    <% details[field][:id_element] = details[field][:element] %>
+  <% end -%>
+  <%= render :partial => details[field][:handler],
+             :locals => details[field] %>
+<% rescue -%>
+<% end -%>
+<% end -%>
+      <li>
+        <%= link_to 'Collection Inventory:', '#coll_inventory' %>
+      </li>
+      <ol>
+        <% ead.archdesc.dsc.c01s.each do |c01| %>
+          <li>
+            <%= link_to c01.did.unittitle, '#' + c01.identifier %>
+          </li>
+        <% end %>
+      </ol>
+    </ol>
+  </div>
+<% end %>
+

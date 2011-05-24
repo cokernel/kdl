@@ -52,6 +52,50 @@ module CatalogHelper
     text.strip.sub(/[,.;:!?]*$/, '')
   end
 
+  def ead_id(element)
+    text = element
+    if element.respond_to?(:text)
+      text = element.text
+    end
+    if text.respond_to?(:join)
+      text = text[0]
+    end
+    Digest::MD5.hexdigest(text[0..19])
+  end
+  
+  def ead_details(ead)
+    hash = {
+      :author => { :title => 'Author', :element => ead.eadheader.filedesc.titlestmt.author},
+      :title => { :title => 'Title', :element => unittitle(ead.archdesc.did) },
+      :date => { :title => 'Date', :element => unitdate(ead.archdesc.did) },
+      :repository => { :title => 'Repository', :element => ead.archdesc.did.repository },
+      :arrangement => { :title => 'Arrangement', :element => ead.archdesc.arrangement.ps },
+      :conditions_access => { :title => 'Conditions Governing Access note', :element => ead.archdesc.accessrestrict },
+      :conditions_use => { :title => 'Conditions Governing Use note', :element => ead.archdesc.userestrict },
+      :preferred_citation => { :title => 'Preferred Citation Note', :element => ead.archdesc.prefercite },
+      :extent => { :title => 'Extent', :element => ' ' },
+      :creator => { :title => 'Creator', :element => ead.archdesc.did.origination },
+      :abstract => { :title => 'Abstract', :element => ead.archdesc.did.abstracts },
+      :bioghist => { :title => 'Biography/History', :element => ead.archdesc.bioghist, :handler => 'catalog/_show_partials/_ead/bioghist', :id_element => ead.archdesc.bioghist.ps },
+      :scopecontent => { :title => 'Scope and Content', :element => ead.archdesc.scopecontent.ps },
+      :subjects => { :title => 'Subjects', :element => ead.archdesc.controlaccess, :handler => 'catalog/_show_partials/_ead/controlaccess', :id_element => 'subjects' },
+    }
+    begin
+      hash[:userestrict] = { :title => 'User Restrictions', :element => ead.archdesc.descgrp.userestrict }
+    rescue
+    end
+    begin
+      hash[:accessrestrict] = { :title => 'Access Restrictions', :element => ead.archdesc.descgrp.accessrestrict }
+    rescue
+    end
+    begin
+      hash[:relatedmaterial] = { :title => 'Related Material', :element => ead.archdesc.descgrp.relatedmaterial }
+    rescue
+    end
+    hash
+    hash
+  end
+
   def fetch(urls)
     unless urls.respond_to?(:each)
       urls = [ urls ]
