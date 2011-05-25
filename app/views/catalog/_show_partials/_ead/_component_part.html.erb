@@ -1,0 +1,19 @@
+<div class="component_part clearfix <%= start %>" id="<%= component_part.identifier %>">
+  <%= render :partial => 'catalog/_show_partials/_ead/did',
+    :locals => {:element => component_part} %>
+  
+  <% if component_part.did.dao -%>
+    <%= link_to 'browse', '/catalog/' + component_part.did.dao_link %>
+  <% end -%>
+
+  <% if component_part.scopecontent -%>
+    <%= component_part.scopecontent.head + ':' %>
+    <% component_part.scopecontent.ps.each do |paragraph| %>
+      <p><%= paragraph %></p>
+    <% end -%>
+  <% end -%>
+
+  <%= render :partial => 'catalog/_show_partials/_ead/dsc',
+    :locals => {:element => component_part, :start => ead_increment_start(start)} %>
+</div>
+

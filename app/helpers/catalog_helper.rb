@@ -1,5 +1,30 @@
 require_dependency('vendor/plugins/blacklight/app/helpers/catalog_helper.rb')
 require_dependency('vendor/plugins/blacklight_ext_ead_simple/app/helpers/catalog_helper.rb')
+
+module Eadsax
+  class Did
+    include SAXMachine
+    elements :abstract, :as => :abstracts
+    elements :container, :as => :containers#, :class => Container
+    elements :container, :value => :type, :as => :container_types#, :class => Container
+    element :dao, :class => Dao
+    element :dao, :value => :entityref, :as => :dao_link
+    element :daogrp
+    element :head
+    element :langmaterial
+    element :materialspec
+    element :note, :class => Note
+    element :origination, :class => Origination
+    element :physdesc
+    element :physloc
+    element :repository
+    element :unitdate
+    element :unitid
+    element :unittitle
+
+  end
+end
+
 module CatalogHelper
   def eadsax(doc)
     if doc.has_key?('finding_aid_url_s')
