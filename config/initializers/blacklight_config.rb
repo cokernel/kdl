@@ -123,8 +123,6 @@ Blacklight.configure(:shared) do |config|
   #   The ordering of the field names is the order of the display 
   config[:index_fields] = {
     :field_names => [
-      "title_display",
-      "title_vern_display",
       "author_display",
       "author_vern_display",
       "format",
