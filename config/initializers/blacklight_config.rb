@@ -171,6 +171,7 @@ Blacklight.configure(:shared) do |config|
       "relation_display",
       "publisher_display",
       "repository_display",
+      "contributor_s",
       "type_display",
       "subject_topic_facet",
     ],
@@ -200,6 +201,7 @@ Blacklight.configure(:shared) do |config|
       "published_vern_display"  => "Published:",
       "lc_callnum_display"      => "Call number:",
       "isbn_t"                  => "ISBN:",
+      "contributor_s"           => "Contributor:",
     }
   }
 
