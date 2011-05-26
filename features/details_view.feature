@@ -4,7 +4,7 @@ Feature: details
   I want to see basic metadata about the content
 
   Scenario: Show the details view
-    Given I am on the document page for id xt74qr4nkd58_1
+    Given I am on the document page for id sample_collections_folder_level_1_1_1_1
     When I follow "details"
     Then I should see "Creator:"
     And I should see "Publication date:"
@@ -27,12 +27,12 @@ Feature: details
     Then I should see "Finding aid:"
 
   Scenario: Metadata record
-    Given I am on the details page for id xt74qr4nkd58_1
+    Given I am on the details page for id sample_collections_folder_level_1_1_1_1
     Then I should see a "dt" element containing "Metadata record:"
-    And I should see "xt74qr4nkd58/data/mets.xml"
+    And I should see "sample_collections_folder_level/data/mets.xml"
 
   Scenario: Preserve view menu
-    Given I am on the details page for id xt74qr4nkd58_1
+    Given I am on the details page for id sample_collections_folder_level_1_1_1_1
     Then I should see "viewer"
     And I should see "details"
     And I should see "guide"
@@ -40,8 +40,8 @@ Feature: details
     And I should see "pdf"
 
   Scenario: Preserve page number
-    Given I am on the document page for id xt74qr4nkd58_1
+    Given I am on the document page for id sample_collections_folder_level_1_1_1_1
     And I follow "3"
     And I follow "details"
     When I follow "viewer"
-    Then I should be on the viewer page for id xt74qr4nkd58_3
+    Then I should be on the viewer page for id sample_collections_folder_level_1_1_1_3

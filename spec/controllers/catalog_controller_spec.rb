@@ -70,7 +70,7 @@ describe CatalogController do
     end
 
     context "item without guide available" do
-      id = 'sample_aip_1'
+      id = 'sample_books_1_1'
 
       it "sets format accordingly" do
         get :guide, :id => id
@@ -80,8 +80,8 @@ describe CatalogController do
   end
   
   describe "text action" do
-    has_text_id = 'sample_aip_1'
-    no_text_id = 'sample_aip_2'
+    has_text_id = 'sample_books_1_1'
+    no_text_id = 'sample_images_1_1'
 
     it "provides a short message if no text is found" do
       get :text, :id => has_text_id
@@ -93,8 +93,8 @@ describe CatalogController do
 
   describe "details action" do
     ids = [
-      'sample_aip_1',
-      'sample_aip_2',
+      'sample_books_1_1',
+      'sample_books_1_2',
     ]
 
     it "assigns document_summary" do
