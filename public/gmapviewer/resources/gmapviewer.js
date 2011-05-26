@@ -23,7 +23,7 @@ function GMapViewer(container)
 
   me.centerLat = -90 / me.zoomShift / 3;  // Position of the center of the image, in degrees latitude.
   me.centerLon = 180 / me.zoomShift / 3;  // Position of the center of the image, in degrees longitude.
-  me.initialZoom = me.zoomShift + 1;  // Initial zoom level at which to display the image (+2 provides a good initial image size)
+  me.initialZoom = me.zoomShift + 2;  // Initial zoom level at which to display the image (+2 provides a good initial image size)
   me.imageWraps = false;  // Set to false to prevent the image from wrapping if the user scrolls too far to the left or right.
   
   // Parameters holding image metadata:

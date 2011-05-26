@@ -152,4 +152,24 @@ module CatalogHelper
   def has_search_parameters?
     !params[:q].blank? or !params[:f].blank? or (!params[:search_field].blank? and params[:search_field] != 'all_fields')
   end
+
+  def alto_word_coordinates(document)
+    if document.has_key? 'coordinates_s'
+      json = JSON.parse(document['coordinates_s'][0])
+      if session[:search] and session[:search][:q]
+        words = session[:search][:q].downcase.gsub(/\W/, '').split(/\s+/)
+        ret   = Array.new
+        words.each do |word|
+          if json[word]
+            json[word].each do |bit|
+              ret.push("  viewer.addRectangle([" + bit.join(', ') + "]);")
+            end
+          end
+        end
+        return ret.join("\n")
+      else
+        return ''
+      end
+    end
+  end
 end
