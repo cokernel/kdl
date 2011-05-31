@@ -1,0 +1,41 @@
+<% @footer = capture do %>
+
+<p>
+Hosted by the University of Kentucky
+</p>
+
+<p>
+<a href="">Terms of Use</a>
+</p>
+
+<p>
+Contact us: <a href="mailto:kdl-help@kdl.kyvl.org">kdl-help@kdl.kyvl.org</a>
+</p>
+
+<p>
+Contributors:
+</p>
+
+<ul class="contributors">
+<li>
+  <%= link_to image_tag("/images/contributors/footercpe.gif",
+                        :alt => 'Kentucky Council on Postsecondary Education', 
+                        :title => 'Kentucky Council on Postsecondary Education'), 
+              'http://cpe.ky.gov/' %>
+</li>
+
+<li>
+  <%= link_to image_tag("/images/contributors/imls_logo_bw.gif",
+                        :alt => 'Institute of Museum and Library Services',
+                        :title => 'Institute of Museum and Library Services'),
+              'http://www.imls.gov/' %>
+</li>
+
+<li>
+  <%= link_to image_tag("/images/contributors/nehseal.gif",
+                        :alt => 'National Endowment for the Humanities',
+                        :title => 'National Endowment for the Humanities'),
+              'http://www.neh.gov/' %>
+</li>
+</ul>
+<% end %>
