@@ -58,3 +58,8 @@ ol.dsc_subseries li {
 #front_nav li a:hover {background-color: #eee;}
 #front_nav li a.remove {color: #666;}
 #front_nav span.selected {color: green;}
+
+/* Search by format */
+.format_select {
+  font-weight: bold;
+}

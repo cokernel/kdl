@@ -11,4 +11,53 @@ module ApplicationHelper
   def render_document_guide_heading
     content_tag(:h1, document_guide_heading)
   end
+
+  def render_selected_search_by_everything(options ={})
+    '<span class="format_select">' +
+    render_search_by_everything(options) +
+    '</span>'
+  end
+
+  def render_search_by_everything(options ={})
+    link_to_unless(options[:suppress_link], 
+                   'Everything',
+                   clear_format_facet_and_redirect
+    )
+  end
+
+  def render_selected_search_by_format_value(format, options ={})
+    '<span class="format_select">' +
+    render_search_by_format_value(format, options) +
+    '</span>'
+  end
+
+  def render_search_by_format_value(format, options ={})
+    link_to_unless(options[:suppress_link], 
+                   format.to_s.gsub(/_/, ' ').capitalize,
+                   switch_format_facet_and_redirect(
+                     :format,
+                     format.to_s.gsub(/_/, '+'))
+    )
+  end
+
+  def clear_format_facet_and_redirect
+    new_params = add_facet_params_and_redirect(:format, 'nope')
+    new_params[:f][:format] = []
+    new_params
+  end
+
+  def switch_format_facet_and_redirect(field, value)
+    new_params = add_facet_params_and_redirect(field, value)
+    new_params[:f][:format] = []
+    new_params[:f][:format].push(value)
+    new_params
+  end
+
+  def format_facet_clear?
+    if params[:f] and params[:f][:format]
+      params[:f][:format].length == 0
+    else
+      true
+    end
+  end
 end

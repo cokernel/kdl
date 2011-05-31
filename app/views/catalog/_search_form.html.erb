@@ -1,6 +1,34 @@
+<%# move elsewhere %>
+<%
+formats = [
+  :books,
+  :collections,
+  :images,
+  :journals,
+  :maps,
+  :newspapers,
+  :oral_histories,
+]
+%>
+
 <div id="search" class="search">
   <% form_tag catalog_index_path, :method => :get do %>
     <h2 class="search"><%= label_tag(:q, "Search ") %></h2>
+    <div class="search_by_format">
+      <% if format_facet_clear? -%>
+        <%= render_selected_search_by_everything %>
+      <% else -%>
+        <%= render_search_by_everything %>
+      <% end -%>
+      <% formats.each do |format| -%>
+      | 
+        <% if facet_in_params?(:format, format.to_s.gsub(/_/, '+')) -%>
+          <%= render_selected_search_by_format_value(format) %> 
+        <% else -%>
+          <%= render_search_by_format_value(format) %> 
+        <% end -%>
+      <% end -%>
+    </div>
     <%= text_field_tag :q, params[:q], :class => "q" %>
     <%= label_tag(:search_field, " in ") %>
     <%= select_tag(:search_field, options_for_select(search_fields, h(params[:search_field])), :title => "Targeted search options", :class=>"search_field") %>
