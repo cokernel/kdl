@@ -36,7 +36,7 @@ module ApplicationHelper
                    format.to_s.gsub(/_/, ' ').capitalize,
                    switch_format_facet_and_redirect(
                      :format,
-                     format.to_s.gsub(/_/, '+'))
+                     format.to_s.gsub(/_/, ' '))
     )
   end
 
