@@ -1,0 +1,16 @@
+<% @page_title = "About - #{application_name}" %>
+<% extra_head_content << render_link_rel_alternates %>
+
+<%# this should be in a partial -%>
+<div id="document" class="<%= render_document_class %>">
+  <div id="doc_about">
+    <h1>About</h1>
+    <div class="document">
+      <%= render :partial => 'about_text' %>
+    </div>
+  </div>
+</div>
+
+<% sidebar_items << capture do %>
+<%= render :partial=>'front_nav', :template=>'catalog/show' %>
+<% end %>
