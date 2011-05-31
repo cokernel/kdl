@@ -60,8 +60,31 @@ ol.dsc_subseries li {
 #front_nav span.selected {color: green;}
 
 /* Search by format */
+.search_by_format {
+  padding: 2px;
+}
+
 .format_select {
   font-weight: bold;
+}
+
+.more_formats span {
+  font-weight: bold;
+}
+
+.formats_list {
+  margin: 0;
+}
+
+.formats_list li {
+  list-style: none;
+  display: inline;
+}
+
+.separated {
+  border-left: 1px solid black;
+  padding-left: 2px;
+  padding-right: 2px;
 }
 
 /* Footer */

@@ -12,6 +12,22 @@ module ApplicationHelper
     content_tag(:h1, document_guide_heading)
   end
 
+  def render_format_link(format)
+    if format == :everything
+      if format_facet_clear?
+        render_selected_search_by_everything
+      else
+        render_search_by_everything
+      end
+    else
+      if facet_in_params?(:format, format.to_s.gsub(/_/, '+'))
+        render_selected_search_by_format_value(format)
+      else
+        render_search_by_format_value(format)
+      end
+    end
+  end
+
   def render_selected_search_by_everything(options ={})
     '<span class="format_select">' +
     render_search_by_everything(options) +

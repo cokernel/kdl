@@ -1,13 +1,17 @@
 <%# move elsewhere %>
 <%
 formats = [
-  :books,
+  :everything,
   :collections,
   :images,
-  :journals,
   :maps,
   :newspapers,
   :oral_histories,
+]
+
+more_formats = [
+  :books,
+  :journals,
 ]
 %>
 
@@ -15,19 +19,32 @@ formats = [
   <% form_tag catalog_index_path, :method => :get do %>
     <h2 class="search"><%= label_tag(:q, "Search ") %></h2>
     <div class="search_by_format">
-      <% if format_facet_clear? -%>
-        <%= render_selected_search_by_everything %>
-      <% else -%>
-        <%= render_search_by_everything %>
-      <% end -%>
-      <% formats.each do |format| -%>
-      | 
-        <% if facet_in_params?(:format, format.to_s.gsub(/_/, '+')) -%>
-          <%= render_selected_search_by_format_value(format) %> 
-        <% else -%>
-          <%= render_search_by_format_value(format) %> 
-        <% end -%>
-      <% end -%>
+      <div class="main_formats">
+        <ul class="formats_list">
+          <% formats.each_with_index do |format, i| -%>
+            <% if i > 0 -%>
+              <li class="separated">
+            <% else -%>
+              <li>
+            <% end -%>
+            <%= render_format_link(format) %></li>
+          <% end -%>
+        </ul>
+      </div>
+
+      <div class="more_formats">
+        <span>More</span>
+        <ul id="more_formats_list" class="formats_list">
+          <% more_formats.each_with_index do |format, i| -%>
+            <% if i > 0 -%>
+              <li class="separated">
+            <% else -%>
+              <li>
+            <% end -%>
+            <%= render_format_link(format) %></li>
+          <% end -%>
+        </ul>
+      </div>
     </div>
     <%= text_field_tag :q, params[:q], :class => "q" %>
     <%= label_tag(:search_field, " in ") %>

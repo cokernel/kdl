@@ -13,4 +13,12 @@ jQuery(document).ready(function() {
 			});
 	  }
 	});	
+
+  if ($("#more_formats_list").find(".format_select").size() == 0) {
+    $("#more_formats_list").hide();
+  }
+
+  $(".more_formats").click(function() {
+    $("#more_formats_list").slideToggle('fast');
+  });
 });
