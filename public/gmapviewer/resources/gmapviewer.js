@@ -314,17 +314,19 @@ function ViewerControl(parent)
   me.initialize = function(map)
   {
     var container = document.createElement("div");
-  
-    var rulerBtn = document.createElement("img");
-    // highlighter_yellow_32.png is a modified version of http://upload.wikimedia.org/wikipedia/commons/0/06/Crystal_Project_highlight.png,
-    // licensed under LGPL.
-    rulerBtn.src = me.config.resources_url_prefix + "highlighter_yellow_32.png";
-    rulerBtn.alt = "Toggle highlighting";
-    me.setButtonStyle(rulerBtn);
-    container.appendChild(rulerBtn);
-    GEvent.addDomListener(rulerBtn, "click", function() {
-    parentObj.toggle();
-    });
+
+    if (parentObj.wants_alto) {
+      var rulerBtn = document.createElement("img");
+      // highlighter_yellow_32.png is a modified version of http://upload.wikimedia.org/wikipedia/commons/0/06/Crystal_Project_highlight.png,
+      // licensed under LGPL.
+      rulerBtn.src = me.config.resources_url_prefix + "highlighter_yellow_32.png";
+      rulerBtn.alt = "Toggle highlighting";
+      me.setButtonStyle(rulerBtn);
+      container.appendChild(rulerBtn);
+      GEvent.addDomListener(rulerBtn, "click", function() {
+      parentObj.toggle();
+      });
+    }
   
     // Drag zoom button options:
     // First set of options is for the visual overlay

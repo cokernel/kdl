@@ -16,6 +16,9 @@
     jQuery('#viewer').text('').css({'width': '600px', 'height': '850px'});
     viewer = new GMapViewer("viewer");
     viewer.setCopyright("Image", "&copy; 2010 <a href='http://www.uky.edu'>University of Kentucky</a>");
+    <% if alto_word_coordinates(document).length > 0 %>
+    viewer.wants_alto = true;
+    <% end %>
     viewer.loadImage("<%= document['viewer_url_s'] %>");
     <%= alto_word_coordinates(document) %>
     jQuery('#reference_image').hide();
