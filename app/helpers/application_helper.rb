@@ -59,6 +59,7 @@ module ApplicationHelper
   def clear_format_facet_and_redirect
     new_params = add_facet_params_and_redirect(:format, 'nope')
     new_params[:f][:format] = []
+    new_params.delete(:sort)
     new_params[:controller] = :catalog
     new_params
   end
@@ -68,6 +69,7 @@ module ApplicationHelper
     new_params[:f][:format] = []
     new_params[:f][:format].push(value)
     new_params[:controller] = :catalog
+    new_params[:sort] = "title_sort asc, sequence_sort asc, pub_date_sort desc"
     new_params
   end
 
