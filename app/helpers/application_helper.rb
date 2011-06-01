@@ -59,6 +59,7 @@ module ApplicationHelper
   def clear_format_facet_and_redirect
     new_params = add_facet_params_and_redirect(:format, 'nope')
     new_params[:f][:format] = []
+    new_params[:controller] = :catalog
     new_params
   end
 
@@ -66,6 +67,7 @@ module ApplicationHelper
     new_params = add_facet_params_and_redirect(field, value)
     new_params[:f][:format] = []
     new_params[:f][:format].push(value)
+    new_params[:controller] = :catalog
     new_params
   end
 
