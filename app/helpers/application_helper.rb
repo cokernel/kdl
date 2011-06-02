@@ -20,7 +20,7 @@ module ApplicationHelper
         render_search_by_everything
       end
     else
-      if facet_in_params?(:format, format.to_s.gsub(/_/, '+'))
+      if facet_in_params?(:format, format.to_s.gsub(/_/, ' '))
         render_selected_search_by_format_value(format)
       else
         render_search_by_format_value(format)
