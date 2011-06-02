@@ -100,3 +100,8 @@ ol.dsc_subseries li {
   padding-left: 30px;
   padding-right: 30px;
 }
+
+/* Search Box */
+.search_by_format  {
+  font-size: 83%;
+}
