@@ -1,4 +1,4 @@
-<div class="component_part clearfix <%= start %>" id="<%= component_part.identifier %>">
+<div class="component_part clearfix <%= start %>" id="<%= ead_id(component_part) %>">
   <%= render :partial => 'catalog/_show_partials/_ead/did',
     :locals => {:element => component_part} %>
   
@@ -8,7 +8,7 @@
   <% end -%>
 
   <% if component_part.scopecontent -%>
-    <%= component_part.scopecontent.head + ':' %>
+    Scope and Contents note:
     <% component_part.scopecontent.ps.each do |paragraph| %>
       <p><%= paragraph %></p>
     <% end -%>
