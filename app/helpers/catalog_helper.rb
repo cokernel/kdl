@@ -112,7 +112,6 @@ module CatalogHelper
     rescue
     end
     hash
-    hash
   end
 
   def fetch(urls)
