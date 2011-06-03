@@ -7,6 +7,9 @@ class CatalogController < ApplicationController
   def viewer
     @response, @document = get_solr_response_for_doc_id
     generate_pagination
+    if @document.has_key?('finding_aid_url_s') and @document.has_key?('unpaged_display')
+      redirect_to guide_catalog_path(@document['id'])
+    end
   end
 
   def text 
@@ -45,6 +48,10 @@ class CatalogController < ApplicationController
   def show
     @response, @document = get_solr_response_for_doc_id
     generate_pagination
+
+    if @document.has_key?('finding_aid_url_s') and @document.has_key?('unpaged_display')
+      redirect_to guide_catalog_path(@document['id'])
+    end
 
     respond_to do |format|
       format.html {setup_next_and_previous_documents}
