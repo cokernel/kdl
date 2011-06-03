@@ -4,4 +4,7 @@ class PagesController < CatalogController
 
   def partners
   end
+
+  def recent_changes
+  end
 end
