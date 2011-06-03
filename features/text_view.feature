@@ -29,10 +29,10 @@ Feature: viewer
     Then I should be on the text page for id sample_books_1_5
 
   Scenario: Don't link to missing text
-    Given I am on the document page for id sample_images_1_1
+    Given I am on the document page for id sample_collections_item_level_1_1_1   
     Then I should see "text"
     And I should not see a "a" element containing "text"
 
   Scenario: Handle lack of text
-    Given I am on the text page for id sample_images_1_1
+    Given I am on the text page for id sample_collections_item_level_1_1_1
     Then I should see "Text not available."

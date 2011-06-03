@@ -81,7 +81,7 @@ describe CatalogController do
   
   describe "text action" do
     has_text_id = 'sample_books_1_1'
-    no_text_id = 'sample_images_1_1'
+    no_text_id = 'sample_collections_item_level_1_1_1'
 
     it "provides a short message if no text is found" do
       get :text, :id => has_text_id

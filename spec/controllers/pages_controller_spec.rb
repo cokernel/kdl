@@ -7,11 +7,15 @@ describe PagesController do
     controller.should be_an_instance_of(PagesController)
   end
 
-
-  describe "GET 'about'" do
-    it "should be successful" do
-      get 'about'
-      response.should be_success
+  [
+    :about,
+    :partners,
+  ].each do |page|
+    describe "GET '#{page}'" do
+      it "should be successful" do
+        get page
+        response.should be_success
+      end
     end
   end
 end
