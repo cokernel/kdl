@@ -1,8 +1,23 @@
 <div id="front_nav" class="front_nav">
+<h3>Pages</h3>
 <ul>
 <li><a href="/pages/about/">About</a></li>
 <li>Statistics</li>
 <li><a href="/pages/partners/">Partners</a></li>
 <li><a href="/pages/recent_changes/">Recent changes</a></li>
+</ul>
+</div>
+
+<div class="front_nav">
+<h3>Related sites</h3>
+<ul>
+<li><%= link_to image_tag("/images/drf_logo.png",
+          :alt => 'Daily Racing Form Archive',
+          :title => 'Daily Racing Form Archive'),
+          'http://kdl.kyvl.org/drf/' %></li>
+<li><%= link_to image_tag("/images/kyleidoscope_logo.png",
+          :alt => 'Kyleidoscope',
+          :title => 'Kyleidoscope'),
+          'http://kdl.kyvl.org/kyleidoscope/kyleidoscope.htm' %></li>
 </ul>
 </div>
