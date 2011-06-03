@@ -59,6 +59,18 @@ module CatalogHelper
     text.strip.sub(/[,.;:!?]*$/, '')
   end
 
+  def has_guide?(document)
+    document.has_key?('finding_aid_url_s')
+  end
+
+  def has_text?(document)
+    if document['text_s'].nil?
+      false
+    else
+      document['text_s'].length > 0
+    end
+  end
+
   def ead_id(element)
     text = element
     if element.respond_to?(:text)
