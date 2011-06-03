@@ -72,18 +72,14 @@ module CatalogHelper
   end
 
   def ead_id(element)
-    if element.identifier.nil?
-      text = element
-      if element.respond_to?(:text)
-        text = element.text
-      end
-      if text.respond_to?(:join)
-        text = text[0]
-      end
-      Digest::MD5.hexdigest(text.to_s[0..19])
-    else
-      element.identifier
+    text = element
+    if element.respond_to?(:text)
+      text = element.text
     end
+    if text.respond_to?(:join)
+      text = text[0]
+    end
+    Digest::MD5.hexdigest(text.to_s[0..19])
   end
   
   def ead_details(ead)
