@@ -110,3 +110,13 @@ ol.dsc_subseries li {
 .rotato {
   text-align: center;
 }
+
+/* Browse by title */
+.browse_by_alpha {
+  text-align: justify;
+  padding-bottom: 1em;
+}
+
+.browse_heading{
+  font-weight: bold;
+}

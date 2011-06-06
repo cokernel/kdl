@@ -60,6 +60,7 @@ module ApplicationHelper
     new_params = add_facet_params_and_redirect(:format, 'nope')
     new_params[:f][:format] = []
     new_params.delete(:sort)
+    new_params.delete(:fq)
     new_params[:controller] = :catalog
     new_params
   end
@@ -69,7 +70,8 @@ module ApplicationHelper
     new_params[:f][:format] = []
     new_params[:f][:format].push(value)
     new_params[:controller] = :catalog
-    new_params[:sort] = "title_sort asc, sequence_sort asc, pub_date_sort desc"
+    new_params[:sort] = "sequence_sort asc, title_processed_s asc, pub_date_sort desc"
+    new_params.delete(:fq)
     new_params
   end
 
@@ -79,5 +81,29 @@ module ApplicationHelper
     else
       true
     end
+  end
+
+  def switch_prefix_and_redirect(string)
+    new_params = params.dup
+    new_params[:fq] = "title_processed_s:#{string}*"
+    new_params.delete(:page)
+    Blacklight::Solr::FacetPaginator.request_keys.values.each do |paginator_key| 
+      new_params.delete(paginator_key)
+    end
+    new_params.delete(:id)
+
+    # Force action to be index. 
+    new_params[:action] = "index"
+
+    new_params[:controller] = :catalog
+    new_params[:sort] = "sequence_sort asc, title_processed_s asc, pub_date_sort desc"
+    new_params
+  end
+
+  def render_search_by_prefix(string, options={})
+    link_to_unless(options[:suppress_link], 
+                   string,
+                   switch_prefix_and_redirect(
+                     string))
   end
 end
