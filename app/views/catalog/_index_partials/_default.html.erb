@@ -16,5 +16,9 @@
 	    <dd class="blacklight-<%= solr_fname.parameterize %>"><%= render_index_field_value :document => document, :field => solr_fname %></dd>
     <% end -%>
   <% end -%>
+  <% if document['format'] == 'collections' and document['digital_content_available_s'].first == 'true' %>
+    <dt></dt>
+    <dd><img src="/images/onlineitemsbutton.gif" alt="" title=""/></dd>
+  <% end %>
 
 </dl>
