@@ -49,4 +49,7 @@ ActionController::Routing::Routes.draw do |map|
   # consider removing or commenting them out if you're using named routes and resources.
   map.connect ':controller/:action/:id'
   map.connect ':controller/:action/:id.:format'
+
+  map.connect 'pages/visitors_overview.xml', :action => 'visitors_overview', :controller => 'pages'
+  map.connect 'pages/statistics/visitors_overview.xml', :action => 'visitors_overview', :controller => 'pages'
 end

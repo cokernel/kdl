@@ -11,6 +11,8 @@ describe PagesController do
     :about,
     :partners,
     :recent_changes,
+    :statistics,
+    :visitors_overview,
   ].each do |page|
     describe "GET '#{page}'" do
       it "should be successful" do
