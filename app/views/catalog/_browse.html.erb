@@ -1,6 +1,11 @@
-<div class="browse_by_alpha">
-<span class="browse_heading">Browse by title:</span>
+<div class="browse_by">
+<p><span class="browse_heading">Browse by title:</span>
 <% ('a'..'z').each do |letter| %>
   <%= render_search_title_by_prefix(letter) %>
-<% end %>
+<% end %></p>
+
+<p><span class="browse_heading">Browse by creator:</span>
+<% ('a'..'z').each do |letter| %>
+  <%= render_search_creator_by_prefix(letter) %>
+<% end %></p>
 </div>
