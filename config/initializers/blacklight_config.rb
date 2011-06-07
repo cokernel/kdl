@@ -272,6 +272,11 @@ Blacklight.configure(:shared) do |config|
       :pf => "$subject_pf"
     }
   }
+
+  config[:search_fields] << {
+    :key => 'full_date_s',
+    :display_label => 'Exact Date',
+  }
   
   # "sort results by" select (pulldown)
   # label in pulldown is followed by the name of the SOLR field to sort by and
