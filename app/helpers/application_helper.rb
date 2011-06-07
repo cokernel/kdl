@@ -83,7 +83,7 @@ module ApplicationHelper
     end
   end
 
-  def switch_prefix_and_redirect(string)
+  def switch_title_prefix_and_redirect(string)
     new_params = params.dup
     new_params[:fq] = "title_processed_s:#{string}*"
     new_params.delete(:page)
@@ -100,10 +100,10 @@ module ApplicationHelper
     new_params
   end
 
-  def render_search_by_prefix(string, options={})
+  def render_search_title_by_prefix(string, options={})
     link_to_unless(options[:suppress_link], 
                    string,
-                   switch_prefix_and_redirect(
+                   switch_title_prefix_and_redirect(
                      string))
   end
 end
