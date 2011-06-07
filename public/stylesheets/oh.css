@@ -16,7 +16,10 @@ p { padding-left: 2em; }
 }
 
 #oh_transcript {
-  height: 20em;
+  height: 60em;
   overflow: auto;
 }
 
+#oh_search {
+  float: right;
+}
