@@ -8,6 +8,8 @@ module Eadsax
 end
 
 module CatalogHelper
+  include Blacklight::SolrHelper
+
   def eadsax(doc)
     if doc.has_key?('finding_aid_url_s')
       ead_url = doc['finding_aid_url_s'].first
@@ -171,7 +173,7 @@ module CatalogHelper
   end
 
   def has_search_parameters?
-    !params[:q].blank? or !params[:f].blank? or (!params[:search_field].blank? and params[:search_field] != 'all_fields')
+    !params[:q].blank? or !params[:f].blank? or (!params[:search_field].blank? and params[:search_field] != 'all_fields') or params[:sort] =~ /random/
   end
 
   def alto_word_coordinates(document)
@@ -192,5 +194,15 @@ module CatalogHelper
         return ''
       end
     end
+  end
+
+  def randomize_front
+    @number ||= 0
+    @number += 1
+    @r_solr_response, @r_document_list = 'a', 'a'
+    #  get_solr_response_for_field_values(
+    #    'sort',
+    #    "random_#{@number} asc"
+    #  )
   end
 end
