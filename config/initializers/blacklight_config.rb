@@ -113,6 +113,9 @@ Blacklight.configure(:shared) do |config|
     }
   }
 
+  config[:facet][:range] ||= {}
+  config[:facet][:range]["pub_date"] = true
+
   # Have BL send all facet field names to Solr, which has been the default
   # previously. Simply remove these lines if you'd rather use Solr request
   # handler defaults, or have no facets.
@@ -273,10 +276,10 @@ Blacklight.configure(:shared) do |config|
     }
   }
 
-  config[:search_fields] << {
-    :key => 'full_date_s',
-    :display_label => 'Exact Date',
-  }
+  #config[:search_fields] << {
+  #  :key => 'full_date_s',
+  #  :display_label => 'Exact Date',
+  #}
   
   # "sort results by" select (pulldown)
   # label in pulldown is followed by the name of the SOLR field to sort by and
