@@ -111,6 +111,23 @@ ol.dsc_subseries li {
   text-align: center;
 }
 
+.current_image {
+/*
+  position: absolute;
+  top: 0;
+  left: 0;
+  */
+}
+
+.next_image {
+/*
+  position: absolute;
+  top: 0;
+  left: 0;
+  */
+  display: none;
+}
+
 /* Browse by title */
 .browse_by {
   text-align: justify;

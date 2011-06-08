@@ -4,14 +4,14 @@ Feature: details
   I want to see basic metadata about the content
 
   Scenario: Show the details view
-    Given I am on the document page for id sample_collections_folder_level_1_1_1_1
+    Given I am on the document page for id sample_collections_folder_level
     When I follow "details"
     Then I should see "Creator:"
     And I should see "Publication date:"
     And I should see "Date digitized:"
     And I should see "Description:"
     And I should see "Format:"
-    And I should see "Identifier:"
+    And I should see "Identifier:" at most 1 time
     And I should see "Language:"
     And I should see "Publisher:"
     And I should see "Finding aid:" at most 1 time

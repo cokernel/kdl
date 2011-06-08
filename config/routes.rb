@@ -1,4 +1,5 @@
 ActionController::Routing::Routes.draw do |map|
+  map.connect 'catalog/random', :controller => 'catalog', :action => 'random'
   Blacklight::Routes.build map
 
   map.resources :catalog, :member => { 

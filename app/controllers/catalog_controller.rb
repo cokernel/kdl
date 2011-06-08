@@ -7,6 +7,17 @@ class CatalogController < ApplicationController
   def about
   end
 
+  def random
+    key = "random_#{rand(2**32)}"
+    solr_response = Blacklight.solr.find( { :sort => "#{key} asc" })
+    document_list = solr_response.docs.collect{|doc| SolrDocument.new(doc) }
+    @random_document = document_list.shift
+    until @random_document.has_key?('front_thumbnail_url_s')
+      @random_document = document_list.shift
+    end
+    render :layout => false
+  end
+
   def viewer
     @response, @document = get_solr_response_for_doc_id
     generate_pagination

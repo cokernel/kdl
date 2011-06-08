@@ -8,8 +8,6 @@ module Eadsax
 end
 
 module CatalogHelper
-  include Blacklight::SolrHelper
-
   def eadsax(doc)
     if doc.has_key?('finding_aid_url_s')
       ead_url = doc['finding_aid_url_s'].first
@@ -196,13 +194,7 @@ module CatalogHelper
     end
   end
 
-  def randomize_front
-    @number ||= 0
-    @number += 1
-    @r_solr_response, @r_document_list = 'a', 'a'
-    #  get_solr_response_for_field_values(
-    #    'sort',
-    #    "random_#{@number} asc"
-    #  )
+  def random_item
+    Typhoeus::Request.get('http://eris.uky.edu/catalog/random').body
   end
 end

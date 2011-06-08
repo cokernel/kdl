@@ -7,7 +7,14 @@ and lifelong learning.  Search over 1 million
 digital images.
 
 <div class="rotato">
-<h3>Highlights from the KDL</h3>
-<img src="/images/sample_front_image.png"
-     alt="" title=""/>
+<h3>Images from the KDL</h3>
+  <div class="current_image">
+    <%= random_item %>
+  </div>
+  <div class="next_image">
+    <%= random_item %>
+  </div>
+  <script type="text/javascript">
+  setTimeout('replace_image_left();', 10000);
+  </script>
 </div>

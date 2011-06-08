@@ -110,4 +110,12 @@ describe CatalogController do
       ary[0][:id].should == ary[1][:id]
     end
   end
+
+  describe "random action" do
+    it "assigns random_document" do
+      get 'random'
+      assigns[:random_document].should_not be_nil
+      assigns[:random_document].class.should == SolrDocument
+    end
+  end
 end
