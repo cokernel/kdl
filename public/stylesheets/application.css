@@ -137,3 +137,8 @@ ol.dsc_subseries li {
 .browse_heading{
   font-weight: bold;
 }
+
+/* Bookmarking control */
+.bookmarking_control {
+  float: right;
+}
