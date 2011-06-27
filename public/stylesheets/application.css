@@ -59,6 +59,17 @@ ol.dsc_subseries li {
 .front_nav li a.remove {color: #666;}
 .front_nav span.selected {color: green;}
 
+/* Bottom page navigation */
+.bottom_nav {
+}
+
+.bottom_nav li { 
+  display: inline;
+  list-style: none; 
+  padding-left: 30px;
+  padding-right: 30px;
+}
+
 /* Search by format */
 .search_by_format {
   padding: 2px;
