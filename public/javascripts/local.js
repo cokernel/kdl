@@ -57,4 +57,9 @@ jQuery(document).ready(function() {
   $(".more_formats").click(function() {
     $("#more_formats_list").slideToggle('fast');
   });
+
+  $(document).ajaxSend(function(e, xhr, options) {
+    var token = $("meta[name='csrf-token']").attr("content");
+    xhr.setRequestHeader("X-CSRF-Token", token);
+  });
 });
