@@ -112,6 +112,11 @@ ol.dsc_subseries li {
   padding-right: 30px;
 }
 
+/* Search */
+form.sort {
+  visibility: hidden;
+}
+
 /* Image rotator */
 .rotato {
   text-align: center;

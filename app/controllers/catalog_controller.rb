@@ -167,7 +167,8 @@ class CatalogController < ApplicationController
     # seems to put arguments in here that aren't really expected to turn
     # into solr params. 
     ###
-    solr_parameters.deep_merge!(extra_controller_params.slice(:qt, :q, :facets,  :page, :per_page, :phrase_filters, :f, :fq, :fl, :sort, :qf, :df ).symbolize_keys   )
+    solr_parameters.deep_merge!(extra_controller_params.slice(:qt, :q, :facets,  :page, :per_page, :phrase_filters, :f, :fq, :fl, :qf, :df ).symbolize_keys   )
+
 
 
 
@@ -223,6 +224,15 @@ class CatalogController < ApplicationController
     # limit to MaxPerPage (100). Tests want this to be a string not an integer,
     # not sure why. 
     solr_parameters[:per_page] = solr_parameters[:per_page].to_i > self.max_per_page ? self.max_per_page.to_s : solr_parameters[:per_page]
+
+    ###
+    # Require title or relevance sort in some circumstances.
+    ###
+    if params[:q].blank?
+      solr_parameters[:sort] = Blacklight.config[:sort_fields][3][1]
+    else
+      solr_parameters[:sort] = Blacklight.config[:sort_fields][0][1]
+    end
 
     return solr_parameters
     
