@@ -91,7 +91,7 @@ Blacklight.configure(:shared) do |config|
       "subject_era_facet"   => "Era",
       "subject_geo_facet"   => "Region",
       "repository_facet"    => "Repository",
-      "source_s"            => "Source",
+      "source_s"            => "Collection",
       "coverage_s"          => "Coverage",
     },
     # Setting a limit will trigger Blacklight's 'more' facet values link.
