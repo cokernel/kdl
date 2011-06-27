@@ -112,30 +112,15 @@ ol.dsc_subseries li {
   padding-right: 30px;
 }
 
-/* Search Box */
-.search_by_format  {
-  font-size: 83%;
-}
-
 /* Image rotator */
 .rotato {
   text-align: center;
 }
 
 .current_image {
-/*
-  position: absolute;
-  top: 0;
-  left: 0;
-  */
 }
 
 .next_image {
-/*
-  position: absolute;
-  top: 0;
-  left: 0;
-  */
   display: none;
 }
 
