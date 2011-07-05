@@ -93,30 +93,57 @@ module CatalogHelper
       hash[:arrangement] = { :title => 'Arrangement', :element => ead.archdesc.arrangement.ps }
     rescue
     end
-    hash.merge!({
-      :conditions_access => { :title => 'Conditions Governing Access note', :element => ead.archdesc.accessrestrict.ps },
-      :conditions_use => { :title => 'Conditions Governing Use note', :element => ead.archdesc.userestrict.ps },
-      :preferred_citation => { :title => 'Preferred Citation Note', :element => ead.archdesc.prefercite.ps },
-      :extent => { :title => 'Extent', :element => ead.archdesc.did.physdesc },
-      :creator => { :title => 'Creator', :element => ead.archdesc.did.origination.famname },
-    })
+
+    begin
+      hash[:conditions_access] = { :title => 'Conditions Governing Access note', :element => ead.archdesc.accessrestrict.ps }
+    rescue
+    end
+
+    begin
+      hash[:preferred_citation] = { :title => 'Preferred Citation Note', :element => ead.archdesc.prefercite.ps }
+    rescue
+    end
+
+    begin
+      hash[:extent] = { :title => 'Extent', :element => ead.archdesc.did.physdesc }
+    rescue
+    end
+
+    begin
+      hash[:creator] = { :title => 'Creator', :element => ead.archdesc.did.origination.famname }
+    rescue
+    end
+
     begin
       hash[:abstract] = { :title => 'Abstract', :element => ead.archdesc.did.abstracts }
     rescue
     end
-    hash.merge!({
-      :bioghist => { :title => 'Biography/History', :element => ead.archdesc.bioghist, :handler => 'catalog/_show_partials/_ead/bioghist', :id_element => ead.archdesc.bioghist.ps },
-      :scopecontent => { :title => 'Scope and Content', :element => ead.archdesc.scopecontent.ps },
-      :subjects => { :title => 'Subjects', :element => ead.archdesc.controlaccess, :handler => 'catalog/_show_partials/_ead/controlaccess', :id_element => 'subjects' },
-    })
+
+    begin
+      hash[:bioghist] = { :title => 'Biography/History', :element => ead.archdesc.bioghist, :handler => 'catalog/_show_partials/_ead/bioghist', :id_element => ead.archdesc.bioghist.ps }
+    rescue
+    end
+
+    begin
+      hash[:scopecontent] = { :title => 'Scope and Content', :element => ead.archdesc.scopecontent.ps }
+    rescue
+    end
+
+    begin
+      hash[:subjects] = { :title => 'Subjects', :element => ead.archdesc.controlaccess, :handler => 'catalog/_show_partials/_ead/controlaccess', :id_element => 'subjects' }
+    rescue
+    end
+
     begin
       hash[:userestrict] = { :title => 'User Restrictions', :element => ead.archdesc.descgrp.userestrict }
     rescue
     end
+
     begin
       hash[:accessrestrict] = { :title => 'Access Restrictions', :element => ead.archdesc.descgrp.accessrestrict }
     rescue
     end
+
     begin
       hash[:relatedmaterial] = { :title => 'Related Material', :element => ead.archdesc.descgrp.relatedmaterial }
     rescue

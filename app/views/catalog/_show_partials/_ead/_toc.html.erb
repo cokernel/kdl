@@ -13,6 +13,8 @@
 <% rescue -%>
 <% end -%>
 <% end -%>
+
+<% if ead.archdesc.dsc %>
       <li>
         <%= link_to 'Collection Inventory:', '#coll_inventory' %>
       </li>
@@ -34,6 +36,7 @@
           <% end -%>
         <% end %>
       </ol>
+<% end %>
     </ol>
   </div>
 <% end %>

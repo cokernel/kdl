@@ -128,6 +128,7 @@ Blacklight.configure(:shared) do |config|
     :field_names => [
       "author_display",
       "author_vern_display",
+      "pub_date",
       "format",
       "language_facet",
       "published_display",
@@ -139,6 +140,7 @@ Blacklight.configure(:shared) do |config|
       "title_vern_display"      => "Title:",
       "author_display"          => "Creator:",
       "author_vern_display"     => "Creator:",
+      "pub_date"                => "Publication date",
       "format"                  => "Format:",
       "language_facet"          => "Language:",
       "published_display"       => "Published:",

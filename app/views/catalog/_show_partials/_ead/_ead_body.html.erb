@@ -12,7 +12,8 @@
 <% end -%>
 <% end -%>
 
+<% if ead.archdesc.dsc %>
 <h2 id="coll_inventory">Collection Inventory</h2>
 <%= render :partial => 'catalog/_show_partials/_ead/dsc',
         :locals => {:element => ead.archdesc.dsc, :start => 'c01'} %>
-
+<% end %>
