@@ -16,4 +16,12 @@ $(document).ready(function() {
       $(f_content).slideToggle();
     });
   });
+
+  $('.search_tips').each(function() {
+    var f_content = $(this);
+    f_content.hide();
+    $('img', f_content.parent()).click(function() {
+      $(f_content).slideToggle();
+    });
+  });
 });

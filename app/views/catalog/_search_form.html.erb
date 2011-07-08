@@ -8,6 +8,8 @@
     <%= search_as_hidden_fields(:omit_keys => [:q, :search_field, :qt, :page]) %>        
     
     <%= submit_tag 'search', :class=>'submit' %>
+
+    <%= render :partial => 'search_tips' %>
   <% end %>
 
   <hr/>

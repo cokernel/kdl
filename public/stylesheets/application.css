@@ -117,6 +117,16 @@ form.sort {
   visibility: hidden;
 }
 
+/* Search tips */
+.search_tips_container {
+  display: inline;
+}
+
+.search_tips_container img, 
+.search_tips_container ul, {
+  float: right;
+}
+
 /* Image rotator */
 .rotato {
   text-align: center;
