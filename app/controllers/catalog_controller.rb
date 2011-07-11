@@ -4,6 +4,10 @@ class CatalogController < ApplicationController
 
   include Blacklight::SolrHelper
 
+  def max_per_page
+    1500
+  end
+
   def about
   end
 
@@ -83,11 +87,11 @@ class CatalogController < ApplicationController
     unless @document.has_key?('unpaged_display')
       key = @document['parent_id_s']
       seq = @document['id'].sub(/^.*_(\d+)$/, "\\1").to_i #params[:seq]
-      if @document['page_count_s'].nil?
-          extra = {:per_page => 300}
-      else
-          extra = {:per_page => @document['page_count_s']}
+      limit = max_per_page
+      if @document['page_count_s']
+          limit = @document['page_count_s']
       end
+      extra = { :per_page => limit }
       @issue_response, @issue_documents = get_solr_response_for_field_values("parent_id_s",key, extra)
       @pages = @issue_response.docs.paginate :per_page => 1, :page => seq
       @current_page = @pages[seq - 1]
