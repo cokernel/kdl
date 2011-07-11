@@ -148,6 +148,11 @@ module CatalogHelper
       hash[:relatedmaterial] = { :title => 'Related Material', :element => ead.archdesc.descgrp.relatedmaterial }
     rescue
     end
+
+    hash = hash.delete_if { |key, value|
+      value[:element].to_s.length == 0
+    }
+
     hash
   end
 
