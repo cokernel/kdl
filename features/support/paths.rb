@@ -26,6 +26,9 @@ module NavigationHelpers
     when /the guide page for id (.+)/ 
       guide_catalog_path($1)
 
+    when /the thumbs page for id (.+)/ 
+      thumbs_catalog_path($1)
+
     # Add more mappings here.
     # Here is an example that pulls values out of the Regexp:
     #

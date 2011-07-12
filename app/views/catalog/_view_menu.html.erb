@@ -1,5 +1,10 @@
 <div class="views_menu">
-<%= link_to "viewer", viewer_catalog_path(@document[:id]) %>| 
+<%= link_to "viewer", viewer_catalog_path(@document[:id]) %>
+
+| <%= link_to "thumbs", thumbs_catalog_path(@document[:id]) %>
+
+|
+
 <%= link_to "details", details_catalog_path(@document[:id]) %>
 
 | <% if has_guide?(@document) -%>

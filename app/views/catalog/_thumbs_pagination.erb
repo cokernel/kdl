@@ -1,0 +1,7 @@
+<% if @pages and @pages.total_pages > 1 %>
+  <div class="thumbs_pagination">
+      <%#= will_paginate @pages, :param_name => 'seq', :page_links => false, :container => false, :renderer => KDL::LinkRenderer %>
+      <%= will_paginate @pages, :param_name => 'seq', :next_label => '', :previous_label => '', :class => "page_links", :renderer => KDL::ThumbRenderer, :images => @thumbs %>
+      <br style="clear: both"/>
+  </div>
+<% end %>

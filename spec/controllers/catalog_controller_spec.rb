@@ -7,6 +7,7 @@ describe CatalogController do
       :details,
       :text,
       :guide,
+      :thumbs,
     ].each do |action|
       it "maps {:controller => 'catalog', :action => '#{action}'} to /catalog/#{action}" do
         id = 'sample_collections_folder_level_1_1_1_1'
@@ -25,6 +26,7 @@ describe CatalogController do
       :details,
       :text,
       :guide,
+      :thumbs,
     ].each do |action|
       it "maps /catalog/:id/#{action} to {:controller => 'catalog', :id => :id, :action => '#{action}'}" do
         id = 'sample_collections_folder_level_1_1_1_1'
@@ -42,6 +44,7 @@ describe CatalogController do
     :details,
     :text,
     :guide,
+    :thumbs,
   ].each do |action|
     describe "#{action} action" do
       id = 'sample_collections_folder_level_1_1_1_1'
@@ -51,6 +54,15 @@ describe CatalogController do
         assigns[:document].should_not be_nil
         assigns[:response].should_not be_nil
       end
+    end
+  end
+
+  describe "thumbs action" do
+    id = 'sample_books_2_1'
+
+    it "sets thumbs array" do
+      get :thumbs, :id => id
+      assigns[:thumbs].should_not be_nil
     end
   end
 
