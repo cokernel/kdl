@@ -4,4 +4,13 @@
       <%= will_paginate @pages, :param_name => 'seq', :next_label => '', :previous_label => '', :class => "page_links", :renderer => KDL::ThumbRenderer, :images => @thumbs %>
       <br style="clear: both"/>
   </div>
+<% else %>
+  <div class="thumbs_pagination">
+    <div class="page_links">
+      <div class="current_thumb picture left fixwidth">
+        <a href="<%= viewer_catalog_path(@document[:id]) %>"" rel="start"><img src="<%= @document[:thumbnail_url_s] %>"/></a>
+      </div> 
+      <br style="clear: both"/>
+    </div>
+  </div>
 <% end %>
