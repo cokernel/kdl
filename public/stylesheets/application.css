@@ -155,26 +155,11 @@ form.sort {
 }
 
 /* thumbnails */
-.current_thumb {
-background:none repeat scroll 0 0 #2E4F81;
-border:1px solid #2E4F81;
-color:white;
-}
-
-.current_thumb a {
-  color: white;
-}
-
 .picture {
     margin-right: 0.5em;
     margin-top: 0.5em;
     padding: 3px;
-}
-
-.fixwidth {
-    /*
-    width: 200px;
-    */
+    height: 300px;
 }
 
 .picture img {
