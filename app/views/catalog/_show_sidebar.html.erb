@@ -3,12 +3,32 @@
      alt="Contact us about this item"
      title="Contact us about this item"/></h3>
 <ul>
+<% unless @document.nil? %>
+  <% if @document.has_key?('repository_display') %>
+    <% unless repo_contact(@document).nil? %>
+      <% repo_contact(@document)['bucket'].each do |line| %>
+        <li><%= line %></li>
+      <% end %>
+      <li>Phone: <%= repo_contact(@document)['phone'] %></li>
+      <% email = repo_contact(@document)['email'] %>
+      <li>Email: <a href="mailto:<%= email %>"><%= email %></a></li>
+    <% else %>
 <li>
 This area will list contact information for the
 repository owning the physical item and will also
 instruct users to use the specific repository
 when citing the resource.
 </li>
+    <% end %>
+  <% else %>
+<li>
+This area will list contact information for the
+repository owning the physical item and will also
+instruct users to use the specific repository
+when citing the resource.
+</li> 
+  <% end %>
+<% end %>
 </ul>
 </div>
 

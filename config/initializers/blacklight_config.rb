@@ -306,6 +306,150 @@ Blacklight.configure(:shared) do |config|
     'Morehead State University' => '/images/repos/kmm_logo.png',
     'University of Kentucky' => '/images/repos/kuk_logo.png',
   }
+
+  config[:repo_contact] = {
+    'Appalshop Inc.' => {
+      'bucket' => [
+        'Appalshop Inc.',
+      ],
+      'phone' => '',
+      'email' => '',
+    },
+    'Asbury College' => {
+      'bucket' => [
+        'Asbury College',
+      ],
+      'phone' => '',
+      'email' => '',
+    },
+    'Berea College' => {
+      'bucket' => [
+        'Berea College',
+      ],
+      'phone' => '',
+      'email' => '',
+    },
+    'Centre College' => {
+      'bucket' => [
+        'Centre College',
+        'Special Collections',
+      ],
+      'phone' => '(859) 238-5274',
+      'email' => 'bob.glass@centre.edu',
+    },
+    'Eastern Kentucky University' => {
+      'bucket' => [
+        'Eastern Kentucky University',
+        'University Archives',
+      ],
+      'phone' => '(859) 622-1792',
+      'email' => 'archives.library@eku.edu',
+    },
+    'Georgetown College' => {
+      'bucket' => [
+        'Georgetown College',
+      ],
+      'phone' => '',
+      'email' => '',
+    },
+    'Keeneland Racing Association' => {
+      'bucket' => [
+        'Keeneland Racing Association',
+        'Library',
+      ],
+      'phone' => '(859) 280-4761',
+      'email' => 'bryder@keeneland.com',
+    },
+    'Kentucky Department for Libraries and Archives' => {
+      'bucket' => [
+        'Kentucky Department for Libraries and Archives',
+      ],
+      'phone' => '',
+      'email' => '',
+    },
+    'Kentucky Historical Society' => {
+      'bucket' => [
+        'Kentucky Historical Society',
+      ],
+      'phone' => '',
+      'email' => '',
+    },
+    'Kentucky State Universty' => {
+      'bucket' => [
+        'Kentucky State Universty',
+      ],
+      'phone' => '',
+      'email' => '',
+    },
+    'Lexington Public Library' => {
+      'bucket' => [
+        'Lexington Public Library',
+        'The Kentucky Room',
+      ],
+      'phone' => '(859) 231-5523',
+      'email' => 'icornett@lexpublib.org',
+    },
+    'Louisville Free Public Library' => {
+      'bucket' => [
+        'Louisville Free Public Library',
+      ],
+      'phone' => '',
+      'email' => '',
+    },
+    'Morehead State University' => {
+      'bucket' => [
+        'Morehead State University',
+        'Special Collections Department',
+      ],
+      'phone' => '(606) 783-2829',
+      'email' => 'dj.baker@moreheadstate.edu',
+    },
+    'Northern Kentucky University' => {
+      'bucket' => [
+        'Northern Kentucky University',
+      ],
+      'phone' => '',
+      'email' => '',
+    },
+    'The Filson Historical Society' => {
+      'bucket' => [
+        'The Filson Historical Society',
+      ],
+      'phone' => '',
+      'email' => '',
+    },
+    'Transylvania University' => {
+      'bucket' => [
+        'Transylvania University',
+        'Special Collections',
+      ],
+      'phone' => '(859) 233-8225',
+      'email' => 'bjgooch@transy.edu',
+    },
+    'University of Kentucky' => {
+      'bucket' => [
+        'University of Kentucky',
+        'Jason E. Flahardy',
+      ],
+      'phone' => '(859) 257-2654',
+      'email' => 'JasonF@uky.edu',
+    },
+    'University of Lousville' => {
+      'bucket' => [
+        'University of Lousville',
+        'Special Collections: Photographic Archives and Rare Books ',
+      ],
+      'phone' => '(502) 852-6752',
+      'email' => 'Special.Collections@louisville.edu',
+    },
+    'Western Kentucky University' => {
+      'bucket' => [
+        'Western Kentucky University',
+      ],
+      'phone' => '',
+      'email' => '',
+    },
+  }
   
   config[:ead_fields] = [
     :author,

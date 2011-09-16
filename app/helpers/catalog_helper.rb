@@ -177,6 +177,15 @@ module CatalogHelper
     end
   end
 
+  def repo_contact(document)
+    key = document['repository_display'].first
+    if Blacklight.config[:repo_contact].has_key?(key)
+      Blacklight.config[:repo_contact][key]
+    else
+      nil
+    end
+  end
+
   def oh_url(document)
     if document.has_key?('synchronization_url_s')
       base = document['synchronization_url_s']
