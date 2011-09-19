@@ -10,7 +10,7 @@
   <% containers = [] -%>
   <span class="container">
     <% element.did.containers.each_with_index do |container, index| -%>
-      <% containers << [element.did.container_types[index], container].join(': ') %>
+      <% containers << [container_type(element.did, index), container].join(': ') %>
     <% end -%>
     [<%= containers.join(', ') %>]
   </span>

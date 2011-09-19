@@ -4,6 +4,11 @@ require_dependency('vendor/plugins/blacklight_ext_ead_simple/app/helpers/catalog
 module Eadsax
   class Did
     element :dao, :value => :entityref, :as => :dao_link
+    elements :container, :value => :label, :as => :container_labels
+  end
+
+  class Container
+    element :container, :value => :label, :as => :container_label
   end
 end
 
@@ -14,6 +19,14 @@ module CatalogHelper
       ead_xml = Typhoeus::Request.get(ead_url).body
       Eadsax::Ead.parse(ead_xml)
     end
+  end
+
+  def container_type(did, index)
+    container_type = did.container_types[index]
+    if container_type == 'othertype'
+      container_type = did.container_labels[index]
+    end
+    container_type
   end
 
   def fulltitle(did)
