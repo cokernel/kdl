@@ -24,12 +24,12 @@
 	    <div id="hd">
         <div class="yui-g">
           <div class="yui-u first">
-            <%= render :partial=>'/search_type_links' %>
+            <!--<a class="home_logo" href="<%= url_for :controller=>'catalog', :action=>'index' %>"><img src="<%= image_path('logo.png') %>" alt="" title=""/></a>-->
+
             <h1 class="site_title"><%= link_to application_name, root_path %><%= (params[:controller] == "catalog" and !params[:id]) ? "<span id='results_text'>Search Results</span>" : "" %></h1>
           </div>
           <div class="yui-u">
             <%= render :partial=>'/user_util_links' %>
-            <%= render :partial=>'/repo_logo' %>
           </div>
         </div>
       </div>
@@ -39,6 +39,7 @@
       	<div id="yui-main">
           <div class="yui-b">
             <%= render :partial=>'/flash_msg' %>
+            <%= render :partial=>'/search_type_links' %>
             <%= yield %>
           </div>
         </div>
