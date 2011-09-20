@@ -24,9 +24,9 @@
 	    <div id="hd">
         <div class="yui-g">
           <div class="yui-u first">
-            <img src="<%= image_path('logo.png') %>" alt="" title=""/>
+            <!--<a class="home_logo" href="<%= url_for :controller=>'catalog', :action=>'index' %>"><img src="<%= image_path('logo.png') %>" alt="" title=""/></a>-->
 
-            <!-- <h1 class="site_title"><%= link_to application_name, root_path %><%= (params[:controller] == "catalog" and !params[:id]) ? "<span id='results_text'>Search Results</span>" : "" %></h1> -->
+            <h1 class="site_title"><%= link_to application_name, root_path %><%= (params[:controller] == "catalog" and !params[:id]) ? "<span id='results_text'>Search Results</span>" : "" %></h1>
           </div>
           <div class="yui-u">
             <%= render :partial=>'/user_util_links' %>
