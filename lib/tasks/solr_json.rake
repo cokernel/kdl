@@ -12,6 +12,19 @@ namespace :solr do
     pp Blacklight.solr.commit
   end
 
+  desc 'delete paged collection from solr'
+  task :delete_pages => :environment do
+    require 'pp'
+    base = ENV['BASE']
+    max = ENV['MAX'].to_i
+    (0..max).each do |number|
+      doc_id = number > 0 ? %-#{base}_#{number}- : base
+      puts doc_id
+      pp Blacklight.solr.delete_by_id(doc_id)
+    end
+    pp Blacklight.solr.commit
+  end
+
   def fetch_env_file
     f = ENV['FILE']
     raise "Invalid file. Set the location of the file by using the FILE argument." unless f and File.exists?(f)
@@ -59,6 +72,7 @@ namespace :solr do
       end
       require 'pp'
       pp solr_doc[:title_display]
+      pp solr_doc
       if !solr_doc[:title_display].blank?
         response = Blacklight.solr.add solr_doc
         pp response; puts
