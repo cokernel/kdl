@@ -48,10 +48,8 @@ class CatalogController < ApplicationController
   end
 
   def details
-    actual_id = params[:id]
-    id = params[:id].sub(/_\d+$/, '_1')
+    id = params[:id]
     response, @document_summary = get_solr_response_for_doc_id id
-    id = actual_id
     @response, @document = get_solr_response_for_doc_id id
   end
 
