@@ -305,6 +305,7 @@ Blacklight.configure(:shared) do |config|
     'Lexington Public Library' => '/images/repos/kyl_logo.png',
     'Morehead State University' => '/images/repos/kmm_logo.png',
     'University of Kentucky' => '/images/repos/kuk_logo.png',
+    'Transylvania University' => '/images/repos/ktu_logo.png',
   }
 
   config[:repo_contact] = {
