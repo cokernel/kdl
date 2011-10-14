@@ -181,6 +181,31 @@ module CatalogHelper
     body.join('')
   end
 
+  def oh_raw(document)
+    body = [
+      '<root>',
+      fetch(oh_url(document)),
+      '</root>',
+    ].join('')
+  end
+
+  def oh_main(document)
+    h = Nokogiri::HTML oh_raw(document)
+    h.css('div[id="oh_media_player"]').remove
+    h.css('div[id="oh_search"]').remove
+    h
+  end
+
+  def oh_player(document)
+    h = Nokogiri::HTML oh_raw(document)
+    h.css('div[id="oh_media_player"]').first
+  end
+
+  def oh_search(document)
+    h = Nokogiri::HTML oh_raw(document)
+    h.css('div[id="oh_search"]').first
+  end
+
   def repo_logo_url(document)
     key = document['repository_display'].first
     if Blacklight.config[:repo_logo_url].has_key?(key)

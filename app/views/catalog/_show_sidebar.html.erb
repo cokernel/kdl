@@ -34,3 +34,7 @@ when citing the resource.
 
 <p><%= link_back_to_catalog %></p>
 <%= render :partial => '/repo_logo' %>
+
+<% if @document.has_key?('synchronization_url_s') %>
+  <%= oh_search(@document) %>
+<% end %>

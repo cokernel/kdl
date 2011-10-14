@@ -20,6 +20,9 @@
       <%= render :partial=>'folder_control', :locals=>{:document=>@document} %>
     </div>
     <%= render_document_heading %>
+    <% if @document.has_key?('synchronization_url_s') %>
+      <%= oh_player(@document) %>
+    <% end %>
     <div class="tools"><%= render :partial => 'show_tools' %></div>
     <div class="document">
       <%= render 'view_menu' %>

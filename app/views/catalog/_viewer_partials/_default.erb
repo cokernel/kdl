@@ -32,6 +32,6 @@
 <link href="/stylesheets/oh.css" media="all" rel="stylesheet" type="text/css" />
 <% end %>
   <% if @document.has_key?('synchronization_url_s') %>
-    <%= fetch(oh_url(@document)) %>
+    <%= oh_main(@document) %>
   <% end %>
 <% end %>
