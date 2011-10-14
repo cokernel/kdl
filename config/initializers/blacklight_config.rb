@@ -302,6 +302,7 @@ Blacklight.configure(:shared) do |config|
   config[:repo_logo_url] = {
     'generic' => '/images/repos/logo_placeholder.png',
     'Appalshop Inc.' => '/images/repos/kap_logo.png',
+    'Keeneland Racing Association' => '/images/repos/keen_logo.png',
     'Lexington Public Library' => '/images/repos/kyl_logo.png',
     'Louisville Free Public Library' => '/images/repos/lfpl_logo.png',
     'Morehead State University' => '/images/repos/kmm_logo.png',
