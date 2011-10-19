@@ -72,7 +72,6 @@ namespace :solr do
       end
       require 'pp'
       pp solr_doc[:title_display]
-      pp solr_doc
       if !solr_doc[:title_display].blank?
         response = Blacklight.solr.add solr_doc
         pp response; puts
