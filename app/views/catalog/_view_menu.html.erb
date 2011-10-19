@@ -1,26 +1,28 @@
 <div class="views_menu">
 <%= link_to "viewer", viewer_catalog_path(@document[:id]) %>
 
+<% if @pages and @pages.total_pages > 1 %>
 | <%= link_to "thumbs", thumbs_catalog_path(@document[:id]) %>
+<% end %>
 
 |
 
 <%= link_to "details", details_catalog_path(@document[:id]) %>
 
-| <% if has_guide?(@document) -%>
+<% if has_guide?(@document) -%>
+|
 <%= link_to "guide", guide_catalog_path(@document[:id]) %> 
-<% else -%>
-guide
 <% end -%>
 
-| <% if has_text?(@document) -%>
+<% if has_text?(@document) -%>
+|
 <%= link_to "text", text_catalog_path(@document[:id]) %> 
-<% else -%>
-text
 <% end -%>
 
+<% if @document[:pdf_url_display] and @document[:pdf_url_display][0] =~ /\.pdf$/ %>
 |
 <a href="<%= @document[:pdf_url_display] %>">pdf</a>
+<% end %>
 
 <div class="bookmarking_control">
 <div class="addthis_toolbox addthis_default_style ">
