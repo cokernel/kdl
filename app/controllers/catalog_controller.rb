@@ -245,6 +245,10 @@ class CatalogController < ApplicationController
       solr_parameters[:sort] = Blacklight.config[:sort_fields][0][1]
     end
 
+    ### Require University of Kentucky.
+    solr_parameters[:fq] ||= []
+    solr_parameters[:fq] << "{!raw f=repository_facet}University of Kentucky"
+
     return solr_parameters
     
   end
