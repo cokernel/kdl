@@ -1,7 +1,7 @@
 require_dependency('vendor/plugins/blacklight/app/helpers/application_helper.rb')
 module ApplicationHelper
   def application_name
-    'Kentucky Digital Library'
+    'ExploreUK'
   end
 
   def document_guide_heading
