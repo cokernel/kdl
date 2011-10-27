@@ -73,9 +73,9 @@ Blacklight.configure(:shared) do |config|
     :field_names => (facet_fields = [
       "format",
       "repository_facet",
-      "pub_date",
+      #"pub_date",
       "source_s",
-      "coverage_s",
+      #"coverage_s",
       #"subject_topic_facet",
       #"language_facet",
       #"lc_1letter_facet",
