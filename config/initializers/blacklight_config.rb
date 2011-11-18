@@ -432,10 +432,10 @@ Blacklight.configure(:shared) do |config|
     'University of Kentucky' => {
       'bucket' => [
         'University of Kentucky',
-        'Jason E. Flahardy',
+        'Special Collections Library',
       ],
-      'phone' => '(859) 257-2654',
-      'email' => 'JasonF@uky.edu',
+      'phone' => '(859) 257-8611',
+      'email' => 'SCLREF@LSV.UKY.EDU',
     },
     'University of Lousville' => {
       'bucket' => [
