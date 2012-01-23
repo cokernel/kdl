@@ -25,6 +25,20 @@ namespace :solr do
     pp Blacklight.solr.commit
   end
 
+  desc 'delete directory of identifiers from solr'
+  task :delete_dir => :environment do
+    require 'pp'
+    require 'find'
+    Find.find(ENV['DIR']) do |path|
+      if File.file?(path)
+        doc_id = File.basename(path)
+        puts doc_id
+        pp Blacklight.solr.delete_by_id(doc_id)
+      end
+    end
+    pp Blacklight.solr.commit
+  end
+
   def fetch_env_file
     f = ENV['FILE']
     raise "Invalid file. Set the location of the file by using the FILE argument." unless f and File.exists?(f)
