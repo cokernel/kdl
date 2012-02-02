@@ -2,7 +2,7 @@
   <%= render :partial => 'catalog/_show_partials/_ead/did',
     :locals => {:element => component_part} %>
   
-  <% if component_part.did.dao -%>
+  <% if component_part.did.dao and component_part.did.dao_link -%>
     <%= link_to 'browse', '/catalog/' + component_part.did.dao_link %>
     <br/>
   <% end -%>
