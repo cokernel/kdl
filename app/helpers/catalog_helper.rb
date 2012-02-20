@@ -205,7 +205,7 @@ module CatalogHelper
       unless base =~ /\.xml$/
         base += '.xml'
       end
-      URI.encode(url)
+      URI.encode(base)
     end
   end
 
