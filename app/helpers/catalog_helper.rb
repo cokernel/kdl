@@ -226,26 +226,29 @@ module CatalogHelper
 
   def oh_url(document)
     if document.has_key?('synchronization_url_s')
-      base = document['synchronization_url_s']
-      args = []
-      [
-        :kw,
-        :minute,
-      ].each do |key|
-        if params.has_key?(key)
-          args << "#{key}=#{params[key]}"
-        end
+      base = document['synchronization_url_s'].first
+      unless base =~ /\.xml$/
+        base += '.xml'
       end
-      if args.length > 0
-        url = [
-          base,
-          '&',
-          args.join('&')
-        ].join('')
-      else
-        url = base.first
-      end
-      URI.encode(url)
+      #args = []
+      #[
+      #  :kw,
+      #  :minute,
+      #].each do |key|
+      #  if params.has_key?(key)
+      #    args << "#{key}=#{params[key]}"
+      #  end
+      #end
+      #if args.length > 0
+      #  url = [
+      #    base,
+      #    '&',
+      #    args.join('&')
+      #  ].join('')
+      #else
+      #  url = base.first
+      #end
+      URI.encode(base)
     end
   end
 
