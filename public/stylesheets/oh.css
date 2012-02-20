@@ -23,3 +23,8 @@ p { padding-left: 2em; }
 #oh_search {
   float: right;
 }
+
+.oh_link {
+  text-align: center;
+  margin-top: 0.5em;
+}

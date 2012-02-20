@@ -32,6 +32,10 @@
 <link href="/stylesheets/oh.css" media="all" rel="stylesheet" type="text/css" />
 <% end %>
   <% if @document.has_key?('synchronization_url_s') %>
-    <%= fetch(oh_url(@document)) %>
+    <p class="oh_link">
+    <%= link_to 'Play oral history',
+        oh_url(@document)
+        %>
+    </p>
   <% end %>
 <% end %>
