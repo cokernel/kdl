@@ -27,14 +27,14 @@
   <div id="viewer">test</div>
 </div>
 <% else %>
-<% extra_head_content << capture do %>
-<!--<script src="/javascripts/jquery.scrollTo-1.4.2-min.js" type="text/javascript"></script>-->
-<link href="/stylesheets/oh.css" media="all" rel="stylesheet" type="text/css" />
-<% end %>
+  <% extra_head_content << capture do %>
+    <link href="/stylesheets/oh.css" media="all" rel="stylesheet" type="text/css" />
+  <% end %>
   <% if @document.has_key?('synchronization_url_s') %>
     <p class="oh_link">
-    <%= link_to 'Play oral history',
-        oh_url(@document)
+    <%= link_to image_tag('/images/play.png', :alt => 'Play oral history', :title => 'Play oral history'), 
+        oh_url(@document)#,
+        #:popup => [@document['title_display'], 'height=500,width=860']
         %>
     </p>
   <% end %>
