@@ -450,6 +450,7 @@ Blacklight.configure(:shared) do |config|
     :date,
     :repository,
     :arrangement,
+    :location,
     :conditions_access,
     :conditions_use,
     :preferred_citation,
