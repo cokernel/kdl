@@ -2,6 +2,7 @@ ActionController::Routing::Routes.draw do |map|
   map.connect 'catalog/random', :controller => 'catalog', :action => 'random'
   Blacklight::Routes.build map
 
+
   map.resources :catalog, :member => { 
     :details => :get, 
     :guide => :get,
@@ -52,6 +53,7 @@ ActionController::Routing::Routes.draw do |map|
   map.connect ':controller/:action/:id'
   map.connect ':controller/:action/:id.:format'
 
+  map.connect 'volunteer.html', :action => 'volunteer', :controller => 'pages'
   map.connect 'pages/visitors_overview.xml', :action => 'visitors_overview', :controller => 'pages'
   map.connect 'pages/statistics/visitors_overview.xml', :action => 'visitors_overview', :controller => 'pages'
 end

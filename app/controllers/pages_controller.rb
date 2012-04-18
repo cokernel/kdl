@@ -14,4 +14,7 @@ class PagesController < CatalogController
   def visitors_overview
     render :layout => false
   end
+
+  def volunteer
+  end
 end
