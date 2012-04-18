@@ -108,6 +108,11 @@ module CatalogHelper
     end
 
     begin
+      hash[:location] = { :title => 'Location note', :element => ead.archdesc.did.physloc }
+    rescue
+    end
+
+    begin
       hash[:conditions_access] = { :title => 'Conditions Governing Access note', :element => ead.archdesc.accessrestrict.ps }
     rescue
     end
