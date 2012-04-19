@@ -8,7 +8,9 @@
 <% end %>
 
 <div id="image_viewer">
+  <% if @document.has_key?('reference_image_url_s') %>
   <img class="reference_image" id="reference_image" src="<%= @document['reference_image_url_s'] %>"/>
+  <% end %>
   <script type="text/javascript">
   var viewer = null;
 
@@ -16,11 +18,13 @@
     jQuery('#viewer').text('').css({'width': '600px', 'height': '850px'});
     viewer = new GMapViewer("viewer");
     viewer.setCopyright("", "");
-    <% if alto_word_coordinates(document).length > 0 %>
+    <% if alto_word_coordinates(@document).length > 0 %>
     viewer.wants_alto = true;
     <% end %>
-    viewer.loadImage("<%= document['viewer_url_s'] %>");
-    <%= alto_word_coordinates(document) %>
+    <% if @document.has_key?('viewer_url_s') %>
+    viewer.loadImage("<%= @document['viewer_url_s'] %>");
+    <% end %>
+    <%= alto_word_coordinates(@document) %>
     jQuery('#reference_image').hide();
   });
   </script>
@@ -32,10 +36,7 @@
   <% end %>
   <% if @document.has_key?('synchronization_url_s') %>
     <p class="oh_link">
-    <%= link_to image_tag('/images/play.png', :alt => 'Play oral history', :title => 'Play oral history'), 
-        oh_url(@document)#,
-        #:popup => [@document['title_display'], 'height=500,width=860']
-        %>
+    <%= link_to image_tag('/images/play.png', :alt => 'Play oral history', :title => 'Play oral history'), oh_url(@document) %>
     </p>
   <% end %>
 <% end %>
