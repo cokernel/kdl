@@ -3,7 +3,7 @@
     :locals => {:element => component_part} %>
   
   <% if component_part.did.dao and component_part.did.dao_link -%>
-    <%= link_to 'browse', '/exploreuk/catalog/' + component_part.did.dao_link %>
+    <%= link_to 'browse', '/catalog/' + component_part.did.dao_link %>
     <br/>
   <% end -%>
 
