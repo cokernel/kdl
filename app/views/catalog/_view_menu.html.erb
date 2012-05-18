@@ -24,6 +24,13 @@
 <a href="<%= @document[:pdf_url_display] %>">pdf</a>
 <% end %>
 
+<% if @document.has_key?('reference_image_url_s') %>
+<div style="float: left;">
+<%= link_to image_tag('download.png', :alt => 'Download this image', :title => 'Download this image'),
+            download_catalog_path(@document[:id]) %>
+</div>
+<% end %>
+
 <div class="bookmarking_control">
 <div class="addthis_toolbox addthis_default_style ">
 <a href="http://www.addthis.com/bookmark.php?v=250&amp;pubid=libmanuk" class="addthis_button_compact">Share</a>
@@ -31,7 +38,7 @@
 <script type="text/javascript">
 var addthis_config = {
   "data_track_clickback": true,
-  "url": <%= catalog_path(@document[:id]).to_json %>,
+  "url": <%= 'http://exploreuk.uky.edu' + catalog_path(@document[:id]).to_json %>,
   "title": <%= @document[:title_display].to_json %>,
 };
 </script>

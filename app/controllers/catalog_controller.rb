@@ -87,6 +87,18 @@ class CatalogController < ApplicationController
     end
   end
 
+  def download
+    @response, @document = get_solr_response_for_doc_id
+
+    if @document.has_key?('reference_image_url_s')
+      url = @document['reference_image_url_s'].first
+      image = Typhoeus::Request.get(url).body
+      send_data image,
+                :filename => File.basename(url),
+                :type => 'image/jpeg'
+    end
+  end
+
   def generate_pagination
     unless @document.has_key?('unpaged_display')
       key = @document['parent_id_s']

@@ -9,6 +9,7 @@ ActionController::Routing::Routes.draw do |map|
     :text => :get, 
     :viewer => :get, 
     :thumbs => :get,
+    :download => :get,
   }
 
   # The priority is based upon order of creation: first created -> highest priority.
