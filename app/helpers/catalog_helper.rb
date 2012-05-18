@@ -265,7 +265,7 @@ module CatalogHelper
     if document.has_key? 'coordinates_s'
       json = JSON.parse(document['coordinates_s'][0])
       if session[:search] and session[:search][:q]
-        words = session[:search][:q].downcase.gsub(/\W/, '').split(/\s+/)
+        words = session[:search][:q].downcase.split(/\s+/)
         ret   = Array.new
         words.each do |word|
           if json[word]
