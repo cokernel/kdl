@@ -1,69 +1,17 @@
 <% @footer = capture do %>
 
-<ul class="bottom_nav">
-<li><a href="/pages/about/">About</a></li>
-<li><a href="/pages/statistics/">Statistics</a></li>
-<li><a href="/pages/partners/">Partners</a></li>
-<li><a href="/pages/recent_changes/">Recent changes</a></li>
-</ul>
+<div class="endres_footer">
+<p>Contact: <a href="mailto:bill.endres@uky.edu?Question from Manuscripts of Lichfield Cathedral" class="contact">Bill Endres</a></p>
+</div>
 
-<p>
-Hosted by the University of Kentucky
-</p>
-
-<p>
-<a href="/pages/about/#terms_of_use">Terms of Use</a>
-</p>
-
-<p>
-Contact us: <a href="mailto:kdl-help@kdl.kyvl.org">kdl-help@kdl.kyvl.org</a>
-</p>
-
-<p>
-Contributors:
-</p>
-
-<ul class="contributors">
-<li>
-  <%= link_to image_tag("/images/contributors/footercpe.gif",
-                        :alt => 'Kentucky Council on Postsecondary Education', 
-                        :title => 'Kentucky Council on Postsecondary Education'), 
-              'http://cpe.ky.gov/' %>
-</li>
-
-<li>
-  <%= link_to image_tag("/images/contributors/imls_logo_bw.gif",
-                        :alt => 'Institute of Museum and Library Services',
-                        :title => 'Institute of Museum and Library Services'),
-              'http://www.imls.gov/' %>
-</li>
-
-<li>
-  <%= link_to image_tag("/images/contributors/nehseal.gif",
-                        :alt => 'National Endowment for the Humanities',
-                        :title => 'National Endowment for the Humanities'),
-              'http://www.neh.gov/' %>
-</li>
-</ul>
-<script type="text/javascript">
-var _gaq = _gaq || [];
-_gaq.push(['_setAccount', 'UA-23584444-2']);
-_gaq.push(['_trackPageview']);
-
-(function() {
-var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-})();
-</script>
-<script type="text/javascript">
-//var  pkBaseURL = (("https:" == document.location.protocol) ?  "https://scdp.uky.edu/piwik/" :  "http://scdp.uky.edu/piwik/");
-//document.write(unescape("%3Cscript  src='" + pkBaseURL + "piwik.js'  type='text/javascript'%3E%3C/script%3E"));
-</script><script  type="text/javascript">
-try {
-//var piwikTracker =  Piwik.getTracker(pkBaseURL + "piwik.php",  2);
-//piwikTracker.trackPageView();
-//piwikTracker.enableLinkTracking();
-}  catch( err ) {}
-</script><noscript><p><img  src="http://scdp.uky.edu/piwik/piwik.php?idsite=2" style="border:0"  alt="" /></p></noscript>
+<!--
+<table width="733" border="0" cellpadding="0" cellspacing="0">
+<tr>
+<td colspan="3" background="/chad/images/endres_footer_img.png" align="right"><img src="/chad/images/fill_66_tall.gif" width="5" height="51" alt="filler" />
+<img src="/chad/images/fill_30.gif" width="24" height="2" alt="fill 30" /><br />
+      <img src="/chad/images/fill_56_tall.gif" width="5" height="44" alt="fill 56 tall" /></td>
+</tr>
+</table>
+-->
+          
 <% end %>

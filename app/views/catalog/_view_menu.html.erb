@@ -24,6 +24,11 @@
 <a href="<%= @document[:pdf_url_display] %>">pdf</a>
 <% end %>
 
+<% if @document[:pdf_url_display] and @document[:pdf_url_display][0] =~ /\.jpg$/ %>
+|
+<a href="<%= @document[:pdf_url_display] %>">jpg</a>
+<% end %>
+
 <div class="bookmarking_control">
 <div class="addthis_toolbox addthis_default_style ">
 <a href="http://www.addthis.com/bookmark.php?v=250&amp;pubid=libmanuk" class="addthis_button_compact">Share</a>
