@@ -329,9 +329,10 @@ Blacklight.configure(:shared) do |config|
     'Berea College' => {
       'bucket' => [
         'Berea College',
+        'Special Collections & Archives',
       ],
-      'phone' => '',
-      'email' => '',
+      'phone' => '(859) 985-3262',
+      'email' => 'special_collections@berea.edu',
     },
     'Centre College' => {
       'bucket' => [
@@ -356,6 +357,13 @@ Blacklight.configure(:shared) do |config|
       'phone' => '',
       'email' => '',
     },
+    'Jeffersontown Historical Museum' => {
+      'bucket' => [
+        'Jeffersontown Historical Museum',
+      ],
+      'phone' => '(502) 261-8290',
+      'email' => 'bethw@jeffersontownky.com',
+    },
     'Keeneland Racing Association' => {
       'bucket' => [
         'Keeneland Racing Association',
@@ -375,15 +383,16 @@ Blacklight.configure(:shared) do |config|
       'bucket' => [
         'Kentucky Historical Society',
       ],
-      'phone' => '',
+      'phone' => '(502) 564-1792',
       'email' => '',
     },
-    'Kentucky State Universty' => {
+    'Kentucky State University' => {
       'bucket' => [
-        'Kentucky State Universty',
+        'Kentucky State University',
+        'Special Collections and Archives',
       ],
-      'phone' => '',
-      'email' => '',
+      'phone' => '(502) 597-6864',
+      'email' => 'library@kysu.edu',
     },
     'Lexington Public Library' => {
       'bucket' => [
@@ -397,7 +406,7 @@ Blacklight.configure(:shared) do |config|
       'bucket' => [
         'Louisville Free Public Library',
       ],
-      'phone' => '',
+      'phone' => '(502) 574-1611',
       'email' => '',
     },
     'Morehead State University' => {
@@ -419,8 +428,8 @@ Blacklight.configure(:shared) do |config|
       'bucket' => [
         'The Filson Historical Society',
       ],
-      'phone' => '',
-      'email' => '',
+      'phone' => '(502) 635-5083',
+      'email' => 'research@filsonhistorical.org',
     },
     'Transylvania University' => {
       'bucket' => [
