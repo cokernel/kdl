@@ -318,6 +318,7 @@ Blacklight.configure(:shared) do |config|
       ],
       'phone' => '',
       'email' => '',
+      'url' => '',
     },
     'Asbury College' => {
       'bucket' => [
@@ -325,6 +326,7 @@ Blacklight.configure(:shared) do |config|
       ],
       'phone' => '',
       'email' => '',
+      'url' => '',
     },
     'Berea College' => {
       'bucket' => [
@@ -333,6 +335,7 @@ Blacklight.configure(:shared) do |config|
       ],
       'phone' => '(859) 985-3262',
       'email' => 'special_collections@berea.edu',
+      'url' => 'http://www.berea.edu/hutchinslibrary/specialcollections/',
     },
     'Centre College' => {
       'bucket' => [
@@ -341,6 +344,7 @@ Blacklight.configure(:shared) do |config|
       ],
       'phone' => '(859) 238-5274',
       'email' => 'bob.glass@centre.edu',
+      'url' => '',
     },
     'Eastern Kentucky University' => {
       'bucket' => [
@@ -349,6 +353,7 @@ Blacklight.configure(:shared) do |config|
       ],
       'phone' => '(859) 622-1792',
       'email' => 'archives.library@eku.edu',
+      'url' => '',
     },
     'Georgetown College' => {
       'bucket' => [
@@ -356,6 +361,7 @@ Blacklight.configure(:shared) do |config|
       ],
       'phone' => '',
       'email' => '',
+      'url' => '',
     },
     'Jeffersontown Historical Museum' => {
       'bucket' => [
@@ -363,6 +369,7 @@ Blacklight.configure(:shared) do |config|
       ],
       'phone' => '(502) 261-8290',
       'email' => 'bethw@jeffersontownky.com',
+      'url' => 'http://www.jeffersontownky.com/Museum%20Historic.html',
     },
     'Keeneland Racing Association' => {
       'bucket' => [
@@ -371,6 +378,7 @@ Blacklight.configure(:shared) do |config|
       ],
       'phone' => '(859) 280-4761',
       'email' => 'bryder@keeneland.com',
+      'url' => '',
     },
     'Kentucky Department for Libraries and Archives' => {
       'bucket' => [
@@ -378,6 +386,7 @@ Blacklight.configure(:shared) do |config|
       ],
       'phone' => '',
       'email' => '',
+      'url' => '',
     },
     'Kentucky Historical Society' => {
       'bucket' => [
@@ -385,6 +394,7 @@ Blacklight.configure(:shared) do |config|
       ],
       'phone' => '(502) 564-1792',
       'email' => '',
+      'url' => 'http://history.ky.gov/',
     },
     'Kentucky State University' => {
       'bucket' => [
@@ -393,6 +403,7 @@ Blacklight.configure(:shared) do |config|
       ],
       'phone' => '(502) 597-6864',
       'email' => 'library@kysu.edu',
+      'url' => 'http://www.kysu.edu/academics/library/',
     },
     'Lexington Public Library' => {
       'bucket' => [
@@ -401,6 +412,7 @@ Blacklight.configure(:shared) do |config|
       ],
       'phone' => '(859) 231-5523',
       'email' => 'icornett@lexpublib.org',
+      'url' => '',
     },
     'Louisville Free Public Library' => {
       'bucket' => [
@@ -408,6 +420,7 @@ Blacklight.configure(:shared) do |config|
       ],
       'phone' => '(502) 574-1611',
       'email' => '',
+      'url' => 'http://www.lfpl.org/',
     },
     'Morehead State University' => {
       'bucket' => [
@@ -416,6 +429,7 @@ Blacklight.configure(:shared) do |config|
       ],
       'phone' => '(606) 783-2829',
       'email' => 'dj.baker@moreheadstate.edu',
+      'url' => '',
     },
     'Northern Kentucky University' => {
       'bucket' => [
@@ -423,6 +437,7 @@ Blacklight.configure(:shared) do |config|
       ],
       'phone' => '',
       'email' => '',
+      'url' => '',
     },
     'The Filson Historical Society' => {
       'bucket' => [
@@ -430,6 +445,7 @@ Blacklight.configure(:shared) do |config|
       ],
       'phone' => '(502) 635-5083',
       'email' => 'research@filsonhistorical.org',
+      'url' => 'http://www.filsonhistorical.org/',
     },
     'Transylvania University' => {
       'bucket' => [
@@ -438,6 +454,7 @@ Blacklight.configure(:shared) do |config|
       ],
       'phone' => '(859) 233-8225',
       'email' => 'bjgooch@transy.edu',
+      'url' => '',
     },
     'University of Kentucky' => {
       'bucket' => [
@@ -446,14 +463,16 @@ Blacklight.configure(:shared) do |config|
       ],
       'phone' => '(859) 257-8611',
       'email' => 'SCLREF@LSV.UKY.EDU',
+      'url' => '',
     },
-    'University of Lousville' => {
+    'University of Louisville' => {
       'bucket' => [
-        'University of Lousville',
+        'University of Louisville',
         'Special Collections: Photographic Archives and Rare Books ',
       ],
       'phone' => '(502) 852-6752',
       'email' => 'Special.Collections@louisville.edu',
+      'url' => 'http://louisville.edu/library/ekstrom/special',
     },
     'Western Kentucky University' => {
       'bucket' => [
@@ -461,6 +480,7 @@ Blacklight.configure(:shared) do |config|
       ],
       'phone' => '',
       'email' => '',
+      'url' => '',
     },
   }
   
