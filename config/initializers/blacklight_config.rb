@@ -303,11 +303,14 @@ Blacklight.configure(:shared) do |config|
   config[:repo_logo_url] = {
     'generic' => '/images/repos/logo_placeholder.png',
     'Appalshop Inc.' => '/images/repos/kap_logo.png',
+    'Berea College' => '/images/repos/Bnewlogo.png',
+    'Jeffersontown Historical Museum' => '/images/repos/Jeffersontown_logo.gif',
     'Keeneland Racing Association' => '/images/repos/keen_logo.png',
     'Lexington Public Library' => '/images/repos/kyl_logo.png',
     'Louisville Free Public Library' => '/images/repos/lfpl_logo.png',
     'Morehead State University' => '/images/repos/kmm_logo.png',
     'University of Kentucky' => '/images/repos/kuk_logo.png',
+    'The Filson Historical Society' => '/images/repos/Filson_logo.png',
     'Transylvania University' => '/images/repos/ktu_logo.png',
   }
 
