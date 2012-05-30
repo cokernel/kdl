@@ -9,9 +9,17 @@
       <% repo_contact(@document)['bucket'].each do |line| %>
         <li><%= line %></li>
       <% end %>
+      <% if repo_contact(@document)['phone'].length > 0 %>
       <li>Phone: <%= repo_contact(@document)['phone'] %></li>
+      <% end %>
+      <% if repo_contact(@document)['email'].length > 0 %>
       <% email = repo_contact(@document)['email'] %>
       <li>Email: <a href="mailto:<%= email %>"><%= email %></a></li>
+      <% end %>
+      <% if repo_contact(@document)['url'].length > 0 %>
+      <% url = repo_contact(@document)['url'] %>
+      <li>Website: <a href="<%= url %>"><%= url %></a></li>
+      <% end %>
     <% else %>
 <li>
 This area will list contact information for the

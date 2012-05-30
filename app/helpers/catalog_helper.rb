@@ -231,7 +231,7 @@ module CatalogHelper
 
   def repo_url(document)
     contact = repo_contact(document)
-    if contact['url'] and contact['url'].length
+    if contact['url'] and contact['url'].length > 0
       contact['url']
     else
       nil
