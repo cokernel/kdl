@@ -62,4 +62,22 @@ jQuery(document).ready(function() {
     var token = $("meta[name='csrf-token']").attr("content");
     xhr.setRequestHeader("X-CSRF-Token", token);
   });
+
+  if ($('a.prev_page').length > 0) {
+    $(document).keydown(function(e) {
+      if (e.which == 37) {
+        window.location = $('a.prev_page').attr('href');
+        return false;
+      }
+    });
+  }
+
+  if ($('a.next_page').length > 0) {
+    $(document).keydown(function(e) {
+      if (e.which == 39) { 
+        window.location = $('a.next_page').attr('href');
+        return false;
+      }
+    });
+  }
 });
