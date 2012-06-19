@@ -2,6 +2,8 @@
 log/*.log
 tmp/**/*
 config/database.yml
+config/initializers/cookie_verification_secret.rb
+config/initializers/session_store.rb
 db/*.sql
 db/*.sql-journal
 db/*.sqlite3
