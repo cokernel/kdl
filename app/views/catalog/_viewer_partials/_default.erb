@@ -36,7 +36,7 @@
   <% end %>
   <% if @document.has_key?('synchronization_url_s') %>
     <p class="oh_link">
-    <%= link_to image_tag('/images/play.png', :alt => 'Play oral history', :title => 'Play oral history'), oh_url(@document) %>
+    <%= link_to image_tag('/images/play.png', :id => 'viewer_play_button', :alt => 'Play oral history', :title => 'Play oral history'), oh_url(@document) %>
     </p>
   <% end %>
 <% end %>
