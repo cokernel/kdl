@@ -216,7 +216,10 @@ function GMapViewer(container)
         var ocrBoxVpos   = coordinates[3];
 
         /* Find corners of image */
-        var zoom   = me.map.getZoom() - 2;
+        var zoom   = me.map.getZoom() - 2; 
+        if (me.imageMaxZoom === 6) {
+          zoom   = me.map.getZoom() - 1; 
+        }
         var center = me.map.getCenter();
         var dlat   = ((me.imageHeight / 2) / (256 * Math.pow(2, zoom))) * (180 / Math.ceil(Math.pow(2, me.zoomShift - 1)));
         var dlng   = ((me.imageWidth / 2) / (256 * Math.pow(2, zoom))) * (360 / Math.ceil(Math.pow(2, me.zoomShift - 1)));
