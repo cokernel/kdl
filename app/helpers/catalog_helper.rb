@@ -290,6 +290,10 @@ module CatalogHelper
     end
   end
 
+  def full_screen
+    session.has_key? :fs and session[:fs] == 1
+  end
+
   def random_item
     Typhoeus::Request.get('http://eris.uky.edu/catalog/random').body
   end
