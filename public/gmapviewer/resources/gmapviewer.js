@@ -153,6 +153,7 @@ function GMapViewer(container)
     // me.map.addControl(new ViewerControl(me));
     me.map.addControl(new GLargeMapControl3D());
     me.map.addControl(new ViewerControl(me));
+    me.map.addControl(new FullScreenControl(me));
  
     me.map.enableDoubleClickZoom();
     me.map.enableContinuousZoom();
@@ -359,7 +360,7 @@ function ViewerControl(parent)
 
   me.getDefaultPosition = function()
   {
-    return new GControlPosition(G_ANCHOR_TOP_RIGHT, new GSize(4, 4));
+    return new GControlPosition(G_ANCHOR_TOP_RIGHT, new GSize(4, 48));
   };
 
   me.setButtonStyle = function(button)
@@ -373,6 +374,101 @@ function ViewerControl(parent)
 
 ViewerControl.prototype = new GControl();
 
+function toggleFSControl(me, map) {
+  map.savePosition();
+  me.toggleIcon();
+  toggleFullScreen();
+  map.returnToSavedPosition();
+}
+
+var fs = false;
+function FullScreenControl(parent)
+{
+  var me = this;
+  
+  var parentObj = parent;
+  var position  = 0;
+  var urls = ['expand.png', 'contract.png'];
+  var icon;
+  me.config     = new GMapConfig();
+
+  me.initialize = function(map)
+  {
+    var container = document.createElement("div");
+
+    var fullScreenDiv = document.createElement("div");
+
+    icon = document.createElement("img");
+    icon.setAttribute('src', me.config.resources_url_prefix + 'expand.png');
+
+    me.setButtonStyle(fullScreenDiv);
+
+    fullScreenDiv.appendChild(icon);
+    GEvent.addDomListener(fullScreenDiv, "click", function () {
+      toggleFSControl(me, map);
+    });
+
+    Mousetrap.bind("esc", function () {
+      if (fs) {
+        toggleFSControl(me, map);
+      }
+      return false;
+    });
+
+    map.toggleFSControl = function () {
+      toggleFSControl(me, map);
+    }
+
+    parentObj.map.getContainer().appendChild(fullScreenDiv);
+    return fullScreenDiv;
+  };
+
+  me.getDefaultPosition = function()
+  {
+    return new GControlPosition(G_ANCHOR_TOP_RIGHT, new GSize(4, 4));
+  };
+
+  me.setButtonStyle = function(button)
+  {
+    button.style.width = "32px";
+    button.style.height = "32px";
+    button.style.margin = "2px";
+    button.style.cursor = "pointer";
+  };
+
+  me.toggleIcon = function () {
+    position = 1 - position;
+    var url = me.config.resources_url_prefix + urls[position];
+    icon.setAttribute('src', url);
+  }
+}
+
+FullScreenControl.prototype = new GControl();
+
+function toggleFullScreen(obj) {
+  if (fs) {
+    elt = $('#fs_viewer').detach();
+    elt.appendTo('#image_viewer');
+    $('#fs_viewer').removeClass('overlay').addClass('onpage').css({'position': 'relative'});
+    $('#fs_viewer .fs_pagination').toggle();
+    if (viewer && viewer.map) {
+      viewer.map.checkResize();
+    }
+    fsOFF();
+    fs = false;
+  }
+  else {
+    elt = $('#fs_viewer').detach();
+    elt.appendTo('body');
+    $('#fs_viewer').removeClass('onpage').addClass('overlay').css({'position': 'absolute'});
+    $('#fs_viewer .fs_pagination').toggle();
+    if (viewer && viewer.map) {
+      viewer.map.checkResize();
+    }
+    fsON();
+    fs = true;
+  }
+}
 
 /*----------------------------*/
 
