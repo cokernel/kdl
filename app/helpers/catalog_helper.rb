@@ -77,7 +77,7 @@ module CatalogHelper
   end
 
   def has_text?(document)
-    if document['text_s'].nil?
+    if document['text_s'].nil? or document.has_key?('synchronization_url_s')
       false
     else
       document['text_s'].length > 0
