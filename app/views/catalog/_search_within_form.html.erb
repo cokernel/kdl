@@ -1,12 +1,12 @@
 <div id="search" class="search">
   <% form_tag catalog_index_path, :method => :get do %>
-    <h2 class="search"><%= label_tag(:q, "Search within this item ") %></h2>
+    <h2 class="search"><%= label_tag(:q, "Search this item ") %></h2>
     <%= text_field_tag :q, params[:q], :class => "q" %>
     
     <%= search_as_hidden_fields(:omit_keys => [:q, :search_field, :qt, :page]) %>        
     <input type="hidden" name="fq" value="{!raw f=parent_id_s}<%= document[:parent_id_s] %>"/>
     
-    <%= submit_tag 'search within this item', :class=>'submit' %>
+    <%= submit_tag 'search this item', :class=>'submit' %>
 
     <%= render :partial => 'search_tips' %>
   <% end %>
