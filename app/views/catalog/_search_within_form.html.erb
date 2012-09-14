@@ -4,7 +4,10 @@
     <%= text_field_tag :q, params[:q], :class => "q" %>
     
     <%= search_as_hidden_fields(:omit_keys => [:q, :search_field, :qt, :page]) %>        
-    <input type="hidden" name="fq" value="{!raw f=parent_id_s}<%= document[:parent_id_s] %>"/>
+
+    <% search_within(document).each do |field| %>
+    <input type="hidden" name="f[<%= field %>][]" value="<%= document[field] %>"/>
+    <% end %>
     
     <%= submit_tag 'search this item', :class=>'submit' %>
 

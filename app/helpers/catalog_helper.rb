@@ -84,6 +84,14 @@ module CatalogHelper
     end
   end
 
+  def search_within(document)
+    if has_guide?(document)
+      ['source_s']
+    else
+      ['parent_id_s', 'format']
+    end
+  end
+
   def ead_id(element)
     text = element
     if element.respond_to?(:text)
