@@ -84,6 +84,14 @@ module CatalogHelper
     end
   end
 
+  def search_within_text(document)
+    if has_guide?(document)
+      'Search this collection'
+    else
+      'Search this item'
+    end
+  end
+
   def search_within(document)
     if has_guide?(document)
       ['source_s']
