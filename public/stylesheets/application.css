@@ -534,3 +534,13 @@ p.player_border_btm {
   width: 600px;
   height: 850px;
 }
+
+/* Collections */
+
+h1.guide_heading {
+  margin-bottom: 0;
+}
+
+h2.guide_subheading {
+  margin-top: 0;
+}
