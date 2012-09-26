@@ -8,8 +8,27 @@ module ApplicationHelper
     @document[Blacklight.config[:guide][:heading]] || @document[Blacklight.config[:show][:heading]] || @document[:id]
   end
 
+  def document_guide_subheading
+    if @document.has_key? Blacklight.config[:guide][:heading] and @document[Blacklight.config[:guide][:heading]].respond_to?(:strip)
+      'Part of ' + @document[Blacklight.config[:guide][:heading]]
+    elsif @document.has_key? 'source_s'
+      'Part of ' + @document['source_s'].first
+    end
+  end
+
   def render_document_guide_heading
     content_tag(:h1, document_guide_heading)
+  end
+
+  def render_document_heading
+    if document_guide_subheading.nil?
+      content_tag(:h1, document_heading)
+    else
+      content_tag(:h1, :class => 'guide_heading') do
+        document_heading +
+        content_tag(:h2, document_guide_subheading, :class => 'guide_subheading')
+      end
+    end
   end
 
   def render_format_link(format)
