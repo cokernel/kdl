@@ -110,6 +110,8 @@ ol.dsc_subseries li {
   list-style: none;
   padding-left: 30px;
   padding-right: 30px;
+  margin-top: auto;
+  margin-bottom: auto;
 }
 
 /* Search */

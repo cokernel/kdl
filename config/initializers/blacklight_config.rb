@@ -307,6 +307,7 @@ Blacklight.configure(:shared) do |config|
     'Lexington Public Library' => '/images/repos/kyl_logo.png',
     'Louisville Free Public Library' => '/images/repos/lfpl_logo.png',
     'Morehead State University' => '/images/repos/kmm_logo.png',
+    'Murray State University' => '/images/repos/murray_logo.jpg',
     'University of Kentucky' => '/images/repos/kuk_logo.png',
     'The Filson Historical Society' => '/images/repos/Filson_logo.png',
     'Transylvania University' => '/images/repos/ktu_logo.png',
@@ -431,6 +432,14 @@ Blacklight.configure(:shared) do |config|
       'phone' => '(606) 783-2829',
       'email' => 'dj.baker@moreheadstate.edu',
       'url' => '',
+    },
+    'Murray State University' => {
+      'bucket' => [
+        'Murray State Special Collections',
+      ],
+      'phone' => '(270) 809-6152',
+      'email' => 'msu.specialcollections@murraystate.edu',
+      'url' => 'http://libguides.murraystate.edu/special_collections_index',
     },
     'Northern Kentucky University' => {
       'bucket' => [
