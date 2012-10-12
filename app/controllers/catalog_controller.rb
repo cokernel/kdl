@@ -122,7 +122,9 @@ class CatalogController < ApplicationController
       @issue_response, @issue_documents = get_solr_response_for_field_values("parent_id_s",key, extra)
       @pages = @issue_response.docs.paginate :per_page => 1, :page => seq
       @thumbs = @issue_response.docs.inject [] do |thumbs, page|
-        thumbs << page[:thumbnail_url_s].first
+        if page.has_key? :thumbnail_url_s
+          thumbs << page[:thumbnail_url_s].first
+        end
       end
       @current_page = @pages[seq - 1]
     end

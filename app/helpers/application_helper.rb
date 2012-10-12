@@ -4,6 +4,17 @@ module ApplicationHelper
     'ExploreUK'
   end
 
+  def document_heading
+    if @document.has_key? 'finding_aid_url_s' and @document.has_key? 'pub_date'
+      [
+        @document[Blacklight.config[:show][:heading]],
+        @document['pub_date'].first
+      ].join(', ')
+    else
+      @document[Blacklight.config[:show][:heading]]
+    end
+  end
+
   def document_guide_heading
     @document[Blacklight.config[:guide][:heading]] || @document[Blacklight.config[:show][:heading]] || @document[:id]
   end

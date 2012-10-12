@@ -1,13 +1,44 @@
 <% unless @document.has_key?('unpaged_display') %>
 <% extra_head_content << capture do %>
 <script src="/javascripts/mousetrap.min.js" type="text/javascript"></script>
+<% end %>
+
+  <% if @document.has_key?('reference_audio_url_s') %>
+    <% extra_head_content << capture do %>
+<script src="/javascripts/flowplayer.min.js" type="text/javascript"></script>
+<script src="/javascripts/flowplayer.ipad.min.js" type="text/javascript"></script>
+    <% end %>
+
+<div id="audio_player">
+  <a id="mb" href="<%= @document['reference_audio_url_s'] %>" style="display:block; width: 605px; height: 30px;"></a>
+</div>
+<script type="text/javascript">
+$f("mb", "http://releases.flowplayer.org/swf/flowplayer-3.2.15.swf", {
+  plugins: {
+    controls: {
+      fullscreen: false,
+      height: 30,
+      autoHide: false
+    }
+  },
+  clip: {
+    autoPlay: false,
+    onBeforeBegin: function() {
+      $f("player").close();
+    }
+  }
+});
+</script>
+  <% end %>
+
+  <% if @document.has_key?('viewer_url_s') %>
+    <% extra_head_content << capture do %>
 <script src="http://maps.google.com/maps?file=api&amp;v=2.x&amp;key=ABQIAAAANZhE12_nSwoiEeOrTR9VFRRP8KZ0B-_Pw6waNKIP-bVwSDZSmxRlrMqG5WEDK9-gF1vxqf7vMfIAyQ" type="text/javascript"></script>
 <script src="/gmapviewer/resources/elabel.js" type="text/javascript"></script>
 <script src="/gmapviewer/resources/dragzoom.js" type="text/javascript"></script>
 <script src="/gmapviewer/resources/gmapconfig.js" type="text/javascript"></script>
 <script src="/gmapviewer/resources/gmapviewer.js" type="text/javascript"></script>
-<% end %>
-
+    <% end %>
 <div id="image_viewer">
   <% if @document.has_key?('reference_image_url_s') %>
   <img class="reference_image" id="reference_image" src="<%= @document['reference_image_url_s'] %>"/>
@@ -70,6 +101,7 @@
   <div id="viewer">test</div>
   </div>
 </div>
+  <% end %>
 <% else %>
   <% extra_head_content << capture do %>
     <link rel="stylesheet" type="text/css" href="/stylesheets/oh.css" media="all">
