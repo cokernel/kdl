@@ -18,8 +18,17 @@ digital images.
     <li class="collect_05"><a href="http://eris.uky.edu/?f[format][]=books"><span class="img-box"></span><p class="text-box">Books</p></a></li>
     <li class="collect_06"><a href="http://eris.uky.edu/?f[format][]=maps"><span class="img-box"></span><p class="text-box">Maps</p></a></li>
     <% tdih = Time.new; month = tdih.strftime("%B"); day = tdih.strftime("%e").strip ; today = tdih.strftime("%B #{tdih.day.ordinalize}") %>
-    <li style="width: 600px; margin-left: auto; margin-right: auto;">
-        <a href="http://eris.uky.edu/catalog?q=<%= month %>+<%= day %>+AND+%28Image%2B1%29&amp;search_field=title&amp;f%5Bformat%5D%5B%5D=newspapers&amp;commit=search" style="border: none; width: 100%">Read all about <%= today %> in Kentucky's historical newspaper archive!</a></li>
+    <li class="tdih">
+        <a href="http://eris.uky.edu/catalog?q=<%= month %>+<%= day %>+AND+%28Image%2B1%29&amp;search_field=title&amp;f%5Bformat%5D%5B%5D=newspapers&amp;commit=search">Read all about <%= today %> in Kentucky's historical newspaper archive!</a></li>
+    <li class="findus">
+      <h2>Find us on</h2>
+      <ul>
+        <li><a href="http://www.facebook.com/KentuckyDigitalLibrary"><img src="/images/social/f_logo.png"/></a></li>
+        <li><a href="https://twitter.com/BanjoBourbonBlu"><img src="/images/social/twitter-bird-light-bgs.png"/></a></li>
+        <li><a href="https://pinterest.com/kydigitallib/"><img src="/images/social/Pinterest_Favicon.png"/></a></li>
+        <li><a href="http://banjosbourbonbarrelsandbluegrass.tumblr.com/"><img src="/images/social/Tumblr-icon.png"/></a></li>
+      </ul>
+    </li>
   </ul>
 </div>
 </section>

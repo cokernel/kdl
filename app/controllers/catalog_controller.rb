@@ -1,6 +1,7 @@
 require_dependency( 'vendor/plugins/blacklight/app/controllers/catalog_controller.rb')
 
 class CatalogController < ApplicationController
+  protect_from_forgery :except => :oai
 
   include Blacklight::SolrHelper
 
@@ -24,6 +25,7 @@ class CatalogController < ApplicationController
 
   def viewer
     @response, @document = get_solr_response_for_doc_id
+    add_cal_info
     generate_pagination
     if @document.has_key?('finding_aid_url_s') and @document.has_key?('unpaged_display')
       redirect_to guide_catalog_path(@document['id'])
@@ -42,6 +44,7 @@ class CatalogController < ApplicationController
 
   def text 
     @response, @document = get_solr_response_for_doc_id
+    add_cal_info
     begin
       text_to_check = @document['text_s'].first
     rescue
@@ -57,10 +60,12 @@ class CatalogController < ApplicationController
     id = params[:id]
     response, @document_summary = get_solr_response_for_doc_id id
     @response, @document = get_solr_response_for_doc_id id
+    add_cal_info
   end
 
   def guide
     @response, @document = get_solr_response_for_doc_id
+    add_cal_info
     if @document.has_key?('finding_aid_url_s')
       ead_url = @document['finding_aid_url_s'].first
       ead_xml = Typhoeus::Request.get(ead_url).body
@@ -71,8 +76,24 @@ class CatalogController < ApplicationController
     end
   end
 
+  def index
+
+    extra_head_content << '<link rel="alternate" type="application/rss+xml" title="RSS for results" href="'+ url_for(params.merge("format" => "rss")) + '">'
+    extra_head_content << '<link rel="alternate" type="application/atom+xml" title="Atom for results" href="'+ url_for(params.merge("format" => "atom")) + '">'
+    
+    (@response, @document_list) = get_search_results
+    add_cal_info
+    @filters = params[:f] || []
+    respond_to do |format|
+      format.html { save_current_search_params }
+      format.rss  { render :layout => false }
+      format.atom { render :layout => false }
+    end
+  end
+
   def show
     @response, @document = get_solr_response_for_doc_id
+    add_cal_info
     generate_pagination
 
     if @document.has_key?('finding_aid_url_s') and @document.has_key?('unpaged_display')
@@ -94,6 +115,28 @@ class CatalogController < ApplicationController
         # It's important that the argument to send be a symbol;
         # if it's a string, it makes Rails unhappy for unclear reasons.
         format.send(format_name.to_sym) { render :text => @document.export_as(format_name) }
+      end
+    end
+  end
+
+  def add_cal_info
+    if @document 
+      if @document['format'] == 'newspapers' #and @document.has_key?('full_date_s')
+        @document['cal_title'] = @document['source_s'].first #CGI::escape @document['source_s'].first
+        @document['cal_year'] = @document['full_date_s'].first.sub(/^(\d+)-\d+.*/, '\1')
+        @document['cal_month'] = @document['full_date_s'].first.sub(/^\d+-(\d+).*/, '\1')
+        @document['url'] = 'http://eris.uky.edu/cal/first.php?title=' + CGI::escape(@document['cal_title'])
+      end
+    else
+      @extra_info = {}
+      if params.has_key?(:f) and params[:f].has_key?(:format) and params[:f][:format].include? "newspapers"
+        @extra_info['url'] = 'http://eris.uky.edu/cal/first.php'
+        if params[:f].has_key?(:source_s)
+          @extra_info['cal_title'] = params[:f][:source_s].first
+          @extra_info['url'] += '?' + 'title=' + CGI::escape(@extra_info['cal_title'])
+        end
+        #@extra_info['cal_year'] = '1937'
+        #extra_info['cal_month'] = '10'
       end
     end
   end
@@ -240,15 +283,40 @@ class CatalogController < ApplicationController
       solr_parameters[:q] = "{!#{local_params}} #{solr_parameters[:q]}"
     end
     
-    
+    ### add paging to solr
+    if extra_controller_params.has_key?(:sp) and extra_controller_params[:sp] == 'true'
+      if solr_parameters.has_key?(:per_page)
+        per_page = solr_parameters.delete(:per_page)
+        solr_parameters[:rows] ||= per_page
+      end
+      solr_parameters[:rows] = params[:per_page] unless params[:per_page].blank?
+      unless solr_parameters[:page].blank?
+        if solr_parameters[:rows].blank?
+          raise Exceptiobn.new("To use pagination when no :per_page is supplied in the URL, :rows must be configured in blacklight_config default_solr_params")
+        end
+        page = solr_parameters.delete(:page)
+        #if extra_controller_params.has_key?(:sp) and extra_controller_params[:sp] == 'sp'
+        #  page += 1
+        #end
+        solr_parameters[:start] = solr_parameters[:rows].to_i * page.to_i
+        solr_parameters[:start] = 0 if solr_parameters[:start].to_i < 0
+      end
+      solr_parameters[:rows] = solr_parameters[:rows].to_i > self.max_per_page ? self.max_per_page.to_s : solr_parameters[:rows]
+    else
+      solr_parameters[:per_page] = solr_parameters[:per_page].to_i > self.max_per_page ? self.max_per_page.to_s : solr_parameters[:per_page]
+    end
+    Rails.logger.info(solr_parameters.to_json)
+
+
     ###
     # Sanity/requirements checks.
     ###
-    
-    # limit to MaxPerPage (100). Tests want this to be a string not an integer,
-    # not sure why. 
-    solr_parameters[:per_page] = solr_parameters[:per_page].to_i > self.max_per_page ? self.max_per_page.to_s : solr_parameters[:per_page]
 
+    # limit to MaxPerPage (100). Tests want this to be a string not an integer,
+    # not sure why.
+    #solr_parameters[:per_page] = solr_parameters[:per_page].to_i > self.max_per_page ? self.max_per_page.to_s : solr_parameters[:per_page]
+    #solr_parameters[:rows] = solr_parameters[:rows].to_i > self.max_per_page ? self.max_per_page.to_s : solr_parameters[:rows]
+    
     ###
     # Require title or relevance sort in some circumstances.
     ###

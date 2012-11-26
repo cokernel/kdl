@@ -313,4 +313,17 @@ module CatalogHelper
   def random_item
     Typhoeus::Request.get('http://eris.uky.edu/catalog/random').body
   end
+
+  def json_get(url)
+    JSON.parse Typhoeus::Request.get(url).body
+  end
+
+  def cal_info(url)
+    h = json_get(url)
+    d = h['date']
+    {
+      'cal_year' => d[0, 4],
+      'cal_month' => d[5, 2],
+    }
+  end
 end

@@ -13,6 +13,28 @@
     <%= submit_tag label, :class=>'submit' %>
 
     <%= render :partial => 'search_tips' %>
+    <% if document.has_key?('cal_year') %>
+    <%- cal = cal_info(document['url']) -%>
+    <input type="hidden" id="datepicker" name="datepicker">
+    <label for="datepicker" class="datepicker">Calendar View</label>
+    <script type="text/javascript">
+    $(document).ready(function() {
+      Calendar.init({
+        id: 'datepicker',
+        <%- if document.has_key?('cal_title') -%>
+        title: '<%= document['cal_title'] %>',
+        <%- end -%>
+        yearRange: '<%= cal['cal_year'] %>:+0Y',
+        minDate: '<%= cal['cal_year'] %>-<%= cal['cal_month'] %>-01',
+        year: <%= document['cal_year'] %>,
+        month: <%= document['cal_month'] %>
+      });
+      $('.datepicker').click(function() {
+        $('#datepicker').datepicker('show');
+      });
+    });
+    </script>
+    <% end %>
   <% end %>
 
   <hr/>

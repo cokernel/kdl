@@ -33,9 +33,21 @@ Blacklight.configure(:shared) do |config|
   # and Blacklight::Solr::Document#to_semantic_values
   # Recommendation: Use field names from Dublin Core
   SolrDocument.field_semantics.merge!(    
-    :title => "title_display",
+    :title => "title_guide_display",
     :author => "author_display",
-    :language => "language_facet"  
+    :creator => "author_display",
+    :contributor => "contributor_s",
+    :publisher => "repository_facet",
+    :date => "full_date_s",
+    :format => "format",
+    :type => "type_display",
+    :coverage => "coverage_s",
+    :source => "source_s",
+    :rights => "usage_display",
+    :description => "description_display",
+    :subject => "subject_topic_facet",
+    :identifier => "id",
+    :language => "language_facet"
   )
         
   
@@ -514,5 +526,17 @@ Blacklight.configure(:shared) do |config|
     :accessrestrict,
     :relatedmaterial,
   ]
+
+  config[:oai] = {
+    :provider => {
+      :repository_name => 'Kentucky Digital Library',
+      :repository_url => 'http://eris.uky.edu/catalog/oai',
+      :record_prefix => 'eris.uky.edu',
+      :admin_email => 'm.slone@uky.edu'
+    },
+    :document => {
+      :timestamp_field => 'timestamp'
+    }
+  }
 end
 
