@@ -12,3 +12,4 @@ coverage.data
 coverage/*
 public/plugin_assets/*
 public/coverage
+vendor/*
