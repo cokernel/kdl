@@ -23,12 +23,24 @@ class CatalogController < ApplicationController
     render :layout => false
   end
 
+  def redirect_to_guide_or_first_page
+    if @document.has_key?('digital_content_available_s') and @document['digital_content_available_s']
+      ead_url = @document['finding_aid_url_s'].first
+      ead_xml = Typhoeus::Request.get(ead_url).body
+      @ead = Nokogiri::XML ead_xml
+      first_page_id = @ead.css('dao').first['entityref']
+      redirect_to viewer_catalog_path(first_page_id)
+    else
+      redirect_to guide_catalog_path(@document['id'])
+    end
+  end
+
   def viewer
     @response, @document = get_solr_response_for_doc_id
     add_cal_info
     generate_pagination
     if @document.has_key?('finding_aid_url_s') and @document.has_key?('unpaged_display')
-      redirect_to guide_catalog_path(@document['id'])
+      redirect_to_guide_or_first_page
     end
     if @document.has_key?('finding_aid_url_s')
       ead_url = @document['finding_aid_url_s'].first
@@ -97,7 +109,7 @@ class CatalogController < ApplicationController
     generate_pagination
 
     if @document.has_key?('finding_aid_url_s') and @document.has_key?('unpaged_display')
-      redirect_to guide_catalog_path(@document['id'])
+      redirect_to_guide_or_first_page
     end
 
     if @document.has_key?('finding_aid_url_s')
