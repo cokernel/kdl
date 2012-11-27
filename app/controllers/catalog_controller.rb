@@ -113,7 +113,7 @@ class CatalogController < ApplicationController
     generate_pagination
 
     if @document.has_key?('finding_aid_url_s') and @document.has_key?('unpaged_display')
-      redirect_to_guide_or_first_page
+      redirect_to guide_catalog_path(@document['id'])
     end
 
     if @document.has_key?('finding_aid_url_s')
