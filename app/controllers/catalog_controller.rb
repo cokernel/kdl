@@ -28,8 +28,12 @@ class CatalogController < ApplicationController
       ead_url = @document['finding_aid_url_s'].first
       ead_xml = Typhoeus::Request.get(ead_url).body
       @ead = Nokogiri::XML ead_xml
-      first_page_id = @ead.css('dao').first['entityref']
-      redirect_to viewer_catalog_path(first_page_id)
+      if @ead.css('dao').first.nil?
+        redirect_to guide_catalog_path(@document['id'])
+      else
+        first_page_id = @ead.css('dao').first['entityref']
+        redirect_to viewer_catalog_path(first_page_id)
+      end
     else
       redirect_to guide_catalog_path(@document['id'])
     end
