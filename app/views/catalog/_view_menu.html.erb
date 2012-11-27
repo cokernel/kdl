@@ -1,11 +1,16 @@
 <div class="views_menu">
-<%= link_to "item", viewer_catalog_path(@document[:id]) %>
 
-<% if @pages and @pages.total_pages > 1 and @document.has_key?(:thumbnail_url_s) %>
-| <%= link_to "thumbnails", thumbs_catalog_path(@document[:id]) %>
+<% if @document[:format] == 'collections' %>
+  <% if @document[:digital_content_available_s].first == 'true' %>
+<%= link_to "item", viewer_catalog_path(@document[:id]) %> |
+  <% end %>
+<% else %>
+<%= link_to "item", viewer_catalog_path(@document[:id]) %> |
 <% end %>
 
-|
+<% if @pages and @pages.total_pages > 1 and @document.has_key?(:thumbnail_url_s) %>
+<%= link_to "thumbnails", thumbs_catalog_path(@document[:id]) %> |
+<% end %>
 
 <%= link_to "details", details_catalog_path(@document[:id]) %>
 
