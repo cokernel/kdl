@@ -7,10 +7,13 @@ Provided by <%= @document['repository_display'] %></p>
 </p>
 
 <% unless repo_logo_url(@document).nil? %>
-<img class="repo_logo" 
-     src="<%= repo_logo_url(@document) %>"
-     alt="This is a test"
-     title="This is a test"/>
+<li>
+<a href="<%= repo_info_catalog_path(:id => @document['id']) %>" class="lightboxLink"><img 
+   class="repo_logo"
+   src="<%= repo_logo_url(@document) %>"
+   alt="<%= @document['repository_display'] %>"
+   title="<%= @document['repository_display'] %>"/></a>
+</li>
 <% end %>
 
 </div>

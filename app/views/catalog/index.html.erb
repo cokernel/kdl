@@ -5,7 +5,8 @@
 
 	<% @page_title = application_name + " Search Results" %>
 
-	<%= render :partial => 'search_form' %>
+	<%= render :partial => 'search_form', :locals => {:extra_info => @extra_info} %>
+  <%= render :partial => 'collections_browse' %>
 	
 	<%= render :partial => 'did_you_mean' %>
 

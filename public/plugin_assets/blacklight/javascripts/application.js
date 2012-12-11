@@ -87,7 +87,7 @@ jQuery(document).ready(function($) {
     }
     
 
-    $("a.more_facets_link,a.lightboxLink").each(function() {
+    $("a.lightboxLink").each(function() {
       //We use each to let us make a Dialog object for each
       //a, tied to that a, through the miracle of closures. the second
       // arg to 'bind' is used to make sure the event handler gets it's

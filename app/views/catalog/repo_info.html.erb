@@ -1,0 +1,47 @@
+<h1>Repository profile</h1>
+
+<%- unless repo_contact(@document).nil? %>
+  <ul class="repo_profile">
+  <%- repo_contact(@document)['bucket'].each do |line| %>
+    <li><%= line %></li>
+  <%- end %>
+  <% if repo_contact(@document)['phone'].length > 0 %>
+  <li>Phone: <%= repo_contact(@document)['phone'] %></li>
+  <% end %>
+  <% if repo_contact(@document)['email'].length > 0 %>
+  <% email = repo_contact(@document)['email'] %>
+  <li>Email: <a href="mailto:<%= email %>"><%= email %></a></li>
+  <% end %>
+  <% if repo_contact(@document)['url'].length > 0 %>
+  <% url = repo_contact(@document)['url'] %>
+  <li>Website: <a href="<%= url %>"><%= url %></a></li>
+  <% end %>
+<% unless repo_logo_url(@document).nil? %>
+<li>&nbsp;</li>
+<li>
+<% if repo_url(@document) %>
+<a href="<%= repo_url(@document) %>"><img class="repo_logo" 
+     src="<%= repo_logo_url(@document) %>"
+     alt="<%= @document['repository_display'] %>"
+     title="<%= @document['repository_display'] %>"/></a>
+<% else %>
+<img class="repo_logo" 
+     src="<%= repo_logo_url(@document) %>"
+     alt="<%= @document['repository_display'] %>"
+     title="<%= @document['repository_display'] %>"/>
+<% end %>
+</li>
+<% end %>
+<% unless repo_abstract(@document).nil? %>
+<li>&nbsp;</li>
+<li><%= repo_abstract(@document) %></li>
+<% end %>
+  </ul>
+<%- else %>
+<li>
+This area will list contact information for the
+repository owning the physical item and will also
+instruct users to use the specific repository
+when citing the resource.
+</li>
+<%- end %>

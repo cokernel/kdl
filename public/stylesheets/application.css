@@ -544,3 +544,25 @@ h1.guide_heading {
 h2.guide_subheading {
   margin-top: 0;
 }
+
+/* sort and per page */
+.sortAndPerPage {
+  background-color: #F0F0F0;
+  padding: 0.66em;
+  border-style: solid;
+  border-color: #AAAAAA;
+  border-width: 0 1px 1px 1px;
+}
+.sortAndPerPage label {
+  font-weight: normal;
+}
+
+/* datepicker */
+.datepicker {
+  font: 0.7em Verdana, "Lucida Grande", "Lucida San Unicode", "Arial Unicode MS", Arial, sans-serif;
+}
+
+/* repo profile */
+.repo_profile li {
+  list-style:none;
+}

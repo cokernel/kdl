@@ -72,7 +72,15 @@ Blacklight.configure(:shared) do |config|
   config[:facet] = {
     :field_names => (facet_fields = [
       "format",
+      #"repository_facet",
       "source_s",
+      "pub_date",
+      #"coverage_s",
+      #"subject_topic_facet",
+      #"language_facet",
+      #"lc_1letter_facet",
+      #"subject_geo_facet",
+      #"subject_era_facet",
     ]),
     :labels => {
       "format"              => "Format",
@@ -102,7 +110,10 @@ Blacklight.configure(:shared) do |config|
     :limits => {
       "format" => 20,
       "subject_facet" => 20,
-      "language_facet" => true
+      "language_facet" => true,
+      "repository_facet" => 10,
+      "source_s" => 10,
+      "pub_date" => 10,
     }
   }
 
@@ -296,6 +307,7 @@ Blacklight.configure(:shared) do |config|
     'University of Kentucky' => '/images/repos/kuk_logo.png',
   }
 
+  config[:repo_default_contact] = 'DLS-L@LSV.UKY.EDU'
   config[:repo_contact] = {
     'Appalshop Inc.' => {
       'bucket' => [
@@ -359,9 +371,13 @@ Blacklight.configure(:shared) do |config|
     'Kentucky Historical Society' => {
       'bucket' => [
         'Kentucky Historical Society',
+        '100 W. Broadway',
+        'Frankfort, KY 40601'
       ],
-      'phone' => '',
-      'email' => '',
+      'phone' => '(502) 564-1792',
+      'email' => 'jennifer.duplaga@ky.gov',
+      'url' => 'http://history.ky.gov/',
+      'abstract' => "The Kentucky Historical Society engages people in the exploration of the commonwealth's diverse heritage. Through comprehensive and innovative services, interpretive programs and stewardship, we provide connections to the past, perspective on the present and inspiration for the future. KHS collects, preserves, conserves, interprets and shares information, memories and materials from Kentucky's past to assist those interested in exploring and preserving that heritage.",
     },
     'Kentucky State Universty' => {
       'bucket' => [
@@ -403,17 +419,24 @@ Blacklight.configure(:shared) do |config|
     'The Filson Historical Society' => {
       'bucket' => [
         'The Filson Historical Society',
+        '1310 South Third Street',
+        'Louisville, KY 40208',
       ],
-      'phone' => '',
-      'email' => '',
+      'phone' => '(502) 635-5083',
+      'email' => 'research@filsonhistorical.org',
+      'url' => 'http://www.filsonhistorical.org/',
+      'abstract' => "Since our founding in 1884, The Filson Historical Society’s mission has been to collect, preserve, and tell the significant stories of Kentucky and Ohio Valley history and culture. The Filson performs its mission by collecting and securing historical and cultural documents, books, objects, and art, exhibiting and interpreting our collections for the public, supporting research and study, and presenting educational programs 
+      and events.",
     },
     'Transylvania University' => {
       'bucket' => [
         'Transylvania University',
-        'Special Collections',
+        'Special Collections and Archives',
       ],
-      'phone' => '(859) 233-8225',
+      'phone' => '859-246-5002', #'(859) 233-8225', # '859-246-5002',
       'email' => 'bjgooch@transy.edu',
+      'url' => 'http://www.transy.edu/academics/library/collections.htm',
+      'abstract' => "Special Collections and Archives at Transylvania University provides secure housing and specialized care for the unique and valuable research materials of the library. The department contains rare books, pamphlets, photographs, manuscripts, and the University Archives. Notable collections include the J. Winston Coleman, Jr. Kentuckiana Collection, the Clara Peck Natural History Collection. which includes Audubons's BIRDS OF AMERICA, over 5,000 volumes of books from the old Medical Library and over 1,800 handwritten medical theses. These collections provide a unique opportunity for students to use primary source materials and to study Kentucky history and the important books of Western culture. The department is located on the upper level of the library and is open to researchers by appointment Monday - Friday from 1:00 - 4:30 p.m.",
     },
     'University of Kentucky' => {
       'bucket' => [
@@ -421,7 +444,9 @@ Blacklight.configure(:shared) do |config|
         'Special Collections Library',
       ],
       'phone' => '(859) 257-8611',
-      'email' => 'SCLREF@LSV.UKY.EDU',
+      'email' => 'EXPLOREUK-REF@LSV.UKY.EDU', #'SCLREF@LSV.UKY.EDU',
+      'url' => 'http://libraries.uky.edu/lib.php?lib_id=13',
+      'abstract' => "Special Collections is home to UK Libraries' collection of rare books, Kentuckiana, the Archives, the Louie B. Nunn Center for Oral History, the King Library Press, and the Wendell H. Ford Public Policy Research Center. The mission of Special Collections is to locate and preserve materials documenting the social, cultural, economic, and political history of the Commonwealth of Kentucky. Materials are acquired regardless of format and include both primary and secondary sources; Kentuckiana is collected comprehensively. Special Collections maintains a records management program for all records generated by the University and serves as its archival repository for permanent records. As part of the mission, Special Collections advances and supports the research, teaching, and scholarship of the University and beyond by preserving and providing access to its holdings.",
     },
     'University of Lousville' => {
       'bucket' => [

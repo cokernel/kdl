@@ -1,0 +1,14 @@
+<h1>Contact us</h1>
+
+<% form_tag url_for(:action => 'submit_contact_request'), :id => 'contact_us_form', :method => :post do %>
+  <%= label_tag(:name, "Name:") %><br/>
+  <%= text_field_tag :name %><br/>
+  <%= label_tag(:email, "Email:") %><br/>
+  <%= text_field_tag :email %><br/>
+  <%= label_tag(:phone, "Phone:") %><br/>
+  <%= text_field_tag :phone %><br/>
+  <%= label_tag(:question, "Question:") %><br/>
+  <%= text_area_tag :question %><br/>
+  <%= hidden_field_tag "id", @document['id'] %>
+  <%= submit_tag "Send" %>
+<% end %>
