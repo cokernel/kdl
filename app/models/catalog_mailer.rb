@@ -3,7 +3,7 @@ class CatalogMailer < ActionMailer::Base
     recipients repo['email']
     bcc        'm.slone@uky.edu'
     from       "webmaster@eris.uky.edu"
-    subject    "Patron request regarding KDL item #{document[:id]}"
+    subject    "Patron request regarding ExploreUK item #{document[:id]}"
     body       :repo => repo, :document => document, :patron => patron
   end
 end
