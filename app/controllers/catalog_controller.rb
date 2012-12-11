@@ -107,6 +107,53 @@ class CatalogController < ApplicationController
     end
   end
 
+  def repo_info
+    @response, @document = get_solr_response_for_doc_id
+  end
+
+  def contact_us
+    @response, @document = get_solr_response_for_doc_id
+  end
+
+  def submit_contact_request
+    @response, @document = get_solr_response_for_doc_id
+    if params[:name]
+      key = @document['repository_display'].first
+      if Blacklight.config[:repo_contact].has_key?(key)
+        @repo = Blacklight.config[:repo_contact][key]
+        unless @repo['email'].length > 0
+          @repo['email'] = Blacklight.config[:repo_default_contact]
+        end
+        if @repo['email'].length > 0
+          if params[:email]
+            if params[:email].match(/^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}$/)
+              @patron = {
+                'name' => params[:name],
+                'email' => params[:email],
+                'phone' => params[:phone],
+                'question' => params[:question],
+              }
+              email = CatalogMailer.deliver_contact_us(@repo, @document, @patron)
+              redirect_to :back
+            else
+              flash[:error] = 'You must enter a valid email address.'
+              redirect_to :back
+            end
+          else
+            flash[:error] = 'You must enter an email address.'
+            redirect_to :back
+          end
+        else
+          flash[:error] = 'Repository has no contact email address.'
+          redirect_to :back
+        end
+      end
+    else
+      flash[:error] = "You must enter your name."
+      redirect_to :back
+    end
+  end
+
   def show
     @response, @document = get_solr_response_for_doc_id
     add_cal_info
@@ -344,5 +391,61 @@ class CatalogController < ApplicationController
 
     return solr_parameters
     
+  end
+
+  def solr_facet_params(facet_field, extra_controller_params={})
+    input = params.deep_merge(extra_controller_params)
+
+    # First start with a standard solr search params calculations,
+    # for any search context in our request params. 
+    solr_params = solr_search_params(extra_controller_params)
+    
+    # Now override with our specific things for fetching facet values
+    solr_params[:"facet.field"] = facet_field
+
+    # Need to set as f.facet_field.facet.limit to make sure we
+    # override any field-specific default in the solr request handler. 
+    solr_params[:"f.#{facet_field}.facet.limit"] = 
+      if solr_params["facet.limit"] 
+        solr_params["facet.limit"] + 1
+      elsif respond_to?(:facet_list_limit)
+        facet_list_limit.to_s.to_i + 1
+      else
+        20 + 1
+      end
+    solr_params['facet.offset'] = input[  Blacklight::Solr::FacetPaginator.request_keys[:offset]  ].to_i # will default to 0 if nil
+    solr_params['facet.sort'] = input[  Blacklight::Solr::FacetPaginator.request_keys[:sort] ]     
+    solr_params['facet.prefix'] = input[ Blacklight::Solr::FacetPaginator.request_keys[:prefix] ]
+    solr_params[:rows] = 0
+
+    return solr_params
+  end
+
+  def get_facet_pagination(facet_field, extra_controller_params={})
+    solr_params = solr_facet_params(facet_field, extra_controller_params)
+    
+    # Make the solr call
+    response = Blacklight.solr.find(solr_params)
+
+    limit =       
+      if respond_to?(:facet_list_limit)
+        facet_list_limit.to_s.to_i
+      elsif solr_params[:"f.#{facet_field}.facet.limit"]
+        solr_params[:"f.#{facet_field}.facet.limit"] - 1
+      else
+        nil
+      end
+
+    args = {
+      :offset => solr_params['facet.offset'], 
+      :limit => limit,
+      :sort => response["responseHeader"]["params"]["f.#{facet_field}.facet.sort"] || response["responseHeader"]["params"]["facet.sort"],
+    }
+
+    # Actually create the paginator!
+    # NOTE: The sniffing of the proper sort from the solr response is not
+    # currently tested for, tricky to figure out how to test, since the
+    # default setup we test against doesn't use this feature. 
+    return     Blacklight::Solr::FacetPaginator.new(response.facets.first.items, args)
   end
 end

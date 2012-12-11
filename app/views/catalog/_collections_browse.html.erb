@@ -1,0 +1,18 @@
+<div class="sortAndPerPage">
+Collections:&nbsp;<br/>
+<%- begin -%>
+  <%- klass = "class=\"#{klass}\"" -%>
+<%- rescue -%>
+  <%- klass = '' -%>
+<%- end -%>
+<%- if params.has_key?('catalog_facet.prefix') -%>
+  <%- highlight = params['catalog_facet.prefix'] -%>
+<%- else -%>
+  <%- highlight = '' -%>
+<%- end -%>
+<a href="/catalog/facet/source_s?catalog_facet.sort=index">0-9</a>                      |
+<%- ('A'..'Y').to_a.each do |letter| -%>
+<a <%- if letter == highlight -%>style="font-weight: bold;" <%- end -%> href="/catalog/facet/source_s?catalog_facet.sort=index&catalog_facet.prefix=<%= letter %>"><%= letter %></a> |
+<%- end -%>
+<a <%- if 'Z' == highlight -%>style="font-weight: bold;" <%- end -%> href="/catalog/facet/source_s?catalog_facet.sort=index&catalog_facet.prefix=Z">Z</a>
+</div>

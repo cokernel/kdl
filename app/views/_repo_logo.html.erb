@@ -9,17 +9,11 @@ Provided by <%= @document['repository_display'] %></p>
 
 <% unless repo_logo_url(@document).nil? %>
 <li>
-<% if repo_url(@document) %>
-<a href="<%= repo_url(@document) %>"><img class="repo_logo" 
-     src="<%= repo_logo_url(@document) %>"
-     alt="<%= @document['repository_display'] %>"
-     title="<%= @document['repository_display'] %>"/></a>
-<% else %>
-<img class="repo_logo" 
-     src="<%= repo_logo_url(@document) %>"
-     alt="<%= @document['repository_display'] %>"
-     title="<%= @document['repository_display'] %>"/>
-<% end %>
+<a href="<%= repo_info_catalog_path(:id => @document['id']) %>" class="lightboxLink"><img 
+   class="repo_logo"
+   src="<%= repo_logo_url(@document) %>"
+   alt="<%= @document['repository_display'] %>"
+   title="<%= @document['repository_display'] %>"/></a>
 </li>
 <% end %>
 </ul>

@@ -63,6 +63,9 @@ jQuery(document).ready(function() {
     xhr.setRequestHeader("X-CSRF-Token", token);
   });
 
+  $('a.more_facets_link').unbind('click');
+
+/*
   if ($('a.prev_page').length > 0) {
     $(document).keydown(function(e) {
       if (e.which == 37) {
@@ -80,4 +83,5 @@ jQuery(document).ready(function() {
       }
     });
   }
+  */
 });

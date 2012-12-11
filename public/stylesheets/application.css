@@ -563,3 +563,8 @@ h2.guide_subheading {
 .datepicker {
   font: 0.7em Verdana, "Lucida Grande", "Lucida San Unicode", "Arial Unicode MS", Arial, sans-serif;
 }
+
+/* repo profile */
+.repo_profile li {
+  list-style:none;
+}

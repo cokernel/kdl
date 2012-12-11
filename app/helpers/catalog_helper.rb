@@ -254,6 +254,15 @@ module CatalogHelper
     end
   end
 
+  def repo_abstract(document)
+    contact = repo_contact(document)
+    if contact and contact['abstract'] and contact['abstract'].length > 0
+      contact['abstract']
+    else
+      nil
+    end
+  end
+
   def oh_url(document)
     if document.has_key?('synchronization_url_s')
       base = document['synchronization_url_s'].first

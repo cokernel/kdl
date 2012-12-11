@@ -9,13 +9,13 @@ $(document).ready(function() {
     }
   });
 
-  $('.contact_us h3').next("ul, div").each(function() {
-    var f_content = $(this);
-    f_content.hide();
-    $('h3', f_content.parent()).click(function() {
-      $(f_content).slideToggle();
-    });
-  });
+//   $('.contact_us h3').next("ul, div").each(function() {
+//     var f_content = $(this);
+//     f_content.hide();
+//     $('h3', f_content.parent()).click(function() {
+//       $(f_content).slideToggle();
+//     });
+//   });
 
   $('.search_tips').each(function() {
     var f_content = $(this);

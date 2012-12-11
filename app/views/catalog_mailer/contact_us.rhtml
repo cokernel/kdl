@@ -1,0 +1,33 @@
+Greetings. 
+
+A patron has requested further information about this item:
+
+Title: <%= @document['title_display'] %>
+
+Collection: <%= @document['source_s'] %>
+
+URL: http://eris.uky.edu/catalog/<%= @document['id'] %>
+<%- if @document.has_key?('accession_number_s') -%>
+
+Accession/call number: <%= @document['accession_number_s'] %>
+
+<%- end -%>
+Format: <%= @document['format'] %>
+
+Creator: <%= @document['author_display'] %>
+
+Repository: <%= @document['repository_display'] %>
+
+Identifier: <%= @document['id'] %>
+<%- if @document.has_key?('container_list_s') -%>
+
+Location: <%= @document['container_list_s'] %>
+
+<%- end %>
+* Patron question: <%= @patron['question'] %>
+
+* Patron name: <%= @patron['name'] %>
+
+* Email: <%= @patron['email'] %>
+
+* Phone: <%= @patron['phone'] %>
