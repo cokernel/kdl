@@ -11,7 +11,7 @@
 
     <%= render :partial => 'search_tips' %>
 
-    <%- if @extra_info.has_key?('url') -%>
+    <%- if @extra_info and @extra_info.has_key?('url') -%>
     <%- cal = cal_info(@extra_info['url']) -%>
     <input type="hidden" id="datepicker" name="datepicker">
     <label for="datepicker" class="datepicker">Calendar View</label>
@@ -19,7 +19,7 @@
     $(document).ready(function() {
       Calendar.init({
         id: 'datepicker',
-        <%- if @extra_info.has_key?('cal_title') -%>
+        <%- if @extra_info and @extra_info.has_key?('cal_title') -%>
         title: '<%= @extra_info['cal_title'] %>',
         <%- end -%>
         yearRange: '<%= cal['cal_year'] %>:+0Y',
