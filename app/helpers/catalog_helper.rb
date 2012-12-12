@@ -320,7 +320,7 @@ module CatalogHelper
   end
 
   def random_item
-    Typhoeus::Request.get('http://eris.uky.edu/catalog/random').body
+    Typhoeus::Request.get('http://kdl.kyvl.org/catalog/random').body
   end
 
   def json_get(url)

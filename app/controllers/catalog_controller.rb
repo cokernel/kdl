@@ -188,12 +188,12 @@ class CatalogController < ApplicationController
         @document['cal_title'] = @document['source_s'].first #CGI::escape @document['source_s'].first
         @document['cal_year'] = @document['full_date_s'].first.sub(/^(\d+)-\d+.*/, '\1')
         @document['cal_month'] = @document['full_date_s'].first.sub(/^\d+-(\d+).*/, '\1')
-        @document['url'] = 'http://eris.uky.edu/cal/first.php?title=' + CGI::escape(@document['cal_title'])
+        @document['url'] = 'http://kdl.kyvl.org/cal/first.php?title=' + CGI::escape(@document['cal_title'])
       end
     else
       @extra_info = {}
       if params.has_key?(:f) and params[:f].has_key?(:format) and params[:f][:format].include? "newspapers"
-        @extra_info['url'] = 'http://eris.uky.edu/cal/first.php'
+        @extra_info['url'] = 'http://kdl.kyvl.org/cal/first.php'
         if params[:f].has_key?(:source_s)
           @extra_info['cal_title'] = params[:f][:source_s].first
           @extra_info['url'] += '?' + 'title=' + CGI::escape(@extra_info['cal_title'])
