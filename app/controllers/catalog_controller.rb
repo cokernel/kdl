@@ -217,6 +217,9 @@ class CatalogController < ApplicationController
       @pages = @issue_response.docs.paginate :per_page => 1, :page => seq
       @thumbs = @issue_response.docs.inject [] do |thumbs, page|
         if page.has_key? :thumbnail_url_s
+          if thumbs.nil?
+            thumbs = []
+          end
           thumbs << page[:thumbnail_url_s].first
         end
       end
