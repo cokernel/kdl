@@ -37,8 +37,8 @@ Blacklight.configure(:shared) do |config|
     :author => "author_display",
     :creator => "author_display",
     :contributor => "contributor_s",
-    :publisher => "repository_facet",
-    :date => "full_date_s",
+    :publisher => "repository_display",
+    :date => "pub_date", #"full_date_s",
     :format => "format",
     :type => "type_display",
     :coverage => "coverage_s",
@@ -47,7 +47,7 @@ Blacklight.configure(:shared) do |config|
     :description => "description_display",
     :subject => "subject_topic_facet",
     :identifier => "id",
-    :language => "language_facet"
+    :language => "language_display"
   )
         
   
@@ -541,8 +541,8 @@ Blacklight.configure(:shared) do |config|
   config[:oai] = {
     :provider => {
       :repository_name => 'Kentucky Digital Library',
-      :repository_url => 'http://eris.uky.edu/catalog/oai',
-      :record_prefix => 'eris.uky.edu',
+      :repository_url => 'http://kdl.kyvl.org/catalog/oai',
+      :record_prefix => 'kdl.kyvl.org',
       :admin_email => 'm.slone@uky.edu'
     },
     :document => {
