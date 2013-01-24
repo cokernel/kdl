@@ -5,6 +5,12 @@ class CatalogController < ApplicationController
 
   include Blacklight::SolrHelper
 
+  def update
+    search_session
+    session[:search][:counter] = params[:counter]
+    redirect_to :action => "show"
+  end
+
   def max_per_page
     1500
   end
