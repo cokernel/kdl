@@ -26,5 +26,6 @@ p { padding-left: 2em; }
 
 .oh_link {
   text-align: center;
-  margin-top: 0.5em;
+  margin-top: 0em;
+  padding-left: 0em;
 }
