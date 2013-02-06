@@ -47,7 +47,9 @@ Blacklight.configure(:shared) do |config|
     :description => "description_display",
     :subject => "subject_topic_facet",
     :identifier => "id",
-    :language => "language_display"
+    :language => "language_display",
+    :reference_audio => "reference_audio_url_s",
+    :relation => "reference_image_url_s"
   )
         
   
