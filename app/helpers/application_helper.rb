@@ -4,19 +4,47 @@ module ApplicationHelper
     'Kentucky Digital Library'
   end
 
+  def truncate(string, options = {})
+    if not(options.has_key?(:length)) or string.length < options[:length]
+      string
+    elsif not(options.has_key?(:separator))
+      string[0,options[:length]] + '...'
+    else
+      words = []
+      len = 0
+      string.split(options[:separator]).each do |word|
+        break if len + word.length + options[:separator].length > options[:length]
+        words << word
+        len += word.length + options[:separator].length
+      end
+      words.join(options[:separator]) + ' ...'
+    end
+  end
+
+  def render_document_index_label doc, opts
+    label = nil
+    label ||= doc.get(opts[:label]) if opts[:label].instance_of? Symbol
+    label ||= opts[:label] if opts[:label].instance_of? String
+    label ||= opts[:label].call(doc, opts) if opts[:label].instance_of? Proc
+    label ||= doc.id
+    truncate(label, :length => 55, :separator => ' ')
+  end
+
   def document_heading
     if @document.has_key? 'finding_aid_url_s' and @document.has_key? 'pub_date'
-      [
+      heading = [
         @document[Blacklight.config[:show][:heading]],
         @document['pub_date'].first
       ].join(', ')
     else
-      @document[Blacklight.config[:show][:heading]]
+      heading = @document[Blacklight.config[:show][:heading]]
     end
+    truncate(heading, :length => 55, :separator => ' ')
   end
 
   def document_guide_heading
-    @document[Blacklight.config[:guide][:heading]] || @document[Blacklight.config[:show][:heading]] || @document[:id]
+    heading = @document[Blacklight.config[:guide][:heading]] || @document[Blacklight.config[:show][:heading]] || @document[:id]
+    truncate(heading, :length => 55, :separator => ' ')
   end
 
   def document_guide_subheading
