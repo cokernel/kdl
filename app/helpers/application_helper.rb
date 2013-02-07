@@ -27,7 +27,7 @@ module ApplicationHelper
     label ||= opts[:label] if opts[:label].instance_of? String
     label ||= opts[:label].call(doc, opts) if opts[:label].instance_of? Proc
     label ||= doc.id
-    truncate(label, :length => 55, :separator => ' ')
+    truncate(label, :length => 110, :separator => ' ')
   end
 
   def document_heading
@@ -39,12 +39,10 @@ module ApplicationHelper
     else
       heading = @document[Blacklight.config[:show][:heading]]
     end
-    truncate(heading, :length => 55, :separator => ' ')
   end
 
   def document_guide_heading
     heading = @document[Blacklight.config[:guide][:heading]] || @document[Blacklight.config[:show][:heading]] || @document[:id]
-    truncate(heading, :length => 55, :separator => ' ')
   end
 
   def document_guide_subheading
