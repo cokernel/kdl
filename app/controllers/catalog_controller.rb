@@ -382,7 +382,7 @@ class CatalogController < ApplicationController
     ### Require University of Kentucky.
     solr_parameters[:fq] ||= []
     solr_parameters[:fq] << "{!raw f=repository_facet}University of Kentucky"
-    solr_parameters[:fq] << "(format:newspapers AND title_t:'Kentucky' AND title_t:'kernel') OR (*:* NOT(format:newspapers))"
+    solr_parameters[:fq] << "(format:newspapers AND title_t:'Kentucky' AND title_t:'kernel') OR (format:newspapers AND title_t:'Blue-Tail' AND title_t:'Fly') OR (*:* NOT(format:newspapers))"
 
     return solr_parameters
     
