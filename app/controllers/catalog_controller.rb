@@ -192,8 +192,10 @@ class CatalogController < ApplicationController
     if @document 
       if @document['format'] == 'newspapers' #and @document.has_key?('full_date_s')
         @document['cal_title'] = @document['source_s'].first #CGI::escape @document['source_s'].first
-        @document['cal_year'] = @document['full_date_s'].first.sub(/^(\d+)-\d+.*/, '\1')
-        @document['cal_month'] = @document['full_date_s'].first.sub(/^\d+-(\d+).*/, '\1')
+        if @document['full_date_s'] and @document['full_date_s'].first.strip =~ /^\d\d\d\d-\d\d-\d\d$/
+          @document['cal_year'] = @document['full_date_s'].first.sub(/^(\d+)-\d+.*/, '\1')
+          @document['cal_month'] = @document['full_date_s'].first.sub(/^\d+-(\d+).*/, '\1')
+        end
         @document['url'] = 'http://kdl.kyvl.org/cal/first.php?title=' + CGI::escape(@document['cal_title'])
       end
     else
