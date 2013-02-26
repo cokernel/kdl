@@ -23,7 +23,7 @@ module CatalogHelper
 
   def container_type(did, index)
     container_type = did.container_types[index]
-    if container_type == 'othertype'
+    if container_type == 'othertype' or container_type.nil? or container_type == ''
       container_type = did.container_labels[index]
     end
     container_type
