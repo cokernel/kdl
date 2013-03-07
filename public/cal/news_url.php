@@ -73,7 +73,7 @@ function get_solr_result($us_options) {
 function get_url($hash) {
   $config = config();
   $id = $hash['facet_counts']['facet_fields'][$config['id_field']][0];
-  $url = 'http://eris.uky.edu/catalog/' . $id;
+  $url = 'http://kdl.kyvl.org/catalog/' . $id;
   return $url;
 }
 
