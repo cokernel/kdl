@@ -186,7 +186,7 @@ form.sort {
 /* ExploreUK special CSS */
 .yui-u .util_link,
 .yui-u .util_link a {
-  color: white;
+  /* color: white; */
 }
 .home_logo {
   border: 0px;
