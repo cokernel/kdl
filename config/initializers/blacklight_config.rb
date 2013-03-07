@@ -33,7 +33,7 @@ Blacklight.configure(:shared) do |config|
   # and Blacklight::Solr::Document#to_semantic_values
   # Recommendation: Use field names from Dublin Core
   SolrDocument.field_semantics.merge!(    
-    :title => "title_guide_display",
+    :title => "title_display",
     :author => "author_display",
     :creator => "author_display",
     :contributor => "contributor_s",
