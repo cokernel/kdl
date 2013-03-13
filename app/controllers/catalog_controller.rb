@@ -189,25 +189,23 @@ class CatalogController < ApplicationController
   end
 
   def add_cal_info
+    @calendar = {}
     if @document 
-      if @document['format'] == 'newspapers' #and @document.has_key?('full_date_s')
-        @document['cal_title'] = @document['source_s'].first #CGI::escape @document['source_s'].first
+      if @document['format'] == 'newspapers' 
+        @calendar['cal_title'] = @document['source_s'].first 
         if @document['full_date_s'] and @document['full_date_s'].first.strip =~ /^\d\d\d\d-\d\d-\d\d$/
-          @document['cal_year'] = @document['full_date_s'].first.sub(/^(\d+)-\d+.*/, '\1')
-          @document['cal_month'] = @document['full_date_s'].first.sub(/^\d+-(\d+).*/, '\1')
+          @calendar['cal_year'] = @document['full_date_s'].first.sub(/^(\d+)-\d+.*/, '\1')
+          @calendar['cal_month'] = @document['full_date_s'].first.sub(/^\d+-(\d+).*/, '\1')
         end
-        @document['url'] = 'http://kdl.kyvl.org/cal/first.php?title=' + CGI::escape(@document['cal_title'])
+        @calendar['url'] = 'http://kdl.kyvl.org/cal/first.php?title=' + CGI::escape(@calendar['cal_title'])
       end
     else
-      @extra_info = {}
       if params.has_key?(:f) and params[:f].has_key?(:format) and params[:f][:format].include? "newspapers"
-        @extra_info['url'] = 'http://kdl.kyvl.org/cal/first.php'
+        @calendar['url'] = 'http://kdl.kyvl.org/cal/first.php'
         if params[:f].has_key?(:source_s)
-          @extra_info['cal_title'] = params[:f][:source_s].first
-          @extra_info['url'] += '?' + 'title=' + CGI::escape(@extra_info['cal_title'])
+          @calendar['cal_title'] = params[:f][:source_s].first
+          @calendar['url'] += '?' + 'title=' + CGI::escape(@calendar['cal_title'])
         end
-        #@extra_info['cal_year'] = '1937'
-        #extra_info['cal_month'] = '10'
       end
     end
   end

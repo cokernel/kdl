@@ -48,7 +48,7 @@ var Calendar = {
     // set up Datepicker
     jQuery('#' + this.id).datepicker({
       showOn: 'button',
-      buttonImage: '/images/calendar.gif',
+      buttonImage: '/images/calendar_small.png',
       buttonImageOnly: true,
       changeMonth: true,
       changeYear: true,

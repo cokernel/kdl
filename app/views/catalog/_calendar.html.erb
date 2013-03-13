@@ -1,0 +1,37 @@
+<%- if @calendar.has_key?('url') -%>
+<%- cal = cal_info(@calendar['url']) -%>
+<% top_sidebar_items << capture do %>
+<div class="front_nav">
+<input type="hidden" id="datepicker" name="datepicker">
+<script type="text/javascript">
+$(document).ready(function() {
+  Calendar.init({
+    id: 'datepicker',
+    <%- if @calendar.has_key?('cal_title') -%>
+    title: '<%= @calendar['cal_title'] %>',
+    <%- end -%>
+    yearRange: '<%= cal['cal_year'] %>:+0Y',
+    <%- if @calendar.has_key?('cal_year') and @calendar.has_key?('cal_month') -%>
+    minDate: '<%= @calendar['cal_year'] %>-<%= @calendar['cal_month'] %>-01',
+    <%- else -%>
+    minDate: '<%= cal['cal_year'] %>-<%= cal['cal_month'] %>-01',
+    <%- end -%>
+    <%- if @calendar.has_key?('cal_year') -%>
+    year: <%= @calendar['cal_year'] %>,
+    <%- else -%>
+    year: <%= cal['cal_year'] %>,
+    <%- end -%>
+    <%- if @calendar.has_key?('cal_month') -%>
+    month: <%= @calendar['cal_month'] %>
+    <%- else -%>
+    month: <%= cal['cal_month'] %>
+    <%- end -%>
+  });
+  $('.datepicker').click(function() {
+    $('#datepicker').datepicker('show');
+  });
+});
+</script>
+</div>
+<% end %>
+<%- end -%>
