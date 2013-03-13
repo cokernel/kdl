@@ -194,10 +194,10 @@ form.sort {
   margin: 0px;
 }
 
-#doc, #doc2, #doc3, #doc4 {background: #fff url('../images/bg.png') repeat-x top left; border-bottom: 2px solid #555; margin: 0px auto;}
+#doc, #doc2, #doc3, #doc4 {border-bottom: 2px solid #555; margin: 0px auto;}
 
 body {
-  background: url('../images/bg.png') repeat-x top left; font: 0.7em Verdana, "Lucida Grande", "Lucida San Unicode", "Arial Unicode MS", Arial, sans-serif; 
+  font: 0.7em Verdana, "Lucida Grande", "Lucida San Unicode", "Arial Unicode MS", Arial, sans-serif; 
   line-height: 1.4; 
   color: #333;
   margin: 0px;
@@ -581,3 +581,7 @@ h2.guide_subheading {
   margin-left: 1em;
 }
 
+/* image links should not have "underline" markings */
+a.image_link {
+  border-bottom: 1px solid white;
+}
