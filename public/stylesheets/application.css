@@ -562,7 +562,18 @@ h2.guide_subheading {
   font: 0.7em Verdana, "Lucida Grande", "Lucida San Unicode", "Arial Unicode MS", Arial, sans-serif;
 }
 
+.sidebar img {
+  margin-left: 1em;
+}
+
 /* repo profile */
 .repo_profile li {
   list-style:none;
+}
+
+/* startOverLink */
+#startOverLink {
+  display: inline;
+  position: static;
+  margin-left: 1em;
 }

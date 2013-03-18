@@ -46,6 +46,7 @@ class CatalogController < ApplicationController
 
   def viewer
     @response, @document = get_solr_response_for_doc_id
+    add_cal_info
     generate_pagination
     if @document.has_key?('finding_aid_url_s') and @document.has_key?('unpaged_display')
       redirect_to_guide_or_first_page
@@ -64,6 +65,7 @@ class CatalogController < ApplicationController
 
   def text 
     @response, @document = get_solr_response_for_doc_id
+    add_call_info
     begin
       text_to_check = @document['text_s'].first
     rescue
@@ -79,10 +81,12 @@ class CatalogController < ApplicationController
     id = params[:id]
     response, @document_summary = get_solr_response_for_doc_id id
     @response, @document = get_solr_response_for_doc_id id
+    add_cal_info
   end
 
   def guide
     @response, @document = get_solr_response_for_doc_id
+    add_cal_info
     if @document.has_key?('finding_aid_url_s')
       ead_url = @document['finding_aid_url_s'].first
       ead_xml = Typhoeus::Request.get(ead_url).body
@@ -157,6 +161,7 @@ class CatalogController < ApplicationController
 
   def show
     @response, @document = get_solr_response_for_doc_id
+    add_cal_info
     generate_pagination
 
     if @document.has_key?('finding_aid_url_s') and @document.has_key?('unpaged_display')
@@ -195,25 +200,23 @@ class CatalogController < ApplicationController
   end
 
   def add_cal_info
+    @calendar = {}
     if @document 
-      if @document['format'] == 'newspapers' #and @document.has_key?('full_date_s')
-        @document['cal_title'] = @document['source_s'].first #CGI::escape @document['source_s'].first
+      if @document['format'] == 'newspapers' 
+        @calendar['cal_title'] = @document['source_s'].first 
         if @document['full_date_s'] and @document['full_date_s'].first.strip =~ /^\d\d\d\d-\d\d-\d\d$/
-          @document['cal_year'] = @document['full_date_s'].first.sub(/^(\d+)-\d+.*/, '\1')
-          @document['cal_month'] = @document['full_date_s'].first.sub(/^\d+-(\d+).*/, '\1')
+          @calendar['cal_year'] = @document['full_date_s'].first.sub(/^(\d+)-\d+.*/, '\1')
+          @calendar['cal_month'] = @document['full_date_s'].first.sub(/^\d+-(\d+).*/, '\1')
         end
-        @document['url'] = 'http://kdl.kyvl.org/cal/first.php?title=' + CGI::escape(@document['cal_title'])
+        @calendar['url'] = 'http://exploreuk.uky.edu/cal/first.php?title=' + CGI::escape(@calendar['cal_title'])
       end
     else
-      @extra_info = {}
       if params.has_key?(:f) and params[:f].has_key?(:format) and params[:f][:format].include? "newspapers"
-        @extra_info['url'] = 'http://eris.uky.edu/cal/first.php'
+        @calendar['url'] = 'http://exploreuk.uky.edu/cal/first.php'
         if params[:f].has_key?(:source_s)
-          @extra_info['cal_title'] = params[:f][:source_s].first
-          @extra_info['url'] += '?' + 'title=' + CGI::escape(@extra_info['cal_title'])
+          @calendar['cal_title'] = params[:f][:source_s].first
+          @calendar['url'] += '?' + 'title=' + CGI::escape(@calendar['cal_title'])
         end
-        #@extra_info['cal_year'] = '1937'
-        #extra_info['cal_month'] = '10'
       end
     end
   end

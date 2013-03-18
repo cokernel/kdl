@@ -186,4 +186,8 @@ module ApplicationHelper
                    switch_creator_prefix_and_redirect(
                      string))
   end
+
+  def top_sidebar_items
+    @top_sidebar_items ||= []
+  end
 end
