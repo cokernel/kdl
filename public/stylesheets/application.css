@@ -114,6 +114,10 @@ ol.dsc_subseries li {
   margin-bottom: auto;
 }
 
+.contributors-second {
+  padding-top: 30px;
+}
+
 /* Search */
 form.sort {
   visibility: hidden;

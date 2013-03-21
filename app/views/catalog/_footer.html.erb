@@ -1,15 +1,11 @@
 <% @footer = capture do %>
 
 <ul class="bottom_nav">
-<li><a href="/pages/about/">About</a></li>
+<li><a class="lightboxLink" href="/pages/about/">About</a></li>
 </ul>
 
 <p>
 Hosted by the University of Kentucky
-</p>
-
-<p>
-<a href="/pages/about/#terms_of_use">Terms of Use</a>
 </p>
 
 <p>
@@ -22,26 +18,42 @@ Contributors:
 
 <ul class="contributors">
 <li>
-  <%= link_to image_tag("/images/contributors/footercpe.gif",
+  <%= link_to image_tag("/images/contributors/kyvl.png",
+                        :alt => 'Kentucky Virtual Library',
+                        :title => 'Kentucky Virtual Library'),
+              'http://www.kyvl.org' %>
+</li>
+
+<li>
+  <%= link_to image_tag("/images/contributors/footercpe.png",
                         :alt => 'Kentucky Council on Postsecondary Education', 
                         :title => 'Kentucky Council on Postsecondary Education'), 
               'http://cpe.ky.gov/' %>
 </li>
 
 <li>
-  <%= link_to image_tag("/images/contributors/imls_logo_bw.gif",
+  <%= link_to image_tag("/images/contributors/imls.png",
                         :alt => 'Institute of Museum and Library Services',
                         :title => 'Institute of Museum and Library Services'),
               'http://www.imls.gov/' %>
 </li>
 
 <li>
-  <%= link_to image_tag("/images/contributors/nehseal.gif",
+  <%= link_to image_tag("/images/contributors/nehseal.png",
                         :alt => 'National Endowment for the Humanities',
                         :title => 'National Endowment for the Humanities'),
               'http://www.neh.gov/' %>
 </li>
 
+<li>
+  <%= link_to image_tag("/images/contributors/nhprc.png",
+                        :alt => 'The U.S. National Archives and Records Administration',
+                        :title => 'The U.S. National Archives and Records Administration'),
+              'http://www.archives.gov/' %>
+</li>
+</ul>
+
+<ul class="contributors contributors-second">
 <li>
   <%= link_to image_tag("/images/contributors/dpla.png",
                         :alt => 'Digital Public Library of America',
