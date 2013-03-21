@@ -358,20 +358,23 @@ Blacklight.configure(:shared) do |config|
     'Centre College' => {
       'bucket' => [
         'Centre College',
+        'Grace Doherty Library',
         'Special Collections',
       ],
       'phone' => '(859) 238-5274',
       'email' => 'bob.glass@centre.edu',
-      'url' => '',
+      'url' => 'http://www.centre.edu/web/library/sc/spec_coll.html',
+      'abstract' => "Located in the Grace Doherty Library, Special Collections includes the rare book collection and the Centre College archives. The rare book collection spans print material from incunabula to current publications. The archival collection contains primarily college related items, including documents, trustee and faculty minutes, correspondence, photographs, and printed material spanning the college's history from 1819 to the present.",
     },
     'Eastern Kentucky University' => {
       'bucket' => [
         'Eastern Kentucky University',
-        'University Archives',
+        'Special Collections and Archives',
       ],
       'phone' => '(859) 622-1792',
       'email' => 'archives.library@eku.edu',
-      'url' => '',
+      'url' => 'http://archives.eku.edu/',
+      'abstract' => "Special Collections and Archives collects, preserves and makes discoverable the historical resources of Eastern Kentucky University, its surrounding region and the Commonwealth of Kentucky.",
     },
     'Georgetown College' => {
       'bucket' => [
@@ -388,6 +391,15 @@ Blacklight.configure(:shared) do |config|
       'phone' => '(502) 261-8290',
       'email' => 'bethw@jeffersontownky.com',
       'url' => 'http://www.jeffersontownky.com/Museum%20Historic.html',
+    },
+    'Jessamine County Public Library' => {
+      'bucket' => [
+        'Jessamine County Public Library',
+      ],
+      'phone' => '(859) 885-3523',
+      'email' => 'informationservices@jesspublib.org',
+      'url' => 'http://www.jesspublib.org',
+      'abstract' => "The mission of the Jessamine County Public Library in Nicholasville, Kentucky is to enrich the citizens of Jessamine County through ideas, information, and cultural opportunities.  JCPL provides a popular materials collection and a local history collection to over 49,000 residents.",
     },
     'Keeneland Racing Association' => {
       'bucket' => [
@@ -409,11 +421,9 @@ Blacklight.configure(:shared) do |config|
     'Kentucky Historical Society' => {
       'bucket' => [
         'Kentucky Historical Society',
-        '100 W. Broadway',
-        'Frankfort, KY 40601'
       ],
       'phone' => '(502) 564-1792',
-      'email' => 'jennifer.duplaga@ky.gov',
+      'email' => 'khsrefdesk@ky.gov',
       'url' => 'http://history.ky.gov/',
       'abstract' => "The Kentucky Historical Society engages people in the exploration of the commonwealth's diverse heritage. Through comprehensive and innovative services, interpretive programs and stewardship, we provide connections to the past, perspective on the present and inspiration for the future. KHS collects, preserves, conserves, interprets and shares information, memories and materials from Kentucky's past to assist those interested in exploring and preserving that heritage.",
     },
@@ -429,11 +439,12 @@ Blacklight.configure(:shared) do |config|
     'Lexington Public Library' => {
       'bucket' => [
         'Lexington Public Library',
-        'The Kentucky Room',
+        'Kentucky Room',
       ],
       'phone' => '(859) 231-5523',
-      'email' => 'icornett@lexpublib.org',
-      'url' => '',
+      'email' => 'elibrarian@lexpublib.org',
+      'url' => 'http://www.lexpublib.org/page/kentucky-room',
+      'abstract' => "Lexington Public Library’s Kentucky Room is a special collection and a reading room that houses the library's state and local history and genealogy collections. Located on the third floor of the Central Library, the Kentucky Room contains a wealth of information about Kentucky and Fayette County. The collection features books on all aspects of Kentucky, subject files on Kentucky and Lexington, county histories, family histories, local newspapers, maps, and state and local government documents. Additionally, the Kentucky Room contains many items of interest to genealogists, especially those researching Central Kentucky families. The mission of the Lexington Public Library and the Kentucky Room is to connect people, inspire ideas, and transforms lives. Our vision is a community engaged in a lifetime of discovery.",
     },
     'Louisville Free Public Library' => {
       'bucket' => [
@@ -477,15 +488,13 @@ Blacklight.configure(:shared) do |config|
       'phone' => '(502) 635-5083',
       'email' => 'research@filsonhistorical.org',
       'url' => 'http://www.filsonhistorical.org/',
-      'abstract' => "Since our founding in 1884, The Filson Historical Society’s mission has been to collect, preserve, and tell the significant stories of Kentucky and Ohio Valley history and culture. The Filson performs its mission by collecting and securing historical and cultural documents, books, objects, and art, exhibiting and interpreting our collections for the public, supporting research and study, and presenting educational programs 
-      and events.",
+      'abstract' => "Since our founding in 1884, The Filson Historical Society's mission has been to collect, preserve, and tell the significant stories of Kentucky and Ohio Valley history and culture. The Filson performs its mission by collecting and securing historical and cultural documents, books, objects, and art, exhibiting and interpreting our collections for the public, supporting research and study, and presenting educational programs and events.",
     },
     'Transylvania University' => {
       'bucket' => [
-        'Transylvania University',
-        'Special Collections and Archives',
+        'Transylvania University Special Collections and Archives',
       ],
-      'phone' => '859-246-5002', #'(859) 233-8225', # '859-246-5002',
+      'phone' => '(859) 246-5002', #'(859) 233-8225', # '859-246-5002',
       'email' => 'bjgooch@transy.edu',
       'url' => 'http://www.transy.edu/academics/library/collections.htm',
       'abstract' => "Special Collections and Archives at Transylvania University provides secure housing and specialized care for the unique and valuable research materials of the library. The department contains rare books, pamphlets, photographs, manuscripts, and the University Archives. Notable collections include the J. Winston Coleman, Jr. Kentuckiana Collection, the Clara Peck Natural History Collection. which includes Audubons's BIRDS OF AMERICA, over 5,000 volumes of books from the old Medical Library and over 1,800 handwritten medical theses. These collections provide a unique opportunity for students to use primary source materials and to study Kentucky history and the important books of Western culture. The department is located on the upper level of the library and is open to researchers by appointment Monday - Friday from 1:00 - 4:30 p.m.",
@@ -502,12 +511,12 @@ Blacklight.configure(:shared) do |config|
     },
     'University of Louisville' => {
       'bucket' => [
-        'University of Louisville',
-        'Special Collections: Photographic Archives and Rare Books ',
+        'Archives and Special Collections, University of Louisville',
       ],
       'phone' => '(502) 852-6752',
-      'email' => 'Special.Collections@louisville.edu',
-      'url' => 'http://louisville.edu/library/ekstrom/special',
+      'email' => 'archives@louisville.edu',
+      'url' => 'http://louisville.edu/library/archives',
+      'abstract' => "University of Louisville’s Archives and Special Collections collects, organizes, preserves, and makes available for research rare and unique primary and secondary source material, particularly relating to the history and cultural heritage of Louisville, Kentucky and the surrounding region, as well as serving as the official memory of the University of Louisville.",
     },
     'Western Kentucky University' => {
       'bucket' => [
