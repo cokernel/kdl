@@ -179,8 +179,12 @@ module CatalogHelper
     end
 
     begin
-      hash[:relatedmaterial] = { :title => 'Related Material', :element => ead.archdesc.descgrp.relatedmaterial }
+      hash[:relatedmaterial] = { :title => 'Related Material', :element => ead.archdesc.descgrp.relatedmaterial, :handler => 'catalog/_show_partials/_ead/relatedmaterial', :id_element => ead.archdesc.descgrp.relatedmaterial }
     rescue
+      begin
+        hash[:relatedmaterial] = { :title => 'Related Material', :element => ead.archdesc.relatedmaterial, :handler => 'catalog/_show_partials/_ead/relatedmaterial', :id_element => ead.archdesc.relatedmaterial }
+      rescue
+      end
     end
 
     hash = hash.delete_if { |key, value|
