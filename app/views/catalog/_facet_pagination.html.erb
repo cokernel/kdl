@@ -28,5 +28,6 @@
 
   <% if params[:id] == 'source_s' %>
   <%= render :partial => 'collections_browse' %>
+  <%= render 'constraints', :localized_params=>session[:search] %>
   <% end %>
 
