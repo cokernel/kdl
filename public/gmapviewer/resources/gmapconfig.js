@@ -7,6 +7,7 @@ function GMapConfig()
   // URL prefixes must be empty or end in a forward slash
   me.resources_url_prefix = "/gmapviewer/resources/";
   me.tile_url_prefix      = "/nyx.php?href=http://nyx.uky.edu/tiles/";
+  me.image_url_prefix      = "/nyx.php?href=";
 
   me.lineEnding           = '\n';
 }
