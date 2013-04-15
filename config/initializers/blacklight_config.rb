@@ -389,7 +389,7 @@ Blacklight.configure(:shared) do |config|
         'Jeffersontown Historical Museum',
       ],
       'phone' => '(502) 261-8290',
-      'email' => 'bethw@jeffersontownky.com',
+      'email' => 'bwilder@jeffersontownky.com',
       'url' => 'http://www.jeffersontownky.com/Museum%20Historic.html',
     },
     'Jessamine County Public Library' => {
