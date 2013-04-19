@@ -30,6 +30,14 @@ module ApplicationHelper
     truncate(label, :length => 110, :separator => ' ')
   end
 
+  def render_thumbnail_url
+    if @document.has_key? 'thumbnail_url_s' and @document['thumbnail_url_s'][0].length > 0
+      @document['thumbnail_url_s'][0]
+    else
+      'http://kdl.kyvl.org/images/logo.png'
+    end
+  end
+
   def document_heading
     if @document.has_key? 'finding_aid_url_s' and @document.has_key? 'pub_date'
       heading = [
