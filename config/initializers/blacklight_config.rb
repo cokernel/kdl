@@ -317,6 +317,7 @@ Blacklight.configure(:shared) do |config|
     'generic' => '/images/repos/logo_placeholder.png',
     'Appalshop Inc.' => '/images/repos/kap_logo.png',
     'Berea College' => '/images/repos/Bnewlogo.png',
+    'International Code Council' => '/images/repos/icc_logo.png',
     'Jeffersontown Historical Museum' => '/images/repos/Jeffersontown_logo.gif',
     'Keeneland Racing Association' => '/images/repos/keen_logo.png',
     'Lexington Public Library' => '/images/repos/kyl_logo.png',
@@ -383,6 +384,14 @@ Blacklight.configure(:shared) do |config|
       'phone' => '',
       'email' => '',
       'url' => '',
+    },
+    'International Code Council' => {
+      'bucket' => [
+        'Portions of this publication reproduce text, tables and/or figures from the copyrighted material owned by the International Code Council, Inc., Washington, D.C.  Reproduced with permission.  All rights reserved.',
+      ],
+      'url' => 'http://www.iccsafe.org',
+      'abstract' => 'About the International Code Council®
+      The International Code Council (ICC®), a membership association dedicated to building safety, fire prevention and energy efficiency, develops the codes and standards used to construct residential and commercial buildings, including homes and schools. The mission of ICC is to provide the highest quality codes, standards, products and services for all concerned with the safety and performance of the built environment. Most United States cities, counties and states choose the International Codes, building safety codes developed by the International Code Council. The International Codes also serve as the basis for construction of federal properties around the world, and as a reference for many nations outside the United States. The Code Council is also dedicated to innovation and sustainability and Code Council subsidiary, ICC Evaluation Service, issues Evaluation Reports for innovative products and reports of Sustainable Attributes Verification and Evaluation (SAVE). Headquarters: 500 New Jersey Avenue, NW, 6th Floor, Washington, DC 20001-2070. District Offices: Birmingham, AL; Chicago. IL; Los Angeles, CA. 1-888-422-7233.',
     },
     'Jeffersontown Historical Museum' => {
       'bucket' => [
