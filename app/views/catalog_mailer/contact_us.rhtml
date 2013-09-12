@@ -24,7 +24,7 @@ Identifier: <%= @document['id'] %>
 Location: <%= @document['container_list_s'] %>
 
 <%- end %>
-* Patron question: <%= @patron['question'] %>
+* Patron question: <%= sanitize_question(@patron['question']) %>
 
 * Patron name: <%= @patron['name'] %>
 
