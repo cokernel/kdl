@@ -30,4 +30,4 @@ Location: <%= @document['container_list_s'] %>
 
 * Email: <%= @patron['email'] %>
 
-* Phone: <%= @patron['phone'] %>
+* Phone: <%= sanitize_phone(@patron['phone']) %>
