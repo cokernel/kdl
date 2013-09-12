@@ -1,4 +1,5 @@
 class CatalogMailer < ActionMailer::Base
+  add_template_helper(CatalogMailerHelper)
   def contact_us(repo, document, patron)
     recipients repo['email']
     bcc        ['m.slone@uky.edu', 'sarah.dorpinghaus@uky.edu']
