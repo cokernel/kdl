@@ -138,7 +138,11 @@ class CatalogController < ApplicationController
                 'phone' => params[:phone],
                 'question' => params[:question],
               }
-              email = CatalogMailer.deliver_contact_us(@repo, @document, @patron)
+              if verify_recaptcha
+                email = CatalogMailer.deliver_contact_us(@repo, @document, @patron)
+              else
+                flash[:error] = 'There was an error submitting your request.'
+              end
               redirect_to :back
             else
               flash[:error] = 'You must enter a valid email address.'

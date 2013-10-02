@@ -4,9 +4,14 @@
 RAILS_GEM_VERSION = '2.3.18' unless defined? RAILS_GEM_VERSION
 
 require 'uri'
+require 'yaml'
 # Bootstrap the Rails environment, frameworks, and default configuration
 require File.join(File.dirname(__FILE__), 'boot')
 require File.join(File.dirname(__FILE__), '../vendor/plugins/blacklight/vendor/plugins/engines/boot')
+
+recaptcha_config = YAML.load_file(File.join(File.dirname(__FILE__), 'recaptcha.yml'))
+ENV['RECAPTCHA_PUBLIC_KEY'] = recaptcha_config['public_key']
+ENV['RECAPTCHA_PRIVATE_KEY'] = recaptcha_config['private_key']
 
 Rails::Initializer.run do |config|
   config.gem 'eadsax'
