@@ -4,6 +4,7 @@ tmp/**/*
 config/database.yml
 config/initializers/cookie_verification_secret.rb
 config/initializers/session_store.rb
+config/recaptcha.yml
 db/*.sql
 db/*.sql-journal
 db/*.sqlite3
