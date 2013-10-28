@@ -12,7 +12,7 @@
   <% end %>
   <% if @document_summary.has? 'source_s' %>
     <dt>Source:</dt>
-    <dd><%= document['source_s'] %></dd>
+    <dd><%= link_to document['source_s'], "/catalog?f[source_s][]=#{document['source_s']}" %></dd>
   <% end %>
   <% if @document_summary.has? 'coverage_s' %>
     <dt>Coverage:</dt>
