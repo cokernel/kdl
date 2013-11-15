@@ -327,6 +327,7 @@ Blacklight.configure(:shared) do |config|
     'University of Kentucky' => '/images/repos/kuk_logo.png',
     'The Filson Historical Society' => '/images/repos/Filson_logo.png',
     'Transylvania University' => '/images/repos/ktu_logo.png',
+    'Western Kentucky University' => '/images/repos/wku_libraries_logo.png',
   }
 
   config[:repo_default_contact] = 'DLS-L@LSV.UKY.EDU'
@@ -530,10 +531,12 @@ Blacklight.configure(:shared) do |config|
     'Western Kentucky University' => {
       'bucket' => [
         'Western Kentucky University',
+        'Manuscripts and Folklife Archives',
       ],
-      'phone' => '',
-      'email' => '',
-      'url' => '',
+      'phone' => '(270) 745-6434',
+      'email' => 'mssfa@wku.edu',
+      'url' => 'http://www.wku.edu/library/dlsc/manuscripts/index.php#about',
+      'abstract' => "<p>Western Kentucky University Libraries' Manuscripts and Folklife Archives hold over 5,000 collections consisting of letters; diaries; account books and business papers; literary papers; church, club and institutional archives; theses; political papers; architectural drawings; land grants; court records and a variety of other documents.  The material chiefly concerns Kentucky and Kentuckians, providing details about daily life in many settings and on varied levels, but also relates to local, national and international events.</p><p>Folklife Archives consist of papers and projects created by WKU Folk Studies faculty, undergraduate and graduate students about traditional and modern folk ways including folk songs, folk beliefs, regional speech patterns, ethnographic studies, occupational folklore, community surveys and vernacular architecture.  Included is a vast archive of sound recordings including interviews, oral histories, and musical performances.</p><p>To search these collections and download finding aids that describe their contents in greater detail, search <a href='http://digitalcommons.wku.edu'>TopSCHOLAR</a>, WKU's online digital repository.</p>",
     },
   }
   
