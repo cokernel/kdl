@@ -2,16 +2,8 @@ require_dependency( 'vendor/plugins/blacklight/app/controllers/catalog_controlle
 
 class CatalogController < ApplicationController
   protect_from_forgery :except => :oai
-  before_filter :downtime_notice
 
   include Blacklight::SolrHelper
-
-  def downtime_notice
-    finish = Time.parse("2013-12-28 23:59 EST")
-    if Time.now < finish
-      flash[:error] = "KDL will be down for scheduled maintenance on Saturday 2013-12-28.  We expect service to be restored by early evening.  We apologize for the inconvenience."
-    end
-  end
 
   def update
     search_session
