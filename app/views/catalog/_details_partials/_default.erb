@@ -26,4 +26,8 @@
     <dt>Metadata record:</dt>
     <dd><a href="<%= document['mets_url_display'] %>"><%= document['mets_url_display'] %></a></dd>
   <% end %>
+  <% if @document_summary.has? 'usage_display' %>
+    <dt>Rights:</dt>
+    <dd><%= document['usage_display'] %></a></dd>
+  <% end %>
 </dl>
