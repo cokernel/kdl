@@ -1,6 +1,7 @@
 require_dependency( 'vendor/plugins/blacklight/app/controllers/catalog_controller.rb')
 
 class CatalogController < ApplicationController
+  protect_from_forgery :except => :oai
 
   include Blacklight::SolrHelper
 

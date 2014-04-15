@@ -485,5 +485,17 @@ Blacklight.configure(:shared) do |config|
     :accessrestrict,
     :relatedmaterial,
   ]
+
+  config[:oai] = {
+    :provider => {
+      :repository_name => 'ExploreUK',
+      :repository_url => 'http://exploreuk.uky.edu/catalog/oai',
+      :record_prefix => 'exploreuk.uky.edu',
+      :admin_email => 'm.slone@uky.edu'
+    },
+    :document => {
+      :timestamp_field => 'timestamp'
+    }
+  }
 end
 
