@@ -273,24 +273,7 @@ module CatalogHelper
       unless base =~ /\.xml$/
         base += '.xml'
       end
-      #args = []
-      #[
-      #  :kw,
-      #  :minute,
-      #].each do |key|
-      #  if params.has_key?(key)
-      #    args << "#{key}=#{params[key]}"
-      #  end
-      #end
-      #if args.length > 0
-      #  url = [
-      #    base,
-      #    '&',
-      #    args.join('&')
-      #  ].join('')
-      #else
-      #  url = base.first
-      #end
+      base.gsub!(/^http:/, 'https:')
       URI.encode(base)
     end
   end
