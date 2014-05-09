@@ -248,6 +248,7 @@ module CatalogHelper
       unless base =~ /\.xml$/
         base += '.xml'
       end
+      base.gsub!(/^http:/, 'https:')
       URI.encode(base)
     end
   end
