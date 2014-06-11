@@ -8,9 +8,16 @@
   <% end -%>
 
   <% if component_part.scopecontent -%>
-    Scope and Contents note:
+    <h6>Scope and Content Note:</h6>
     <% component_part.scopecontent.ps.each do |paragraph| %>
       <p><%= paragraph %></p>
+    <% end -%>
+    <% if component_part.scopecontent.list -%>
+    <ul>
+    <% component_part.scopecontent.list.items.each do |item| %>
+      <li><%= item %></li>
+    <% end %>
+    </ul>
     <% end -%>
   <% end -%>
 
