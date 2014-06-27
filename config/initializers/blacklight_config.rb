@@ -203,7 +203,7 @@ Blacklight.configure(:shared) do |config|
       "relation_display"        => "Relation:",
       "language_display"        => "Language:",
       "description_display"     => "Description:",
-      "date_digitized_display"  => "Date digitized:",
+      "date_digitized_display"  => "Date uploaded:",
       "pub_date"                => "Publication date:",
       "title_display"           => "Title:",
       "title_vern_display"      => "Title:",
