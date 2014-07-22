@@ -66,7 +66,7 @@ class CatalogController < ApplicationController
 
   def text 
     @response, @document = get_solr_response_for_doc_id
-    add_call_info
+    add_cal_info
     begin
       text_to_check = @document['text_s'].first
     rescue
