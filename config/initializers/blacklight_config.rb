@@ -497,5 +497,23 @@ Blacklight.configure(:shared) do |config|
       :timestamp_field => 'timestamp'
     }
   }
+
+  config[:type_for] = {
+    'archival_material' => 'collection',
+    'collections' => 'collection',
+    'images' => 'image',
+    'maps' => 'image',
+    'oral histories' => 'sound',
+    'books' => 'text',
+    'newspapers' => 'text',
+    'minutes' => 'text',
+    'journals' => 'text',
+    'theses' => 'text',
+    'course catalogs' => 'text',
+    'athletic publications' => 'text',
+    'directories' => 'text',
+    'ledgers' => 'text',
+    'yearbooks' => ['text', 'image'],
+  }
 end
 
