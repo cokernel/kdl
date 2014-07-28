@@ -6,6 +6,10 @@
 	    <dd class="blacklight-<%= solr_fname.parameterize %>"><%= render_document_show_field_value :document => @document_summary, :field => solr_fname %></dd>
     <% end -%>
   <% end -%>
+  <% if @document_summary.has? 'format' and @document_summary.has? 'type_display' %>
+    <dt>Type:</dt>
+    <dd><%= type_for(document['format'], document['type_display']) %></dd>
+  <% end %>
   <% if @document_summary.has? 'accession_number_s' %>
     <dt>Accession number:</dt>
     <dd><%= document['accession_number_s'] %></dd>

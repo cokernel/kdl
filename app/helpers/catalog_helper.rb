@@ -2,6 +2,44 @@ require_dependency('vendor/plugins/blacklight/app/helpers/catalog_helper.rb')
 require_dependency('vendor/plugins/blacklight_ext_ead_simple/app/helpers/catalog_helper.rb')
 
 module CatalogHelper
+  # Perhaps this should be in config, or elsewhere?
+  def type_for(format, type)
+    case format
+    when 'archival material'
+      'collection'
+    when 'collections'
+      'collection'
+    when 'images'
+      'image'
+    when 'maps'
+      'image'
+    when 'oral histories'
+      'sound'
+    when 'books'
+      'text'
+    when 'newspapers'
+      'text'
+    when 'minutes'
+      'text'
+    when 'journals'
+      'text'
+    when 'theses'
+      'text'
+    when 'course catalogs'
+      'text'
+    when 'athletic publications'
+      'text'
+    when 'directories'
+      'text'
+    when 'ledgers'
+      'text'
+    when 'yearbooks'
+      'text, image'
+    else
+      type
+    end
+  end
+
   def eadsax(doc)
     if doc.has_key?('finding_aid_url_s')
       ead_url = doc['finding_aid_url_s'].first

@@ -192,11 +192,11 @@ Blacklight.configure(:shared) do |config|
       "publisher_display",
       "repository_display",
       "contributor_s",
-      "type_display",
+      #"type_display",
       "subject_topic_facet",
     ],
     :labels => {
-      "type_display"            => "Type:",
+      #"type_display"            => "Type:",
       "subject_topic_facet"     => "Subject:",
       "repository_display"      => "Repository:",
       "publisher_display"       => "Publisher:",
