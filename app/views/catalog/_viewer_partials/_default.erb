@@ -5,29 +5,13 @@
 
   <% if @document.has_key?('reference_audio_url_s') %>
     <% extra_head_content << capture do %>
-<script src="/javascripts/flowplayer.min.js" type="text/javascript"></script>
-<script src="/javascripts/flowplayer.ipad.min.js" type="text/javascript"></script>
+<script src="/javascripts/mediaelement-and-player.min.js" type="text/javascript"></script>
+<link rel="stylesheet" href="/stylesheets/mediaelementplayer.css" />
     <% end %>
 
-<div id="audio_player">
-  <a id="mb" href="<%= @document['reference_audio_url_s'] %>" style="display:block; width: 605px; height: 30px;"></a>
-</div>
+<audio src="<%= @document['reference_audio_url_s'] %>" style="display:block; width: 605px; height: 30px;"></audio>
 <script type="text/javascript">
-$f("mb", "http://releases.flowplayer.org/swf/flowplayer-3.2.15.swf", {
-  plugins: {
-    controls: {
-      fullscreen: false,
-      height: 30,
-      autoHide: false
-    }
-  },
-  clip: {
-    autoPlay: false,
-    onBeforeBegin: function() {
-      $f("player").close();
-    }
-  }
-});
+$('audio').mediaelementplayer();
 </script>
   <% end %>
 
