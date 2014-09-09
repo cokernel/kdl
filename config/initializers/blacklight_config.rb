@@ -386,6 +386,16 @@ Blacklight.configure(:shared) do |config|
       'email' => '',
       'url' => '',
     },
+    'Grayson County Historical Society' => {
+      'bucket' => [
+        'The Grayson County Historical Society',
+        '122 East Main Street',
+        'Leitchfield, KY 42754',
+      ],
+      'phone' => '(270) 230-8989',
+      'email' => 'info@graysoncokyhistsoc.org',
+      'url' => 'http://www.graysoncokyhistsoc.org/',
+    },
     'International Code Council' => {
       'bucket' => [
         'Portions of this publication reproduce text, tables and/or figures from the copyrighted material owned by the International Code Council, Inc., Washington, D.C.  Reproduced with permission.  All rights reserved.',
