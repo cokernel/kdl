@@ -1,4 +1,0 @@
-<%= IO.read(File.join(
-      'public',
-      'statistics',
-      'visitors_overview.xml')) %>

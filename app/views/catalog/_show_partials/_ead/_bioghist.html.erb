@@ -1,8 +1,0 @@
-<h2 id="<%= ead_id(id_element) %>"><%= title %></h2>
-<% element.ps.each do |paragraph| -%>
-  <p><%= paragraph %></p>
-<% end -%>
-
-<%= render :partial => 'catalog/_show_partials/_ead/chronlist',
-    :locals => {:chronlist => element.chronlist} if element.chronlist  -%>
-

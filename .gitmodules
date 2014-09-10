@@ -1,6 +1,0 @@
-[submodule "vendor/plugins/blacklight_ext_ead_simple"]
-	path = vendor/plugins/blacklight_ext_ead_simple
-	url = git://github.com/jronallo/blacklight_ext_ead_simple.git
-[submodule "vendor/plugins/blacklight_range_limit"]
-	path = vendor/plugins/blacklight_range_limit
-	url = git@github.com:cokernel/blacklight_range_limit.git

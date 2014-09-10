@@ -1,7 +1,0 @@
-<% if @pages and @pages.total_pages > 1 %>
-  <div class="pagination">
-    <h2>Results navigation</h2>
-      <%= will_paginate @pages, :param_name => 'seq', :page_links => false, :container => false, :renderer => KDL::LinkRenderer %>
-      <%= will_paginate @pages, :param_name => 'seq', :next_label => '', :previous_label => '', :class => "page_links", :renderer => KDL::LinkRenderer %>
-  </div>
-<% end %>
