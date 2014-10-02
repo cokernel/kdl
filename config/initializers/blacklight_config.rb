@@ -480,7 +480,7 @@ Blacklight.configure(:shared) do |config|
         'Special Collections Department',
       ],
       'phone' => '(606) 783-2829',
-      'email' => 'dj.baker@moreheadstate.edu',
+      'email' => 'library@moreheadstate.edu',
       'url' => '',
     },
     'Murray State University' => {
