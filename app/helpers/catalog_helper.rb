@@ -260,8 +260,17 @@ module CatalogHelper
   end
 
   def alto_word_coordinates(document)
-    if document.has_key? 'coordinates_s'
-      json = JSON.parse(document['coordinates_s'][0])
+    key_candidates = [
+      'coordinates_s',
+      'coordinates_display',
+    ]
+
+    keys = key_candidates.select do |candidate|
+      document.has_key? candidate
+    end
+
+    if keys.count > 0
+      json = JSON.parse(document[keys[0]][0])
       if session[:search] and session[:search][:q]
         words = session[:search][:q].downcase.split(/\s+/)
         ret   = Array.new
