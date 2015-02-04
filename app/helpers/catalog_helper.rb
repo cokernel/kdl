@@ -171,8 +171,12 @@ module CatalogHelper
     end
 
     begin
-      hash[:userestrict] = { :title => 'User Restrictions', :element => ead.archdesc.descgrp.userestrict }
+      hash[:descgrpestrict] = { :title => 'User Restrictions', :element => ead.archdesc.descgrpestrict, :handler => 'catalog/_show_partials/_ead/descgrpestrict', :id_element => ead.archdesc.descgrpestrict }
     rescue
+      begin
+        hash[:userestrict] = { :title => 'User Restrictions', :element => ead.archdesc.userestrict, :handler => 'catalog/_show_partials/_ead/userestrict', :id_element => ead.archdesc.userestrict }
+      rescue
+      end
     end
 
     begin
