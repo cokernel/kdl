@@ -330,7 +330,7 @@ Blacklight.configure(:shared) do |config|
     'Western Kentucky University' => '/images/repos/wku_libraries_logo.png',
   }
 
-  config[:repo_default_contact] = 'DLS-L@LSV.UKY.EDU'
+  config[:repo_default_contact] = 'EXPLOREUK-REF@LSV.UKY.EDU'
   config[:repo_contact] = {
     'Appalshop Inc.' => {
       'bucket' => [
