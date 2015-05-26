@@ -289,6 +289,8 @@ module CatalogHelper
       else
         return ''
       end
+    else
+      return ''
     end
   end
 
