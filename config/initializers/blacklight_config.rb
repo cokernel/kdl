@@ -35,8 +35,27 @@ Blacklight.configure(:shared) do |config|
   SolrDocument.field_semantics.merge!(    
     :title => "title_display",
     :author => "author_display",
-    :language => "language_facet"  
+    :creator => "author_display",
+    :contributor => "contributor_s",
+    :publisher => "repository_display",
+    :date => "pub_date", #"full_date_s",
+    :format => "format",
+    :type => "type_display",
+    :coverage => "coverage_s",
+    :source => "source_s",
+    :rights => "usage_display",
+    :description => "description_display",
+    :subject => "subject_topic_facet",
+    :identifier => "id",
+    :language => "language_display",
+    :reference_audio => "reference_audio_url_s",
+    :relation => "reference_image_url_s"
   )
+  #SolrDocument.field_semantics.merge!(    
+  #  :title => "title_display",
+  #  :author => "author_display",
+  #  :language => "language_facet"  
+  #)
         
   
   ##############################
