@@ -5,7 +5,7 @@
 #  * date              /^\d{4}-\d{2}-\d{2}$/
 #  * title             string
 #
-# Returns the URL of the given issue of
+# Returns the (erisian) URL of the given issue of
 # the given newspaper.
 
 function bad_request() {
@@ -40,18 +40,10 @@ function config($extra_options = array()) {
 function get_solr_url($params) {
   $config = config();
   foreach ($params as $key => $value) {
-    if ($key === 'fq') {
-      $values = array();
-      foreach ($params[$key] as $item) {
-        $values[] = $key . '=' . urlencode($item);
-      }
-      $params[$key] = $key . '=' . implode('&', $values);
-    }
-    else {
-      $params[$key] = $key . '=' .  urlencode($value);
-    }
+    $params[$key] = $key . '=' .  urlencode($value);
   }
   $url = 'http://' . $config['host'] . '/solr/select?' . implode('&', $params);
+  $url = str_replace('__FQ2__', 'fq', $url);
   return $url;
 }
 
@@ -66,12 +58,8 @@ function get_params($us_options) {
     'rows' => '0',
   );
   
-  $params['fq'] = array(
-    '{!raw f=' . $config['title_field'] . '}' . $options['title'],
-    "{!raw f=repository_facet}University of Kentucky",
-    "(format:newspapers AND title_t:'Kentucky' AND title_t:'kernel') OR (format:newspapers AND title_t:'Blue-Tail' AND title_t:'Fly')",
-    '{!raw f=' . $config['date_field'] . '}' . $options['date'],
-  );
+  $params['fq'] = '{!raw f=' . $config['title_field'] . '}' . $options['title'];
+  $params['__FQ2__'] = '{!raw f=' . $config['date_field'] . '}' . $options['date'];
 
   return $params;
 }
@@ -85,7 +73,7 @@ function get_solr_result($us_options) {
 function get_url($hash) {
   $config = config();
   $id = $hash['facet_counts']['facet_fields'][$config['id_field']][0];
-  $url = 'http://exploreuk.uky.edu/catalog/' . $id;
+  $url = 'http://kdl.kyvl.org/catalog/' . $id;
   return $url;
 }
 

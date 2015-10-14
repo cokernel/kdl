@@ -37,16 +37,7 @@ function config($extra_options = array()) {
 function get_solr_url($params) {
   $config = config();
   foreach ($params as $key => $value) {
-    if ($key === 'fq') {
-      $values = array();
-      foreach ($params[$key] as $item) {
-        $values[] = $key . '=' . urlencode($item);
-      }
-      $params[$key] = $key . '=' . implode('&', $values);
-    }
-    else {
-      $params[$key] = $key . '=' .  urlencode($value);
-    }
+    $params[$key] = $key . '=' .  urlencode($value);
   }
   $url = 'http://' . $config['host'] . '/solr/select?' . implode('&', $params);
   return $url;
@@ -65,17 +56,7 @@ function get_params($us_options) {
   );
   
   if (isset($options['title'])) {
-    $params['fq'] = array(
-      '{!raw f=' . $config['title_field'] . '}' . $options['title'],
-      "{!raw f=repository_facet}University of Kentucky",
-      "(format:newspapers AND title_t:'Kentucky' AND title_t:'kernel') OR (format:newspapers AND title_t:'Blue-Tail' AND title_t:'Fly')",
-    );
-  }
-  else {
-    $params['fq'] = array(
-      "{!raw f=repository_facet}University of Kentucky",
-      "(format:newspapers AND title_t:'Kentucky' AND title_t:'kernel') OR (format:newspapers AND title_t:'Blue-Tail' AND title_t:'Fly')",
-    );
+    $params['fq'] = '{!raw f=' . $config['title_field'] . '}' . $options['title'];
   }
 
   return $params;
