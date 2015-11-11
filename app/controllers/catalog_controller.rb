@@ -368,7 +368,7 @@ class CatalogController < ApplicationController
       solr_parameters[:rows] = params[:per_page] unless params[:per_page].blank?
       unless solr_parameters[:page].blank?
         if solr_parameters[:rows].blank?
-          raise Exceptiobn.new("To use pagination when no :per_page is supplied in the URL, :rows must be configured in blacklight_config default_solr_params")
+          raise Exception.new("To use pagination when no :per_page is supplied in the URL, :rows must be configured in blacklight_config default_solr_params")
         end
         page = solr_parameters.delete(:page)
         #if extra_controller_params.has_key?(:sp) and extra_controller_params[:sp] == 'sp'
