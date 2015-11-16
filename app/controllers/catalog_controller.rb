@@ -392,7 +392,22 @@ class CatalogController < ApplicationController
     ### Require University of Kentucky.
     solr_parameters[:fq] ||= []
     solr_parameters[:fq] << "{!raw f=repository_facet}University of Kentucky"
-    solr_parameters[:fq] << "(format:newspapers AND title_t:'Kentucky' AND title_t:'kernel') OR (format:newspapers AND title_t:'Blue-Tail' AND title_t:'Fly') OR (*:* NOT(format:newspapers))"
+    titles = [
+      'blue-tail fly',
+      'idea',
+      'kentucky kernel',
+      'state college cadet',
+    ]
+    newspapers = titles.collect {|title|
+      [
+        '(format:newspapers AND ',
+        title.split(/\s+/).collect {|word|
+          "title_t:'#{word}'"
+        }.join(' AND '),
+        ')',
+      ].join('')
+    }.join(' OR ')
+    solr_parameters[:fq] << "#{newspapers} OR (*:* NOT(format:newspapers))"
 
     return solr_parameters
     
