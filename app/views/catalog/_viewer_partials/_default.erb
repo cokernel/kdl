@@ -5,8 +5,8 @@
 
   <% if @document.has_key?('reference_video_url_s') %>
     <% extra_head_content << capture do %>
-<script src="/test/javascripts/mediaelement-and-player.min.js" type="text/javascript"></script>
-<link rel="stylesheet" href="/test/stylesheets/mediaelementplayer.css" />
+<script src="/javascripts/mediaelement-and-player.min.js" type="text/javascript"></script>
+<link rel="stylesheet" href="/stylesheets/mediaelementplayer.css" />
     <% end %>
 
 <video src="<%= @document['reference_video_url_s'] %>" width="605" height="454" style="display:block;"></video>
