@@ -149,11 +149,6 @@ form.sort {
   font-weight: bold;
 }
 
-/* Bookmarking control */
-.bookmarking_control {
-  float: right;
-}
-
 /* thumbnails */
 .picture {
     margin-right: 0.5em;
