@@ -1,20 +1,6 @@
-<% ead = eadsax(@document) -%>
-
-<% extra_head_content << capture do -%>
-  <%= stylesheet_link_tag 'blacklight_ext_ead_simple', :plugin => :blacklight_ext_ead_simple %>
-<% end -%>
-
-<% sidebar_items << capture do -%>
-  <%= render :partial => '/catalog/_show_partials/_ead/toc',
-    :locals => {:ead => ead, :details => ead_details(ead)} %>
-  <% if @document['dao_b']  %>
-    <li><span class="dao">There is digital content available for this collection guide.</span></li>
-  <% end -%>
-
-<% end -%>
-
-<% cache(:action_suffix => 'ead_body') do -%>
-  <%= render :partial => 'catalog/_show_partials/_ead/ead_body',
-    :locals => {:ead => ead, :details => ead_details(ead)} %>
-<% end -%>
-
+<% title = @document['title_display'] %>
+<div class="fa-div">
+<a href="<%= guide_url(@document) %>" target="_blank">
+  <button class="fa-button"><%= title %></button>
+</a>
+</div>

@@ -49,15 +49,6 @@ class CatalogController < ApplicationController
     @response, @document = get_solr_response_for_doc_id
     add_cal_info
     generate_pagination
-    if @document.has_key?('finding_aid_url_s') and @document.has_key?('unpaged_display')
-      redirect_to_guide_or_first_page
-    end
-    if @document.has_key?('finding_aid_url_s')
-      ead_url = @document['finding_aid_url_s'].first
-      ead_xml = Typhoeus::Request.get(ead_url).body
-      @ead = ead_xml
-      @document[Blacklight.config[:guide][:heading]] = KDL::Parser.new(@ead).title
-    end
   end
 
   def thumbs
@@ -87,13 +78,11 @@ class CatalogController < ApplicationController
 
   def guide
     @response, @document = get_solr_response_for_doc_id
+    if @document.has_key?('finding_aid_url_s') and (@document['id'] =~ /_/)
+      redirect_to catalog_path(@document['id'])
+    end
     add_cal_info
-    if @document.has_key?('finding_aid_url_s')
-      ead_url = @document['finding_aid_url_s'].first
-      ead_xml = Typhoeus::Request.get(ead_url).body
-      @ead = ead_xml
-      @document[Blacklight.config[:guide][:heading]] = KDL::Parser.new(@ead).title
-    else
+    unless @document.has_key?('finding_aid_url_s')
       @document['format'] = 'guide_not_available'
     end
   end
@@ -169,15 +158,8 @@ class CatalogController < ApplicationController
     add_cal_info
     generate_pagination
 
-    if @document.has_key?('finding_aid_url_s') and @document.has_key?('unpaged_display')
+    if @document.has_key?('finding_aid_url_s') and @document.has_key?('unpaged_display') and not(@document['id'] =~ /_/)
       redirect_to guide_catalog_path(@document['id'])
-    end
-
-    if @document.has_key?('finding_aid_url_s')
-      ead_url = @document['finding_aid_url_s'].first
-      ead_xml = Typhoeus::Request.get(ead_url).body
-      @ead = ead_xml
-      @document[Blacklight.config[:guide][:heading]] = KDL::Parser.new(@ead).title
     end
 
     respond_to do |format|

@@ -534,3 +534,21 @@ h2.guide_subheading {
   position: static;
   margin-left: 1em;
 }
+/* image links should not have "underline" markings */
+a.image_link {
+  border-bottom: 1px solid white;
+}
+
+.fa-div {
+  text-align: center;
+  margin: auto;
+  width: 99%;
+}
+
+.fa-div a {
+  width: 100%;
+}
+
+.fa-button {
+  font-size: 150%;
+}

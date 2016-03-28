@@ -38,6 +38,17 @@ module ApplicationHelper
     end
   end
 
+  def link_to_findingaid(doc, opts={:label=>Blacklight.config[:index][:show_link].to_sym, :counter => nil, :results_view => true})
+    label = render_document_index_label doc, opts
+    link_to_with_data(label, guide_url(doc), {:class => label.parameterize, :data => opts, :target => '_blank'})
+  end
+
+  def guide_url(document)
+    id = document['id']
+    id.gsub!(/_.*/, '')
+    "https://nyx.uky.edu/fa/findingaid/?id=#{id}"
+  end
+
   def document_heading
     if @document.has_key? 'finding_aid_url_s' and @document.has_key? 'pub_date'
       heading = [
