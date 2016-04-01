@@ -44,7 +44,7 @@ module ApplicationHelper
   end
 
   def guide_url(document)
-    id = document['id']
+    id = document['id'].dup
     id.gsub!(/_.*/, '')
     "https://nyx.uky.edu/fa/findingaid/?id=#{id}"
   end
