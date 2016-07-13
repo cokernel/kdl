@@ -47,7 +47,7 @@ class CatalogController < ApplicationController
 
   def viewer
     @response, @document = get_solr_response_for_doc_id
-    extra_head_content << '<link rel="canonical" href="'+ url_for() + '">'
+    extra_head_content << '<link rel="canonical" href="'+ url_for({}) + '">'
     add_cal_info
     generate_pagination
   end
@@ -58,7 +58,7 @@ class CatalogController < ApplicationController
 
   def text 
     @response, @document = get_solr_response_for_doc_id
-    extra_head_content << '<link rel="canonical" href="'+ url_for() + '">'
+    extra_head_content << '<link rel="canonical" href="'+ url_for({}) + '">'
     add_cal_info
     begin
       text_to_check = @document['text_s'].first
@@ -75,7 +75,7 @@ class CatalogController < ApplicationController
     id = params[:id]
     response, @document_summary = get_solr_response_for_doc_id id
     @response, @document = get_solr_response_for_doc_id id
-    extra_head_content << '<link rel="canonical" href="'+ url_for() + '">'
+    extra_head_content << '<link rel="canonical" href="'+ url_for({}) + '">'
     add_cal_info
   end
 
@@ -84,7 +84,7 @@ class CatalogController < ApplicationController
     if @document.has_key?('finding_aid_url_s') and (@document['id'] =~ /_/)
       redirect_to catalog_path(@document['id'])
     end
-    extra_head_content << '<link rel="canonical" href="'+ url_for() + '">'
+    extra_head_content << '<link rel="canonical" href="'+ url_for({}) + '">'
     add_cal_info
     unless @document.has_key?('finding_aid_url_s')
       @document['format'] = 'guide_not_available'
@@ -108,17 +108,17 @@ class CatalogController < ApplicationController
 
   def repo_info
     @response, @document = get_solr_response_for_doc_id
-    extra_head_content << '<link rel="canonical" href="'+ url_for() + '">'
+    extra_head_content << '<link rel="canonical" href="'+ url_for({}) + '">'
   end
 
   def contact_us
     @response, @document = get_solr_response_for_doc_id
-    extra_head_content << '<link rel="canonical" href="'+ url_for() + '">'
+    extra_head_content << '<link rel="canonical" href="'+ url_for({}) + '">'
   end
 
   def submit_contact_request
     @response, @document = get_solr_response_for_doc_id
-    extra_head_content << '<link rel="canonical" href="'+ url_for() + '">'
+    extra_head_content << '<link rel="canonical" href="'+ url_for({}) + '">'
     if params[:name]
       key = @document['repository_display'].first
       if Blacklight.config[:repo_contact].has_key?(key)
@@ -162,7 +162,7 @@ class CatalogController < ApplicationController
 
   def show
     @response, @document = get_solr_response_for_doc_id
-    extra_head_content << '<link rel="canonical" href="'+ url_for() + '">'
+    extra_head_content << '<link rel="canonical" href="'+ url_for({}) + '">'
     add_cal_info
     generate_pagination
 
@@ -184,7 +184,7 @@ class CatalogController < ApplicationController
 
   def download
     @response, @document = get_solr_response_for_doc_id
-    extra_head_content << '<link rel="canonical" href="'+ url_for() + '">'
+    extra_head_content << '<link rel="canonical" href="'+ url_for({}) + '">'
 
     if @document.has_key?('reference_image_url_s')
       url = @document['reference_image_url_s'].first
