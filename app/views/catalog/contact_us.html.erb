@@ -10,6 +10,6 @@
   <%= label_tag(:question, "Question:") %><br/>
   <%= text_area_tag :question %><br/>
   <%= hidden_field_tag "id", @document['id'] %>
-  <%= recaptcha_tags :ajax => true %>
+  <%= recaptcha_tags :ajax => true, :ssl => true %>
   <%= submit_tag "Send" %>
 <% end %>
