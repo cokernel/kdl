@@ -60,8 +60,4 @@ ActionController::Routing::Routes.draw do |map|
   map.connect 'volunteer.html', :action => 'volunteer', :controller => 'pages'
   map.connect 'pages/visitors_overview.xml', :action => 'visitors_overview', :controller => 'pages'
   map.connect 'pages/statistics/visitors_overview.xml', :action => 'visitors_overview', :controller => 'pages'
-
-  map.connect 'fs/toggle', :action => 'toggle', :controller => 'fs'
-  map.connect 'fs/off', :action => 'off', :controller => 'fs'
-  map.connect 'fs/on', :action => 'on', :controller => 'fs'
 end
