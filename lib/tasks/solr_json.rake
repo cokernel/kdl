@@ -45,31 +45,38 @@ namespace :solr do
     f
   end
 
-
   namespace :index do
     #ripped directly from Blacklight demo application
     desc "index a directory of json files"
     task :json_dir=>:environment do
       require 'pp'
+      require 'nokogiri'
+      require 'json'
       input_file = ENV['FILE']
       if File.directory?(input_file)
         Dir.new(input_file).each_with_index do |f,index|
           if File.file?(File.join(input_file, f))
             puts "indexing #{f}"
             ENV['FILE'] = File.join(input_file, f)
-            Rake::Task["solr:index:json"].invoke
-            Rake::Task["solr:index:json"].reenable
+
+            json = IO.read(fetch_env_file)
+            solr_pre = JSON.parse(json)
+            solr_doc = Hash.new
+            solr_pre.each do |key,value|
+                solr_doc[key.to_sym] = value
+            end
+            require 'pp'
+            pp solr_doc[:title_display]
+            if !solr_doc[:title_display].blank?
+                response = Blacklight.solr.add solr_doc
+                pp response; puts
+            end
+
           end
         end
         pp Blacklight.solr.commit
       end
     end
-
-    #desc "index ead sample data from NCSU"
-    #task :ead_sample_data => :environment do
-    #  ENV['FILE'] = "#{RAILS_ROOT}/vendor/plugins/blacklight_ext_ead_simple/data/*"
-    ##  Rake::Task["solr:index:ead_dir"].invoke
-    #end
 
     # TODO Change this to index all the ua collection guides as well as manuscript
     # collections referred to within the db
