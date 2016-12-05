@@ -27,7 +27,7 @@ $('audio').mediaelementplayer();
 </script>
   <% end %>
 
-  <% if @document.has_key?('viewer_url_s') %>
+  <% if @document.has_key?('reference_image_url_s') %>
     <% extra_head_content << capture do %>
 <script src="/openseadragon/openseadragon.min.js" type="text/javascript"></script>
     <% end %>
