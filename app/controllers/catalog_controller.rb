@@ -1,4 +1,5 @@
 require_dependency( 'vendor/plugins/blacklight/app/controllers/catalog_controller.rb')
+require 'open-uri'
 
 class CatalogController < ApplicationController
   protect_from_forgery :except => :oai
@@ -188,7 +189,7 @@ class CatalogController < ApplicationController
 
     if @document.has_key?('reference_image_url_s')
       url = @document['reference_image_url_s'].first
-      image = Typhoeus::Request.get(url).body
+      image = open(url).read
       send_data image,
                 :filename => File.basename(url),
                 :type => 'image/jpeg'
@@ -381,24 +382,24 @@ class CatalogController < ApplicationController
     end
 
     ### Require University of Kentucky.
-    solr_parameters[:fq] ||= []
-    solr_parameters[:fq] << "{!raw f=repository_facet}University of Kentucky"
-    titles = [
-      'blue-tail fly',
-      'idea',
-      'kentucky kernel',
-      'state college cadet',
-    ]
-    newspapers = titles.collect {|title|
-      [
-        '(format:newspapers AND ',
-        title.split(/\s+/).collect {|word|
-          "title_t:'#{word}'"
-        }.join(' AND '),
-        ')',
-      ].join('')
-    }.join(' OR ')
-    solr_parameters[:fq] << "#{newspapers} OR (*:* NOT(format:newspapers))"
+#    solr_parameters[:fq] ||= []
+#    solr_parameters[:fq] << "{!raw f=repository_facet}University of Kentucky"
+#    titles = [
+#      'blue-tail fly',
+#      'idea',
+#      'kentucky kernel',
+#      'state college cadet',
+#    ]
+#    newspapers = titles.collect {|title|
+#      [
+#        '(format:newspapers AND ',
+#        title.split(/\s+/).collect {|word|
+#          "title_t:'#{word}'"
+#        }.join(' AND '),
+#        ')',
+#      ].join('')
+#    }.join(' OR ')
+#    solr_parameters[:fq] << "#{newspapers} OR (*:* NOT(format:newspapers))"
 
     return solr_parameters
     
