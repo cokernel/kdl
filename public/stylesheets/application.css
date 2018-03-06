@@ -534,6 +534,11 @@ h2.guide_subheading {
   position: static;
   margin-left: 1em;
 }
+
+/* Links */
+a:link, a:visited, a:active {color: #2e4f81; text-decoration: none;}
+a:hover {color: #029;}
+
 /* image links should not have "underline" markings */
 a.image_link {
   border-bottom: 1px solid white;
@@ -544,7 +549,6 @@ a.image_link {
   margin: auto;
   width: 99%;
 }
-
 .fa-div a {
   width: 100%;
 }
