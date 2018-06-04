@@ -1,5 +1,11 @@
-h1.site_title {background: transparent url('../images/logo.png') no-repeat top left; margin: -5px 0px 0px 1em; height: 38px; width: 403px;}
+h1.site_title {
+  background: transparent url('../images/logo.png') no-repeat top left; 
+  margin: -5px 0px 0px 1em; height: 38px; width: 403px;}
 h1.site_title a {display:block; height: 38px; width:403px; text-indent: -9999px; overflow: hidden; text-decoration: none; border: 0px;}
+
+#hd {
+    background-color: #0033a0;
+}
 
 /* Thumbnail view */
 span.thumblock { display:block; float:left; text-align: center }
@@ -100,6 +106,7 @@ ol.dsc_subseries li {
 
 /* Footer */
 #ft {
+  background-color: #0033a0;
   border-top: 1px dotted #ccc;
   padding-top: 1em;
   text-align: center;
@@ -187,10 +194,14 @@ form.sort {
   margin: 0px;
 }
 
-#doc, #doc2, #doc3, #doc4 {background: #fff url('../images/bg.png') repeat-x top left; border-bottom: 2px solid #555; margin: 0px auto;}
+#doc, #doc2, #doc3, #doc4 {
+  /*background: #fff url('../images/bg.png') repeat-x top left; */
+  border-bottom: 0; /*2px solid #555; */
+  margin: 0px auto;}
 
 body {
-  background: url('../images/bg.png') repeat-x top left; font: 0.7em Verdana, "Lucida Grande", "Lucida San Unicode", "Arial Unicode MS", Arial, sans-serif; 
+  /* background: url('../images/bg.png') repeat-x top left; */
+  font: 0.7em Verdana, "Lucida Grande", "Lucida San Unicode", "Arial Unicode MS", Arial, sans-serif; 
   line-height: 1.4; 
   color: #333;
   margin: 0px;
@@ -387,10 +398,13 @@ clear:left;
 /* ----------------------------------------------------------------------*/
 
 #footer {
-	background:url(../images/bg_footer.gif) repeat-y left top;
+	/*background:url(../images/bg_footer.gif) repeat-y left top;*/
+/*
 	color: #FFF;
+    background-color: #0033a0;
 	margin-top:10px;
 	overflow:auto;
+*/
 }
 
 #footer .column {
@@ -414,7 +428,7 @@ clear:left;
 #footer a:active { color: #FFF; }
 
 
-#footerWrapper {background:#0a3a5e; padding:10px 0 50px;}
+#footerWrapper {/*background:#0a3a5e;*/ padding:10px 0 50px;}
 
 /* ----------------------------------------------------------------------*/
 /* ---------->>> SOCIAL FOOTER <<<-----------*/
@@ -549,6 +563,7 @@ a.image_link {
   margin: auto;
   width: 99%;
 }
+
 .fa-div a {
   width: 100%;
 }

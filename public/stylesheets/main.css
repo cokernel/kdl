@@ -1,0 +1,270 @@
+/*
+UK palette:
+wildcat blue: #0033a0;
+wildcat white: #ffffff;
+wildcat black: #2c2a29;
+light blue: #1897d4;
+medium blue: #143887;
+dark blue: #202c5f;
+light gray: #c8c8c7;
+medium gray: #a5acaf;
+dark gray: #63656a;
+
+UKL palette:
+blue: #005dab;
+white: #ffffff;
+black: #282828;
+*/
+@import url("https://fonts.googleapis.com/css?family=Muli");
+
+.euk-logos {
+    display: inline;
+    list-style-type: none;
+}
+
+.euk-logos li {
+    display: inline-block;
+}
+
+.euk-social-logos {
+    display: inline;
+    list-style-type: none;
+}
+
+.euk-social-logos li {
+    display: inline-block;
+    padding: 5px;
+}
+
+.euk-logo-big {
+    max-height: 146px;
+    width: auto;
+    height: auto;
+/*    padding: 5px;*/
+}
+
+.euk-logo-medium {
+    max-height: 70px;
+    width: auto;
+    height: auto;
+}
+
+.euk-logo-container {
+    float: right;
+}
+
+.euk-logo-small {
+    max-height: 34px;
+    width: auto;
+    height: auto;
+    float: left;
+    padding-left: 0.5rem;
+}
+
+.ukl-blue {
+    background: #005dab;
+    color: #ffffff;
+}
+
+.ukl-white-dark {
+    background: #ffffff;
+    color: #282828;
+}
+
+.ukl-black {
+    background: #282828;
+    color: #ffffff;
+}
+
+.bg-wildcatblue {
+    background: #0033a0;
+    color: #ffffff;
+}
+
+.bg-wildcatwhite {
+    background: #ffffff;
+    color: #2c2a29;
+}
+
+.bg-wildcatblack {
+    background: #2c2a29;
+    color: #ffffff;
+}
+
+.dev {
+    border: 1px dashed #99ff00;
+}
+
+#euk-header {
+    width: 100%;
+    margin: auto;
+    padding: 0;
+    font-family: Muli, sans-serif;
+}
+
+#euk-header h1 {
+    width: 100%;
+    height: 100%;
+    vertical-align: middle;
+    margin: 0;
+}
+
+#euk-header a {
+    color: white;
+}
+
+#euk-header .euk-ukbar {
+    width: 100%;
+    height: 32px; /*2rem;*/
+    /* color: white; */
+    background: #2c2a29;
+    vertical-align: middle;
+}
+
+.euk-ukbar h1 {
+    padding: 0.25rem;
+}
+
+#euk-header .euk-scrcbar {
+    width: 100%;
+    height: 60px; /*6rem;*/
+    /* color: white; */
+    /* background: #0033a0; */
+    vertical-align: middle;
+}
+
+.site-logo img {
+    max-height: 54px;
+    vertical-align: middle;
+    height: auto !important;
+}
+
+nav li {
+    font-size: 1.5em;
+    /*
+    padding-left: 4rem;
+    padding-right: 4rem;
+    display: inline;
+    vertical-align: middle;
+    */
+}
+
+#euk-scrc-bar {
+    padding: 1rem;
+    height: 10rem;
+}
+
+#euk-scrc-bar a {
+    color: #ffffff;
+}
+
+.contact {
+    display: block;
+    text-align: left;
+    font-size: 1.5em;
+    padding: 1rem;
+    padding-right: 0;
+}
+
+.address {
+    text-align: center;
+    font-size: 1.5em;
+    padding: 2rem 1rem 1rem 1rem;
+}
+
+.scrc-logo {
+    display: block;
+    padding: 1rem;
+    padding-top: 3rem;
+    padding-left: 0;
+}
+
+.contact a {
+    text-decoration: underline;
+}
+
+#euk-sponsors-bar {
+    text-align: center;
+}
+
+#euk-sponsors-bar h2 {
+    font-size: 2em;
+}
+
+#euk-sponsors-bar .euk-inner {
+    margin: auto;
+    height: 12rem;
+}
+
+#euk-copyright-bar {
+    padding: 1.5rem;
+    height: 6rem;
+    font-size: 1.1em;
+}
+
+#euk-copyright-bar a {
+    color: #ffffff;
+    text-decoration: underline;
+}
+
+.euk-inner-w img, .euk-inner-n img {
+    max-width: 90%;
+    margin: auto;
+    width: auto;
+    height: auto;
+    vertical-align: middle;
+}
+
+@supports (display: flex) {
+    .site-logo {
+        display: flex;
+        align-items: center;
+        justify-content: left;
+    }
+
+    nav ul {
+        margin: auto;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        /*width: 100%;*/
+    }
+    
+    nav li {
+        display: block;
+        list-style-type: none;
+    }
+
+    .euk-inner-w {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .euk-inner-n {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+}
+
+@supports (display: grid) {
+    .euk-wide-row {
+        display: grid;
+        grid-template-columns: 1fr 839px 1fr;
+        grid-column-gap: 0;
+    }
+
+    #euk-header .euk-scrcbar {
+        display: grid;
+        grid-template-columns: 1fr 300px 539px 1fr;
+        grid-column-gap: 0;
+    }
+
+    #euk-scrc-bar {
+        display: grid;
+        grid-template-columns: 1fr 2fr 1fr;
+        grid-column-gap: 1rem;
+    }
+}

@@ -1,38 +1,41 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
-<html xmlns="http://www.w3.org/1999/xhtml">
-
+<!DOCTYPE html>
+<html>
   <head>
-    
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    
+    <meta charset="utf-8">
     <title><%= h(@page_title || application_name) %></title>
     <link href="<%= url_for :controller=>'catalog',:action => 'opensearch', :format => 'xml', :only_path => false %>" title="<%= application_name%>" type="application/opensearchdescription+xml" rel="search"/>
     
     <meta name="google-site-verification" content="xgU7Zcvu0NIyqB4v1ljhEe3SPTn0D66XzacZRivOMGs" />
-    <meta name="yandex-verification" content="59613a37dd9fd6e8" />
     <%= csrf_meta_tag %>
     <%= render_head_content %>
-    
-    
+    <link href="/stylesheets/main.css" type="text/css" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
   </head>
   <% if params[:q].to_s.empty? and params[:f].to_s.empty? and params[:id].nil? %>
     <body onload="$('input#q').focus();" class="<%= render_body_class %>">
   <% else %>
     <body class="<%= render_body_class %>">
   <% end %>
+<header id="euk-header">
+    <div class="euk-wide-row euk-ukbar ukl-black">
+        <div class="euk-space"></div>
+        <h1><a href="https://www.uky.edu">UK HOME</a></h1>
+        <div class="euk-space"></div>
+    </div>
+    <div class="euk-scrcbar ukl-blue">
+        <div class="euk-space"></div>
+        <h1 class="site-logo"><a href="/"><img src="/images/revi/exploreuk.png" alt="ExploreUK home"></a></h1>
+        <nav>
+            <ul>
+                <li><a href="https://libraries.uky.edu/SC">SCRC Home</a></li>
+                <li><a href="https://libraries.uky.edu/ContactSCRC">Contact Us</a></li>
+                <li><a href="https://requests-libraries.uky.edu/">Researcher Account Login</a></li>
+            </ul>
+        </nav>
+        <div class="euk-space"></div>
+    </div>
+</header>
 	  <div id="doc4" class="yui-t2">
-	    
-	    <div id="hd">
-        <div class="yui-g">
-          <div class="yui-u first">
-            <!--<a class="home_logo" href="<%= url_for :controller=>'catalog', :action=>'index' %>"><img src="<%= image_path('logo.png') %>" alt="" title=""/></a>-->
-
-            <h1 class="site_title"><%= link_to application_name, root_path %><%= (params[:controller] == "catalog" and !params[:id]) ? "<span id='results_text'>Search Results</span>" : "" %></h1>
-          </div>
-        </div>
-      </div>
-	    
 	    <div id="bd">
       	
       	<div id="yui-main">
@@ -47,9 +50,9 @@
         
 	    </div>
 	    
-	    <div id="ft"><%= @footer %></div>
 	    
 	  </div>
+        <%= @footer %>
   </body>
   
 </html>
