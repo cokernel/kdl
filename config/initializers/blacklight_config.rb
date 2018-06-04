@@ -127,12 +127,17 @@ Blacklight.configure(:shared) do |config|
     # sniffing requires solr requests to be made with "echoParams=all", for
     # app code to actually have it echo'd back to see it.     
     :limits => {
-      "format" => 20,
+      #"format" => 20,
+      #"subject_facet" => 20,
+      #"language_facet" => true,
+      #"repository_facet" => 10,
+      #"source_s" => 10,
+      #"pub_date" => 10,
+      "format" => 12,
       "subject_facet" => 20,
       "language_facet" => true,
-      "repository_facet" => 10,
-      "source_s" => 10,
-      "pub_date" => 10,
+      "source_s" => 5,
+      "pub_date" => 5,
     }
   }
 
@@ -518,7 +523,7 @@ Blacklight.configure(:shared) do |config|
   }
 
   config[:type_for] = {
-    'archival_material' => 'collection',
+    'archival material' => 'collection',
     'athletic publications' => 'text',
     'books' => 'text',
     'collections' => 'collection',
