@@ -43,7 +43,7 @@ $('audio').mediaelementplayer();
 
 <div id="image_viewer">
   <% if @document.has_key?('reference_image_url_s') %>
-  <img class="reference_image" id="reference_image" src="<%= @document['reference_image_url_s'] %>"/>
+  <img class="front_thumbnail" id="front_thumbnail" src="<%= @document['front_thumbnail_url_s'] %>"/>
 <div id="viewer" style="width: 100%; height: 600px;"></div>
 <% extra_footer_content << capture do %>
 <script type="text/javascript">
@@ -57,7 +57,7 @@ var osd_viewer = OpenSeadragon({
     }
 });
 $(osd_viewer.element).find('.openseadragon-canvas').css('background-color', 'black');
-$('#reference_image').hide();
+$('#front_thumbnail').hide();
 </script>
 <% end %>
   <% end %>
