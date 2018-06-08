@@ -10,6 +10,11 @@ class ApplicationController < ActionController::Base
   # filter_parameter_logging :password
   before_filter :add_remove_js_css
 
+  def extra_footer_content
+    @extra_footer_content ||= []
+  end
+  helper_method :extra_footer_content
+
   private
   def add_remove_js_css
     javascript_includes.map{|js_links| js_links.delete("accordion") if js_links.include?({:plugin=>:blacklight})}

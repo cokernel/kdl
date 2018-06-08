@@ -3,6 +3,7 @@
 <% top_sidebar_items << capture do %>
 <div class="front_nav">
 <input type="hidden" id="datepicker" name="datepicker">
+<% extra_footer_content << capture do %>
 <script type="text/javascript">
 $(document).ready(function() {
   Calendar.init({
@@ -32,6 +33,7 @@ $(document).ready(function() {
   });
 });
 </script>
+<% end %>
 </div>
 <% end %>
 <%- end -%>

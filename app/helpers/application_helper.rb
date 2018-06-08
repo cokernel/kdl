@@ -4,6 +4,20 @@ module ApplicationHelper
     'ExploreUK'
   end
 
+  def render_head_content
+    ( respond_to?(:extra_head_content) ?
+        extra_head_content.join("\n") :
+      "")
+  end
+
+  def render_footer_content
+    render_stylesheet_includes +
+    render_js_includes +
+    ( respond_to?(:extra_footer_content) ?
+        extra_footer_content.join("\n") :
+      "")
+  end
+
   def truncate(string, options = {})
     if not(options.has_key?(:length)) or string.length < options[:length]
       string

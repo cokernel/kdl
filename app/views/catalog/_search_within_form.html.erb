@@ -2,7 +2,7 @@
   <% form_tag catalog_index_path, :method => :get do %>
     <% label = search_within_text(document) %>
     <h2 class="search"><%= label_tag(:q, label) %></h2>
-    <%= text_field_tag :q, params[:q], :class => "q" %>
+    <%= text_field_tag :q, params[:q], :class => "q", 'aria-label' => label %>
     
     <%= search_as_hidden_fields(:omit_keys => [:q, :search_field, :qt, :page]) %>        
 

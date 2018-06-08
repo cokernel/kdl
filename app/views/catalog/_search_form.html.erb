@@ -1,7 +1,7 @@
 <div id="search" class="search">
   <% form_tag catalog_index_path, :method => :get do %>
     <h2 class="search"><%= label_tag(:q, "Search ") %></h2>
-    <%= text_field_tag :q, params[:q], :class => "q" %>
+    <%= text_field_tag :q, params[:q], :class => "q", 'aria-label' => 'Search' %>
     <%= label_tag(:search_field, " in ") %>
     <%= select_tag(:search_field, options_for_select(search_fields, h(params[:search_field])), :title => "Targeted search options", :class=>"search_field") %>
     
