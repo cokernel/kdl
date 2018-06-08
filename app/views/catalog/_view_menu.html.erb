@@ -16,7 +16,7 @@
 
 <% if has_guide?(@document) -%>
 |
-<%= link_to "guide", guide_url(@document), :target => '_blank' %> 
+<%= link_to "guide", guide_url(@document), :target => '_blank', :rel => 'noopener' %> 
 <% end -%>
 
 <% if has_text?(@document) -%>
