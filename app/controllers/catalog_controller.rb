@@ -49,6 +49,7 @@ class CatalogController < ApplicationController
     @response, @document = get_solr_response_for_doc_id
     extra_head_content << '<link rel="canonical" href="'+ url_for({}) + '">'
     add_cal_info
+    add_alert_info
     generate_pagination
   end
 
@@ -58,6 +59,7 @@ class CatalogController < ApplicationController
 
   def text 
     @response, @document = get_solr_response_for_doc_id
+    add_alert_info
     extra_head_content << '<link rel="canonical" href="'+ url_for({}) + '">'
     add_cal_info
     begin
@@ -77,6 +79,7 @@ class CatalogController < ApplicationController
     @response, @document = get_solr_response_for_doc_id id
     extra_head_content << '<link rel="canonical" href="'+ url_for({}) + '">'
     add_cal_info
+    add_alert_info
   end
 
   def guide
@@ -86,6 +89,7 @@ class CatalogController < ApplicationController
     end
     extra_head_content << '<link rel="canonical" href="'+ url_for({}) + '">'
     add_cal_info
+    add_alert_info
     unless @document.has_key?('finding_aid_url_s')
       @document['format'] = 'guide_not_available'
     end
@@ -98,6 +102,7 @@ class CatalogController < ApplicationController
     
     (@response, @document_list) = get_search_results
     add_cal_info
+    add_alert_info
     @filters = params[:f] || []
     respond_to do |format|
       format.html { save_current_search_params }
@@ -164,6 +169,7 @@ class CatalogController < ApplicationController
     @response, @document = get_solr_response_for_doc_id
     extra_head_content << '<link rel="canonical" href="'+ url_for({}) + '">'
     add_cal_info
+    add_alert_info
     generate_pagination
 
     if @document.has_key?('finding_aid_url_s') and @document.has_key?('unpaged_display') and not(@document['id'] =~ /_/)
@@ -450,5 +456,20 @@ class CatalogController < ApplicationController
     # currently tested for, tricky to figure out how to test, since the
     # default setup we test against doesn't use this feature. 
     return     Blacklight::Solr::FacetPaginator.new(response.facets.first.items, args)
+  end
+
+  def add_alert_info
+    @alert = {}
+    if @document
+        if @document['format'] == 'newspapers'
+            @alert['message'] = '<p>Newspapers are searchable at the <a href="https://kentuckynewspapers.org/" target="_blank">Kentucky Digital Newspaper Program</a>.</p>'
+        elsif @document['repository_display'].first == 'University of Kentucky'
+            title = @document['title_display']
+            id = @document['id']
+            url = "https://exploreuk.uky.edu/catalog/#{id}/"
+            @alert['message'] = "<p>University of Kentucky materials are on <a href=\"https://exploreuk.uky.edu/\" target=\"_blank\">ExploreUK</a>.  This item: <a href=\"#{url}\" target=\"_blank\">#{title}</a>.</p>"
+        end
+    else
+    end
   end
 end

@@ -12,6 +12,23 @@
     <%= csrf_meta_tag %>
     <%= render_head_content %>
     
+<style type="text/css">
+header {
+    text-align: center;
+    font-size: 2em;
+    width: 100%;
+    color: #ff0000;
+    background: #ffff00;
+    margin: auto;
+    padding: 1em;
+}
+
+header a {
+    color: #0000ff; !important;
+    text-decoration: underline !important;
+    border: 0 !important;
+}
+</style>
     
   </head>
   <% if params[:q].to_s.empty? and params[:f].to_s.empty? and params[:id].nil? %>
@@ -19,6 +36,16 @@
   <% else %>
     <body class="<%= render_body_class %>">
   <% end %>
+<header>
+<h1>
+The KDL is <a href="http://www.kyvl.org/kdl" target="_blank">under construction</a>
+</h1>
+
+<% if @alert.has_key? 'message' %>
+<%= @alert['message'] %>
+<% end %>
+
+</header>
 	  <div id="doc4" class="yui-t2">
 	    
 	    <div id="bd">
