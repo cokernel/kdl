@@ -71,6 +71,16 @@ black: #282828;
     color: #282828;
 }
 
+.alert-yellow {
+    background: #ffc000 !important;
+    color: #000000 !important;
+    text-align: center;
+}
+.alert-yellow a {
+    color: #000000 !important;
+    text-decoration: underline !important;
+}
+
 .ukl-black {
     background: #282828;
     color: #ffffff;

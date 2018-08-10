@@ -9,7 +9,7 @@
     <meta name="google-site-verification" content="xgU7Zcvu0NIyqB4v1ljhEe3SPTn0D66XzacZRivOMGs" />
     <%= csrf_meta_tag %>
     <%= render_head_content %>
-    <link href="/stylesheets/main.css" type="text/css" rel="stylesheet">
+    <link href="/stylesheets/main.css?2" type="text/css" rel="stylesheet">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
   </head>
   <% if params[:q].to_s.empty? and params[:f].to_s.empty? and params[:id].nil? %>
@@ -18,6 +18,11 @@
     <body class="<%= render_body_class %>">
   <% end %>
 <header id="euk-header">
+    <div class="euk-wide-row euk-ukbar alert-yellow">
+        <div class="euk-space"></div>
+        <h1>ExploreUK is getting a new design. <a href="https://exploreukbeta.ukpdp.org/" target="_blank" rel="noopener">Try the beta site!</a></h1>
+        <div class="euk-space"></div>
+    </div>
     <div class="euk-wide-row euk-ukbar ukl-black">
         <div class="euk-space"></div>
         <h1><a href="https://www.uky.edu">UK HOME</a></h1>
